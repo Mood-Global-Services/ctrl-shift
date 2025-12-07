@@ -1,10 +1,16 @@
 "use client";
 
 import type { ReactElement } from "react";
+import { useRef } from "react";
 import Image from "next/image";
 import { Box, Container, Typography } from "@mui/material";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import { motion, useScroll, useTransform } from "motion/react";
+import {
+  motion,
+  useScroll,
+  useTransform,
+  useInView,
+} from "motion/react";
 
 import crestImg from "@/assets/images/relic.webp";
 import starImg from "@/assets/images/star.webp";
@@ -17,9 +23,15 @@ export interface HeroProps {
   theme?: HeroTheme;
 }
 
-export function Hero({ theme = "light" }: HeroProps): ReactElement {
+function Hero({ theme = "light" }: HeroProps): ReactElement {
   const { scrollY } = useScroll();
   const isDark = theme === "dark";
+
+  const contentRef = useRef<HTMLDivElement | null>(null);
+  const isContentInView = useInView(contentRef, {
+    amount: 0.4,
+    once: true,
+  });
 
   // Parallax motion values
   const yLeft = useTransform(scrollY, [0, 500], [0, 100]);
@@ -169,7 +181,7 @@ export function Hero({ theme = "light" }: HeroProps): ReactElement {
           <Box
             sx={{
               position: "absolute",
-              left: { xs: "-7rem", md: 0 }, // -left-28 md:left-0
+              left: { xs: "-7rem", md: 0 },
               top: "55%",
               transform: "translateY(-50%)",
               zIndex: 0,
@@ -204,7 +216,7 @@ export function Hero({ theme = "light" }: HeroProps): ReactElement {
           <Box
             sx={{
               position: "absolute",
-              right: { xs: "-7rem", md: 0 }, // -right-28 md:right-0
+              right: { xs: "-7rem", md: 0 },
               top: "53%",
               transform: "translateY(-50%)",
               zIndex: 0,
@@ -239,6 +251,7 @@ export function Hero({ theme = "light" }: HeroProps): ReactElement {
 
           {/* Main Content */}
           <Box
+            ref={contentRef}
             sx={{
               position: "relative",
               zIndex: 10,
@@ -247,20 +260,28 @@ export function Hero({ theme = "light" }: HeroProps): ReactElement {
               alignItems: "center",
             }}
           >
+            {/* Title first */}
             <Typography
-              component="h1"
+              component={motion.h1}
               className="animated-gradient-text"
+              initial={{ opacity: 0, y: 20 }}
+              animate={
+                isContentInView
+                  ? { opacity: 1, y: 0 }
+                  : { opacity: 0, y: 20 }
+              }
+              transition={{ duration: 0.5, ease: "easeOut" }}
               sx={{
                 fontWeight: 500,
                 fontSize: {
-                  xs: "2.25rem", // text-4xl
-                  md: "3rem", // text-5xl
-                  lg: "3.5rem", // 56px approx
+                  xs: "2.25rem",
+                  md: "3rem",
+                  lg: "3.5rem",
                 },
                 letterSpacing: "-0.04em",
                 lineHeight: 1.1,
                 mb: 3,
-                maxWidth: "56rem", // max-w-4xl
+                maxWidth: "56rem",
               }}
             >
               <span>Southern</span> <span>Italy’s</span>
@@ -269,10 +290,22 @@ export function Hero({ theme = "light" }: HeroProps): ReactElement {
               <span>Future</span>
             </Typography>
 
+            {/* Subtitle + buttons together, after title */}
             <Typography
-              component="p"
+              component={motion.p}
+              initial={{ opacity: 0, y: 18 }}
+              animate={
+                isContentInView
+                  ? { opacity: 1, y: 0 }
+                  : { opacity: 0, y: 18 }
+              }
+              transition={{
+                duration: 0.45,
+                ease: "easeOut",
+                delay: 0.25,
+              }}
               sx={{
-                maxWidth: "32rem", // max-w-lg
+                maxWidth: "32rem",
                 fontSize: { xs: "0.95rem", md: "1rem" },
                 mb: 5,
                 fontWeight: 400,
@@ -294,8 +327,19 @@ export function Hero({ theme = "light" }: HeroProps): ReactElement {
               Computing, and Web3.
             </Typography>
 
-            {/* Buttons – keep your exact structure & classes */}
             <Box
+              component={motion.div}
+              initial={{ opacity: 0, y: 18 }}
+              animate={
+                isContentInView
+                  ? { opacity: 1, y: 0 }
+                  : { opacity: 0, y: 18 }
+              }
+              transition={{
+                duration: 0.45,
+                ease: "easeOut",
+                delay: 0.25,
+              }}
               sx={{
                 display: "flex",
                 flexWrap: "wrap",
@@ -316,9 +360,6 @@ export function Hero({ theme = "light" }: HeroProps): ReactElement {
               <div className="hero-btn-wrapper">
                 <button className="hero-btn">
                   <div className="relative w-full h-full overflow-hidden rounded-md flex items-center justify-center">
-                    {/* Ghost element for sizing */}
-
-                    {/* Animated content */}
                     <span className="absolute inset-0 flex items-center justify-center">
                       <span className="relative mr-2 overflow-hidden whitespace-nowrap transition-all duration-300 ease-in-out group-hover:mr-0 group-hover:max-w-0 group-hover:opacity-0 font-medium text-[16px]">
                         Become a sponsor
@@ -339,3 +380,5 @@ export function Hero({ theme = "light" }: HeroProps): ReactElement {
     </Box>
   );
 }
+
+export default Hero;

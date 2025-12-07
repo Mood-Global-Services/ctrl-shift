@@ -31,7 +31,7 @@ export default function RootLayout({
     <html lang="en" className={switzer.variable}>
       <body>
         <ThemeRegistry>
-          <Header />
+          <Header theme="dark" />
           {children}
         </ThemeRegistry>
       </body>

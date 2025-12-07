@@ -3,7 +3,10 @@ import type { ReactElement } from "react";
 import Image from "next/image";
 import { Box } from "@mui/material";
 
-import { Hero } from "@/components/home/hero";
+import Hero from "@/components/home/hero";
+import About from "@/components/home/about";
+import Stats from "@/components/home/stats";
+
 import patternImg from "@/assets/images/layer.webp";
 
 export default function Page(): ReactElement {
@@ -78,6 +81,8 @@ export default function Page(): ReactElement {
       {/* Main content */}
       <Box component="main">
         <Hero theme="dark" />
+        <About />
+        <Stats />
       </Box>
     </Box>
   );

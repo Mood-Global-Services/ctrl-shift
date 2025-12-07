@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, type ReactElement } from "react";
+import { useState, useEffect, type ReactElement } from "react";
 import NextLink from "next/link";
 import Image from "next/image";
 
@@ -82,6 +82,21 @@ function Header({ theme = "dark" }: HeaderProps): ReactElement {
   const [hoveredMobileIcon, setHoveredMobileIcon] =
     useState<SocialName | null>(null);
   const [aboutOpen, setAboutOpen] = useState<boolean>(false);
+  const [scrolled, setScrolled] = useState<boolean>(false);
+
+  // Turn on glass effect once user scrolls down a bit
+  useEffect(() => {
+    const handleScroll = (): void => {
+      setScrolled(window.scrollY > 12);
+    };
+
+    handleScroll(); // set initial state
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   return (
     <Box
@@ -96,20 +111,15 @@ function Header({ theme = "dark" }: HeaderProps): ReactElement {
           ? "rgba(255,255,255,0.1)"
           : "rgba(0,0,0,0.05)",
         px: { xs: 2, md: 3 },
-        // transparent by default
-        bgcolor: "transparent",
-        backdropFilter: "none",
-        WebkitBackdropFilter: "none",
+        bgcolor: scrolled
+          ? isDark
+            ? "rgba(23,3,0,0.55)" // warm dark glass
+            : "rgba(250,234,202,0.9)" // light glass
+          : "transparent",
+        backdropFilter: scrolled ? "blur(12px)" : "none",
+        WebkitBackdropFilter: scrolled ? "blur(12px)" : "none",
         transition:
           "background-color 0.25s ease, backdrop-filter 0.25s ease, -webkit-backdrop-filter 0.25s ease",
-        // frosted glass on hover
-        "&:hover": {
-          backdropFilter: "blur(12px)",
-          WebkitBackdropFilter: "blur(12px)",
-          bgcolor: isDark
-            ? "rgba(23,3,0,0.55)" // warm dark glass
-            : "rgba(250,234,202,0.9)", // light glass
-        },
         color: isDark ? "#FFFFFF" : "#000000",
       }}
     >
@@ -351,6 +361,7 @@ function Header({ theme = "dark" }: HeaderProps): ReactElement {
                 ))}
               </Stack>
 
+              {/* Mobile social icons */}
               <Box sx={{ mx: "auto", mb: 2 }}>
                 <Stack
                   direction="row"
