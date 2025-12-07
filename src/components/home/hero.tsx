@@ -6,7 +6,9 @@ import Image from "next/image";
 import { Box, Stack, Container, Typography, Button } from "@mui/material";
 import GlowyButton from "@/components/ui/glowyButton";
 import SponsorsButton from "@/components/ui/sponsorsButton";
+import NewSponsorsButton from "@/components/ui/newSponsorsButton";
 import TicketsButton from "@/components/ui/ticketsButton";
+import NewTicketsButton from "@/components/ui/newTicketsButton";
 import {
     motion,
     useScroll,
@@ -347,7 +349,7 @@ function Hero({ theme = "light" }: HeroProps): ReactElement {
                             sx={{
                                 maxWidth: "32rem",
                                 fontSize: { xs: "0.95rem", md: "1rem" },
-                                mb: 4,
+                                mb: 3,
                                 fontWeight: 400,
                                 lineHeight: 1.6,
                                 color: isDark ? "#FFFFFF" : "#1A1A1A",
@@ -372,6 +374,7 @@ function Hero({ theme = "light" }: HeroProps): ReactElement {
                             }}
                             sx={{
                                 display: "flex",
+                                flexDirection: "row",
                                 flexWrap: "wrap",
                                 alignItems: "center",
                                 justifyContent: "center",
@@ -379,9 +382,9 @@ function Hero({ theme = "light" }: HeroProps): ReactElement {
                             }}
                         >
                             {/* Get your tickets */}
-                            <TicketsButton label="Get your tickets" />
+                            <NewTicketsButton label="Get your tickets" />
 
-                            <SponsorsButton label="Become a sponsor" />
+                            <NewSponsorsButton label="Become a sponsor" />
                         </Box>
                     </Box>
                 </Box>
