@@ -6,6 +6,7 @@ import { Box } from "@mui/material";
 import Hero from "@/components/home/hero";
 import About from "@/components/home/about";
 import Stats from "@/components/home/stats";
+import LastYearCardGrid from "@/components/home/lastYearCardGrid";
 
 import patternImg from "@/assets/images/layer.webp";
 
@@ -83,6 +84,7 @@ export default function Page(): ReactElement {
         <Hero theme="dark" />
         <About />
         <Stats />
+        <LastYearCardGrid />
       </Box>
     </Box>
   );
