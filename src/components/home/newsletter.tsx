@@ -44,12 +44,7 @@ function Newsletter(): ReactElement {
             Our{" "}
             <Box
               component="span"
-              className="switzer-italic"
-              sx={{
-                color: "rgba(255,255,255,0.7)",
-                animation: "text-gradient 8s ease-in-out infinite",
-                fontWeight: 400
-              }}
+              className="animated-gradient-text"
             >
               Newsletter
             </Box>
