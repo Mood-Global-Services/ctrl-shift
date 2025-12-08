@@ -46,7 +46,7 @@ const STEPS: StepProps[] = [
     title: "Explore our agenda",
     description:
       "Discover sessions across AI, Web3, and Quantum — the full agenda drops soon.",
-    buttonComponent: <NewAgendaButton label="Check the agenda" />,
+    buttonComponent: <NewAgendaButton label="Check the agenda" comingSoon />,
     buttonText: "Check the agenda",
   },
 ];
