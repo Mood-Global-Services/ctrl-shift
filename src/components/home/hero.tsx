@@ -82,7 +82,7 @@ function Hero({ theme = "light" }: HeroProps): ReactElement {
                             position: "absolute",
                             left: "50%",
                             transform: "translateX(-50%)",
-                            top: { xs: "2%", md: "1%" },
+                            top: { xs: "2%", md: "1%", xl: "3%" },
                             zIndex: 0,
                         }}
                     >
@@ -116,7 +116,7 @@ function Hero({ theme = "light" }: HeroProps): ReactElement {
                         sx={{
                             position: "absolute",
                             left: { xs: "5%", md: "20%" },
-                            top: { xs: "5%", md: "3%" },
+                            top: { xs: "5%", md: "3%", xl: "4%" },
                             zIndex: 0,
                         }}
                     >
@@ -150,7 +150,7 @@ function Hero({ theme = "light" }: HeroProps): ReactElement {
                         sx={{
                             position: "absolute",
                             right: { xs: "5%", md: "20%" },
-                            top: { xs: "5%", md: "4%" },
+                            top: { xs: "5%", md: "4%", xl: "4%" },
                             zIndex: 0,
                         }}
                     >
