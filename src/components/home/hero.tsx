@@ -22,6 +22,7 @@ import sunImg from "@/assets/images/sun.webp";
 import columnImg from "@/assets/images/column.webp";
 
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import CalendarTodayOutlinedIcon from '@mui/icons-material/CalendarTodayOutlined';
 
 type HeroTheme = "light" | "dark";
 
@@ -274,7 +275,7 @@ function Hero({ theme = "light" }: HeroProps): ReactElement {
                             justifyContent="center"
                             px={2}
                             py={0.5}
-                            spacing={2}
+                            spacing={0.75}
                             initial={{ opacity: 0, y: 16 }}
                             animate={
                                 isContentInView
@@ -293,6 +294,7 @@ function Hero({ theme = "light" }: HeroProps): ReactElement {
                                 mb: 2,
                             }}
                         >
+                            <CalendarTodayOutlinedIcon sx={{ fontSize: 16, color: "#FFFFFF" }} />
                             <Typography variant="body1">
                                 8–14 June 2026 · Naples, Italy
                             </Typography>

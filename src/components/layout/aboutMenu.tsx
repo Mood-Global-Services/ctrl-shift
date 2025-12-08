@@ -37,7 +37,7 @@ export function AboutMenu(): ReactElement {
   return (
     <Box
       sx={{
-        width: 500,
+        width: 560,
         maxWidth: "100%",
         borderRadius: 3,
         p: 2,
