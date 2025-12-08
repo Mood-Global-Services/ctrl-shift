@@ -51,7 +51,7 @@ function Hero({ theme = "light" }: HeroProps): ReactElement {
                 maxWidth: "100vw",
                 overflow: "hidden",
                 mt: { xs: 4, md: 6 },
-                mb: 12,
+                mb: {xs: 8, md: 12},
                 px: { xs: 1.5, md: 3 },
                 position: "relative",
             }}

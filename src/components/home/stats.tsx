@@ -114,7 +114,7 @@ function FeatureCard({
                 position: "relative",
                 overflow: "hidden",
                 borderRadius: "1.5rem",
-                px: 4,
+                px: { xs: 4, md: 4 },
                 py: 3,
                 aspectRatio: { xs: "1 / 1", md: "auto" },
                 minHeight: { md: "12rem" },
@@ -186,6 +186,7 @@ function FeatureCard({
                     sx={{
                         fontWeight: 500,
                         color: "rgba(255,255,255,0.75)",
+                        mt: { xs: 1, md: 0 },
                     }}
                     initial={{ opacity: 0, y: 8 }}
                     animate={
@@ -221,7 +222,7 @@ function Stats({ type: _type = "solution" }: StatsProps): ReactElement {
             component="section"
             sx={{
                 pb: { xs: 3, md: 6 },
-                px: { xs: 3, md: 6 },
+                px: { xs: 2, md: 6 },
             }}
         >
             <Container
@@ -273,7 +274,6 @@ function Stats({ type: _type = "solution" }: StatsProps): ReactElement {
                     sx={{
                         position: "relative",
                         overflow: "hidden",
-                        px: { xs: 3, md: 0 },
                     }}
                 >
                     <Box

@@ -285,8 +285,8 @@ function PartnersSection(): ReactElement {
     <Box
       component="section"
       sx={{
-        pb: 12,
-        px: { xs: 4, md: 6 },
+        pb: {xs: 8, md: 12},
+        px: { xs: 2, md: 6 },
       }}
     >
       <Container

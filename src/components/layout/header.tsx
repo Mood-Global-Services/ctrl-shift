@@ -402,7 +402,7 @@ function Header({ theme = "dark" }: HeaderProps): ReactElement {
                           sx={{
                             fontSize: 24,
                             transition: "color 0.2s ease",
-                            color: isHovered ? "#DCB821" : "#FFFFFF",
+                            color: isHovered ? "#DCB821" : "#DCB821",
                           }}
                         />
                       </Box>

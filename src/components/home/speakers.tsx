@@ -52,7 +52,7 @@ function Speakers(): ReactElement {
       sx={{
         pt: 0,
         pb: 12,
-        px: { xs: 4, md: 6 },
+        px: { xs: 2, md: 6 },
       }}
     >
       <Container

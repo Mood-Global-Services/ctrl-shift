@@ -63,7 +63,7 @@ function LastYearCardGrid(): ReactElement {
       ref={sectionRef}
       sx={{
         pb: 12,
-        px: { xs: 4, md: 6 },
+        px: { xs: 2, md: 6 },
       }}
     >
       <Container

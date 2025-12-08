@@ -1,52 +1,47 @@
 "use client";
 
 import type { ReactElement } from "react";
-import {
-  Box,
-  Container,
-  Link,
-  Typography,
-} from "@mui/material";
-import {
-  Twitter,
-  Instagram,
-  LinkedIn,
-  Send,
-} from "@mui/icons-material";
+import { Box, Container, Link, Typography } from "@mui/material";
+import { Twitter, Instagram, LinkedIn, Send } from "@mui/icons-material";
 
 function Footer(): ReactElement {
   return (
     <Box
       component="footer"
       sx={{
-        py: 10, // ~ py-20
-        px: { xs: 4, md: 6 }, // px-4 md:px-6
+        py: 10,
+        px: { xs: 4, md: 6 },
         borderTop: "1px solid rgba(255,255,255,0.5)",
-        backgroundColor: "rgba(6,6,6,0)", // transparent over your red bg
+        backgroundColor: "rgba(6,6,6,0)",
       }}
     >
       <Container
         maxWidth={false}
         sx={{
-          maxWidth: "68rem", // max-w-5xl
+          maxWidth: "68rem",
           mx: "auto",
         }}
       >
         {/* Top columns */}
         <Box
           sx={{
-            display: "flex",
-            flexWrap: "wrap",
-            justifyContent: { xs: "flex-start", md: "space-between" },
-            gap: { xs: 4, md: 8 },
+            display: { xs: "grid", md: "flex" },
+            gridTemplateColumns: {
+              xs: "repeat(2, minmax(0, 1fr))",
+              md: "none",
+            },
+            columnGap: { xs: 4, md: 8 },
+            rowGap: { xs: 4, md: 0 },
+            justifyContent: { md: "space-between" },
             mb: 4,
           }}
         >
           {/* ABOUT US */}
           <Box
             sx={{
-              flexBasis: { xs: "50%", md: "auto" }, // 2 columns on mobile, auto on desktop
+              flexBasis: { md: "auto" },
               flexShrink: 0,
+              minWidth: 0,
             }}
           >
             <Typography
@@ -54,8 +49,8 @@ function Footer(): ReactElement {
               className="animated-gradient-text"
               sx={{
                 fontWeight: 700,
-                mb: 2,
-                fontSize: "0.875rem",
+                mb: { xs: 2.75, md: 2 }, // more space on mobile
+                fontSize: { xs: "0.95rem", md: "0.875rem" }, // slightly bigger on mobile
                 textTransform: "uppercase",
               }}
             >
@@ -66,11 +61,12 @@ function Footer(): ReactElement {
               sx={{
                 listStyle: "none",
                 p: 0,
+                pt: {xs: 1, md: 0},
                 m: 0,
                 display: "flex",
                 flexDirection: "column",
-                gap: 1,
-                fontSize: "0.875rem",
+                gap: { xs: 1.5, md: 1 }, // more spacing between items on mobile
+                fontSize: { xs: "0.95rem", md: "0.875rem" },
                 color: "rgba(249,250,251,0.65)",
               }}
             >
@@ -134,8 +130,9 @@ function Footer(): ReactElement {
           {/* JOIN US */}
           <Box
             sx={{
-              flexBasis: { xs: "50%", md: "auto" },
+              flexBasis: { md: "auto" },
               flexShrink: 0,
+              minWidth: 0,
             }}
           >
             <Typography
@@ -143,8 +140,8 @@ function Footer(): ReactElement {
               className="animated-gradient-text"
               sx={{
                 fontWeight: 700,
-                mb: 2,
-                fontSize: "0.875rem",
+                mb: { xs: 2.75, md: 2 },
+                fontSize: { xs: "0.95rem", md: "0.875rem" },
                 textTransform: "uppercase",
               }}
             >
@@ -155,11 +152,12 @@ function Footer(): ReactElement {
               sx={{
                 listStyle: "none",
                 p: 0,
+                pt: {xs: 1, md: 0},
                 m: 0,
                 display: "flex",
                 flexDirection: "column",
-                gap: 1,
-                fontSize: "0.875rem",
+                gap: { xs: 1.5, md: 1 },
+                fontSize: { xs: "0.95rem", md: "0.875rem" },
                 color: "rgba(249,250,251,0.65)",
               }}
             >
@@ -225,8 +223,9 @@ function Footer(): ReactElement {
           {/* FOLLOW US */}
           <Box
             sx={{
-              flexBasis: { xs: "50%", md: "auto" },
+              flexBasis: { md: "auto" },
               flexShrink: 0,
+              minWidth: 0,
             }}
           >
             <Typography
@@ -234,8 +233,8 @@ function Footer(): ReactElement {
               className="animated-gradient-text"
               sx={{
                 fontWeight: 700,
-                mb: 2,
-                fontSize: "0.875rem",
+                mb: { xs: 2.75, md: 2 },
+                fontSize: { xs: "0.95rem", md: "0.875rem" },
                 textTransform: "uppercase",
               }}
             >
@@ -246,11 +245,12 @@ function Footer(): ReactElement {
               sx={{
                 listStyle: "none",
                 p: 0,
+                pt: {xs: 1, md: 0},
                 m: 0,
                 display: "flex",
                 flexDirection: "column",
-                gap: 1,
-                fontSize: "0.875rem",
+                gap: { xs: 1.5, md: 1 },
+                fontSize: { xs: "0.95rem", md: "0.875rem" },
                 color: "rgba(249,250,251,0.65)",
               }}
             >
@@ -332,15 +332,16 @@ function Footer(): ReactElement {
           {/* DATE & LOCATION */}
           <Box
             sx={{
-              flexBasis: { xs: "50%", md: "auto" },
+              flexBasis: { md: "auto" },
               flexShrink: 0,
+              minWidth: 0,
             }}
           >
             <Box
               sx={{
                 display: "flex",
                 flexDirection: "column",
-                gap: 3,
+                gap: { xs: 1.75, md: 2.5 }, // closer sections so cell height is closer to "Follow us"
               }}
             >
               <Box>
@@ -349,8 +350,8 @@ function Footer(): ReactElement {
                   className="animated-gradient-text"
                   sx={{
                     fontWeight: 700,
-                    mb: 1.5,
-                    fontSize: "0.875rem",
+                    mb: { xs: 1.25, md: 1.5 },
+                    fontSize: { xs: "0.95rem", md: "0.875rem" },
                     textTransform: "uppercase",
                   }}
                 >
@@ -358,8 +359,9 @@ function Footer(): ReactElement {
                 </Typography>
                 <Typography
                   sx={{
-                    fontSize: "0.875rem",
+                    fontSize: { xs: "0.95rem", md: "0.875rem" },
                     color: "rgba(249,250,251,0.65)",
+                    pt: {xs: 1, md: 0},
                   }}
                 >
                   8 - 14 June 2026
@@ -372,8 +374,8 @@ function Footer(): ReactElement {
                   className="animated-gradient-text"
                   sx={{
                     fontWeight: 700,
-                    mb: 1.5,
-                    fontSize: "0.875rem",
+                    mb: { xs: 1.25, md: 1.5 },
+                    fontSize: { xs: "0.95rem", md: "0.875rem" },
                     textTransform: "uppercase",
                   }}
                 >
@@ -381,8 +383,9 @@ function Footer(): ReactElement {
                 </Typography>
                 <Typography
                   sx={{
-                    fontSize: "0.875rem",
+                    fontSize: { xs: "0.95rem", md: "0.875rem" },
                     color: "rgba(249,250,251,0.65)",
+                    pt: {xs: 1, md: 0},
                   }}
                 >
                   Villa Doria D&apos;Angri, Via Francesco Petrarca,
@@ -399,16 +402,16 @@ function Footer(): ReactElement {
           sx={{
             mt: 10,
             pt: 4,
-            borderTop: "1px solid rgba(229,231,235,0.35)", // subtle line
+            borderTop: "1px solid rgba(229,231,235,0.35)",
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
             textAlign: "center",
-            fontSize: "0.75rem",
+            fontSize: { xs: "0.8rem", md: "0.75rem" },
             color: "rgba(249,250,251,0.6)",
           }}
         >
-          <Typography sx={{ fontSize: "0.75rem" }}>
+          <Typography sx={{ fontSize: { xs: "0.8rem", md: "0.75rem" } }}>
             © 2026 ctrl/shift. All rights reserved.
           </Typography>
         </Box>
