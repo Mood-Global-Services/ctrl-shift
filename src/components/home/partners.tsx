@@ -121,6 +121,7 @@ function LogoMarquee({ items, speedSeconds, reverse }: LogoMarqueeProps) {
                   sizes="160px"
                   style={{
                     objectFit: "contain",
+                    filter: "grayscale(100%)",
                   }}
                 />
               </Box>
@@ -234,9 +235,7 @@ function PartnerCard({
           mt: 1,
           flex: 1,
           borderRadius: "1.25rem",
-          backgroundColor: "#E7E7E7",
-          border: "1px solid rgba(148,163,184,0.55)",
-          px: 2,
+          px: 0,
           py: 1.5,
           display: "flex",
           flexDirection: "column",
