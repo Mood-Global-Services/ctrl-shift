@@ -51,12 +51,12 @@ function Footer(): ReactElement {
           >
             <Typography
               component="h4"
+              className="animated-gradient-text"
               sx={{
                 fontWeight: 700,
                 mb: 2,
                 fontSize: "0.875rem",
                 textTransform: "uppercase",
-                color: "rgb(220,184,33)",
               }}
             >
               About us
@@ -140,12 +140,12 @@ function Footer(): ReactElement {
           >
             <Typography
               component="h4"
+              className="animated-gradient-text"
               sx={{
                 fontWeight: 700,
                 mb: 2,
                 fontSize: "0.875rem",
                 textTransform: "uppercase",
-                color: "rgb(220,184,33)",
               }}
             >
               Join us
@@ -231,12 +231,12 @@ function Footer(): ReactElement {
           >
             <Typography
               component="h4"
+              className="animated-gradient-text"
               sx={{
                 fontWeight: 700,
                 mb: 2,
                 fontSize: "0.875rem",
                 textTransform: "uppercase",
-                color: "rgb(220,184,33)",
               }}
             >
               Follow us
@@ -346,12 +346,12 @@ function Footer(): ReactElement {
               <Box>
                 <Typography
                   component="h4"
+                  className="animated-gradient-text"
                   sx={{
                     fontWeight: 700,
                     mb: 1.5,
                     fontSize: "0.875rem",
                     textTransform: "uppercase",
-                    color: "rgb(220,184,33)",
                   }}
                 >
                   Date
@@ -369,12 +369,12 @@ function Footer(): ReactElement {
               <Box>
                 <Typography
                   component="h4"
+                  className="animated-gradient-text"
                   sx={{
                     fontWeight: 700,
                     mb: 1.5,
                     fontSize: "0.875rem",
                     textTransform: "uppercase",
-                    color: "rgb(220,184,33)",
                   }}
                 >
                   Location
