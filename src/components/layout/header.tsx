@@ -110,7 +110,7 @@ function Header({ theme = "dark" }: HeaderProps): ReactElement {
         borderColor: isDark
           ? "rgba(255,255,255,0.1)"
           : "rgba(0,0,0,0.05)",
-        px: { xs: 2, md: 3 },
+        px: { xs: 0.5, md: 3 },
         bgcolor: scrolled
           ? isDark
             ? "rgba(23,3,0,0.55)" // warm dark glass
