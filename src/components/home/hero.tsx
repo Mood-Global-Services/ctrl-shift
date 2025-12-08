@@ -74,7 +74,7 @@ function Hero({ theme = "light" }: HeroProps): ReactElement {
             alignItems: "center",
             justifyContent: "center",
             textAlign: "center",
-            px: { xs: 2, md: 0 },
+            px: { xs: 0, md: 0 },
           }}
         >
           {/* Floating Crest - Top Center */}
@@ -199,7 +199,7 @@ function Hero({ theme = "light" }: HeroProps): ReactElement {
                   style={{
                     width: "auto",
                     // slightly larger overall
-                    height: "clamp(85px, 12vh, 180px)",
+                    height: "clamp(8px, 10vh, 180px)",
                     opacity: 0.9,
                     objectFit: "contain",
                   }}
@@ -214,7 +214,7 @@ function Hero({ theme = "light" }: HeroProps): ReactElement {
             sx={{
               position: "absolute",
               left: {
-                xs: "-5rem",
+                xs: "-8rem",
                 sm: "-4rem",
                 md: "-2rem",
                 lg: "-1rem",
@@ -255,7 +255,7 @@ function Hero({ theme = "light" }: HeroProps): ReactElement {
             sx={{
               position: "absolute",
               right: {
-                xs: "-5rem",
+                xs: "-8rem",
                 sm: "-4rem",
                 md: "-2rem",
                 lg: "-1rem",
