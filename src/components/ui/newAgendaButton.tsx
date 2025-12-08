@@ -122,6 +122,7 @@ const LeftIcon = styled("span")(() => ({
   justifyContent: "center",
   color: "#5d3c0a", // golden
   transition: "color 0.3s ease",
+  transform: "translateY(1px)",
 }));
 
 const ArrowIcon = styled("span")(() => ({
