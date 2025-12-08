@@ -2,9 +2,12 @@
 
 import type { ReactElement } from "react";
 import Image from "next/image";
-import { Box, Container, Typography } from "@mui/material";
+import { Box, Container, Typography, Link } from "@mui/material";
 import { useRef } from "react";
 import { motion, useInView } from "motion/react";
+import NewSponsorsButton from "@/components/ui/newSponsorsButton";
+import NewAgendaButton from "@/components/ui/newAgendaButton";
+import NewSpeakersButton from "@/components/ui/newSpeakersButton";
 
 import napulethIcon from "@/assets/images/napulethLogo.webp";
 import ctrlShiftIcon from "@/assets/images/rawLogo.webp";
@@ -13,6 +16,7 @@ interface StepProps {
   number: string;
   title: string;
   description: string;
+  buttonComponent?: ReactElement;
   buttonText: string;
   link?: string;
 }
@@ -23,6 +27,7 @@ const STEPS: StepProps[] = [
     title: "Become a sponsor",
     description:
       "We partner selectively — if your brand shapes the future, this is your stage.",
+    buttonComponent: <NewSponsorsButton label="Become a sponsor" />,
     buttonText: "Become a sponsor",
     link: "https://docsend.com/view/zaw8ij7k9avkcg6z",
   },
@@ -31,6 +36,7 @@ const STEPS: StepProps[] = [
     title: "Become a speaker",
     description:
       "We’re selective, but simple: if you bring real value, you’re welcome on our stage.",
+    buttonComponent: <NewSpeakersButton label="Become a speaker" />,
     buttonText: "Become a speaker",
     link: "https://speak.ctrlshift.events/",
   },
@@ -39,6 +45,7 @@ const STEPS: StepProps[] = [
     title: "Explore our agenda",
     description:
       "Discover sessions across AI, Web3, and Quantum — the full agenda drops soon.",
+    buttonComponent: <NewAgendaButton label="Check the agenda" />,
     buttonText: "Check the agenda",
   },
 ];
@@ -47,18 +54,9 @@ function Step({
   number,
   title,
   description,
-  buttonText,
+  buttonComponent,
   link,
 }: StepProps): ReactElement {
-  const buttonContent = (
-    <Box className="hero-btn-wrapper">
-      <button type="button" className="hero-btn">
-        {buttonText}
-      </button>
-      <Box className="hero-btn-border" aria-hidden="true" />
-    </Box>
-  );
-
   return (
     <Box
       sx={{
@@ -98,24 +96,18 @@ function Step({
             color: "rgba(255,255,255,0.8)",
             lineHeight: 1.7,
             maxWidth: "28rem",
-            mb: 1.5,
+            mb: 0.5,
           }}
         >
           {description}
         </Typography>
 
         {link ? (
-          <Box
-            component="a"
-            href={link}
-            target="_blank"
-            rel="noopener noreferrer"
-            sx={{ textDecoration: "none", display: "inline-block", mt: 1.5 }}
-          >
-            {buttonContent}
-          </Box>
+          <Link href={link} target="_blank" rel="noopener noreferrer">
+            {buttonComponent}
+          </Link>
         ) : (
-          <Box sx={{ mt: 1.5 }}>{buttonContent}</Box>
+          buttonComponent ?? ""
         )}
       </Box>
     </Box>
@@ -335,15 +327,15 @@ function About(): ReactElement {
                   lineHeight: 1.85,
                 }}
               >
-                A shift in{" "}
+                A <span className="animated-gradient-text" style={{ fontWeight: 700 }}>shift</span> in{" "}
                 <span className="bg-gradient-to-r from-[#A42A2E] to-[#1A0707] bg-[length:200%_auto] animate-text-gradient bg-clip-text text-transparent font-medium">
                   scale
                 </span>
-                , a shift in{" "}
+                , a <span className="animated-gradient-text" style={{ fontWeight: 700 }}>shift</span> in{" "}
                 <span className="bg-gradient-to-r from-[#A42A2E] to-[#1A0707] bg-[length:200%_auto] animate-text-gradient bg-clip-text text-transparent font-medium">
                   ambition
                 </span>
-                , a shift in what’s possible: Welcome to a new{" "}
+                , a <span className="animated-gradient-text" style={{ fontWeight: 700 }}>shift</span> in what’s possible: Welcome to a new{" "}
                 <span className="bg-gradient-to-r from-[#A42A2E] to-[#1A0707] bg-[length:200%_auto] animate-text-gradient bg-clip-text text-transparent font-medium">
                   chapter
                 </span>
