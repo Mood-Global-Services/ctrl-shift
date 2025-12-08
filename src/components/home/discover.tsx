@@ -322,7 +322,7 @@ function Discover(): ReactElement {
           <Grid size={{ xs: 12, md: 12 }}>
             <DiscoverCard
               step={steps[4]!}
-              minHeight={300}
+              minHeight={360}
               index={4}
               isActive={isInView}
             />
