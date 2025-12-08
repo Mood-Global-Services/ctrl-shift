@@ -284,7 +284,7 @@ function Discover(): ReactElement {
       component="section"
       ref={sectionRef}
       sx={{
-        pb: 12,
+        py: 12,
         px: { xs: 4, md: 6 },
       }}
     >

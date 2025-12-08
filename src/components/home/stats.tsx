@@ -219,7 +219,6 @@ function Stats({ type: _type = "solution" }: StatsProps): ReactElement {
         <Box
             component="section"
             sx={{
-                pt: { xs: 10, md: 12 },
                 pb: { xs: 3, md: 6 },
                 px: { xs: 3, md: 6 },
             }}

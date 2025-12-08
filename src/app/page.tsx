@@ -88,12 +88,13 @@ export default function Page(): ReactElement {
       <Box component="main">
         <Hero theme="dark" />
         <About />
+        <Discover />
         <Stats />
         <LastYearCardGrid />
-        <Discover />
+        <ThemeAndTracks />
         <Speakers />
         <Newsletter />
-        <ThemeAndTracks />
+        
       </Box>
     </Box>
   );
