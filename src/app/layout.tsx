@@ -7,6 +7,7 @@ import localFont from "next/font/local";
 import ThemeRegistry from "@/components/layout/themeRegistry";
 
 import Header from "@/components/layout/header";
+import Footer from "@/components/layout/footer";
 
 export const metadata: Metadata = {
   title: "ctrl/shift 2026 | Southern Italy's Gateway To The Future",
@@ -33,6 +34,7 @@ export default function RootLayout({
         <ThemeRegistry>
           <Header theme="dark" />
           {children}
+          <Footer />
         </ThemeRegistry>
       </body>
     </html>

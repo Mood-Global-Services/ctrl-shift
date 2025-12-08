@@ -10,8 +10,10 @@ import LastYearCardGrid from "@/components/home/lastYearCardGrid";
 import Discover from "@/components/home/discover";
 import Speakers from "@/components/home/speakers";
 import Newsletter from "@/components/home/newsletter";
+import ThemeAndTracks from "@/components/home/ThemeAndTracks";
 
 import patternImg from "@/assets/images/layer.webp";
+
 
 export default function Page(): ReactElement {
   return (
@@ -91,6 +93,7 @@ export default function Page(): ReactElement {
         <Discover />
         <Speakers />
         <Newsletter />
+        <ThemeAndTracks />
       </Box>
     </Box>
   );
