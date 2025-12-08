@@ -73,7 +73,7 @@ const steps: Step[] = [
       "Discover our next meetups — follow us on Luma for all upcoming dates.",
     image: meetupsImage,
     buttonComponent: <NewGenericButton label="Follow us on Luma" />,
-    link: "https://luma.com/i03cosbf?locale=en-GB",
+    link: "https://luma.com/user/NapulETH",
   },
 ];
 

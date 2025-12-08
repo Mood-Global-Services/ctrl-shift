@@ -423,7 +423,7 @@ function Hero({ theme = "light" }: HeroProps): ReactElement {
               }}
             >
               <Link
-                href="https://luma.com/i03cosbf?locale=en-GB"
+                href="https://luma.com/hfs5ijms"
                 target="_blank"
                 rel="noopener noreferrer"
               >
