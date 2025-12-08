@@ -7,6 +7,7 @@ import Hero from "@/components/home/hero";
 import About from "@/components/home/about";
 import Stats from "@/components/home/stats";
 import LastYearCardGrid from "@/components/home/lastYearCardGrid";
+import Discover from "@/components/home/discover";
 
 import patternImg from "@/assets/images/layer.webp";
 
@@ -85,6 +86,7 @@ export default function Page(): ReactElement {
         <About />
         <Stats />
         <LastYearCardGrid />
+        <Discover />
       </Box>
     </Box>
   );
