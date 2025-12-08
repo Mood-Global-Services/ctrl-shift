@@ -91,6 +91,7 @@ function Speakers(): ReactElement {
             Voices from{" "}
             <Box
               component="span"
+              
               sx={{
                 backgroundImage:
                   "linear-gradient(90deg, rgba(255,255,255,0.7) , rgba(142, 142, 142, 0.7))",
