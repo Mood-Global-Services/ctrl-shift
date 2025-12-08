@@ -54,8 +54,7 @@ function Hero({ theme = "light" }: HeroProps): ReactElement {
       <Container
         maxWidth={false}
         sx={{
-          // limit content width so on ultrawide the floats feel anchored to a "frame"
-          maxWidth: { xs: "100%", lg: "1200px", xl: "1920px" },
+          maxWidth: { xs: "100%", lg: "1200px", xl: "1440px" },
           mx: "auto",
           position: "relative",
         }}
@@ -86,8 +85,8 @@ function Hero({ theme = "light" }: HeroProps): ReactElement {
               transform: "translateX(-50%)",
               top: {
                 xs: "2%",
-                md: "2%",
-                lg: "3%",
+                md: "1%",  // slightly higher on laptop
+                lg: "2%",  // slightly higher on desktop
                 xl: "8%",
               },
               zIndex: 0,
@@ -108,8 +107,8 @@ function Hero({ theme = "light" }: HeroProps): ReactElement {
                   height={140}
                   style={{
                     width: "auto",
-                    // scales with viewport height, but capped for huge monitors
-                    height: "clamp(80px, 10vh, 150px)",
+                    // slightly larger overall (helps md / lg)
+                    height: "clamp(90px, 12vh, 170px)",
                     opacity: 0.9,
                     objectFit: "contain",
                   }}
@@ -125,14 +124,14 @@ function Hero({ theme = "light" }: HeroProps): ReactElement {
               position: "absolute",
               left: {
                 xs: "4%",
-                md: "12%",
-                lg: "10%",
+                md: "16%", // closer to center on laptop
+                lg: "14%", // closer to center on desktop
                 xl: "8%",
               },
               top: {
                 xs: "6%",
-                md: "3%",
-                lg: "6%",
+                md: "1%",  // higher on laptop
+                lg: "3%",  // higher on desktop
                 xl: "12%",
               },
               zIndex: 0,
@@ -153,7 +152,8 @@ function Hero({ theme = "light" }: HeroProps): ReactElement {
                   height={150}
                   style={{
                     width: "auto",
-                    height: "clamp(80px, 11vh, 170px)",
+                    // slightly larger overall
+                    height: "clamp(90px, 13vh, 190px)",
                     opacity: 0.9,
                     objectFit: "contain",
                   }}
@@ -169,14 +169,14 @@ function Hero({ theme = "light" }: HeroProps): ReactElement {
               position: "absolute",
               right: {
                 xs: "4%",
-                md: "12%",
-                lg: "10%",
+                md: "16%", // closer to center on laptop
+                lg: "14%", // closer to center on desktop
                 xl: "8%",
               },
               top: {
                 xs: "6%",
-                md: "3%",
-                lg: "5%",
+                md: "1%",  // higher on laptop
+                lg: "3%",  // higher on desktop
                 xl: "12%",
               },
               zIndex: 0,
@@ -198,7 +198,8 @@ function Hero({ theme = "light" }: HeroProps): ReactElement {
                   height={140}
                   style={{
                     width: "auto",
-                    height: "clamp(70px, 10vh, 150px)",
+                    // slightly larger overall
+                    height: "clamp(85px, 12vh, 180px)",
                     opacity: 0.9,
                     objectFit: "contain",
                   }}
