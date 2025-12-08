@@ -7,6 +7,7 @@ interface AboutMenuItem {
   title: string;
   subtitle: string;
   badge?: string;
+  href?: string;
 }
 
 const menuItems: AboutMenuItem[] = [
@@ -14,22 +15,27 @@ const menuItems: AboutMenuItem[] = [
     title: "Speakers",
     subtitle: "Find the speakers of ctrl/shift 2026",
     badge: "Coming soon",
+    href: "#speakers",
   },
   {
     title: "Team",
     subtitle: "Meet the team behind ctrl/shift 2026",
+    href: "/team",
   },
   {
     title: "Event Location",
     subtitle: "Find the location of our event",
+    href: "https://www.google.com/maps?rlz=1C1GCEA_enMA1157MA1157&gs_lcrp=EgZjaHJvbWUqCAgAEEUYJxg7MggIABBFGCcYOzIHCAEQLhiABDIGCAIQRRhAMgYIAxBFGDkyBwgEEAAYgAQyBwgFEAAYgAQyBwgGEAAYgAQyEwgHEC4YrwEYxwEYgAQYmAUYmQXSAQgxNjYzajBqN6gCALACAA&um=1&ie=UTF-8&fb=1&gl=ma&sa=X&geocode=KSVSUD5UCTsTMWR_h4VL9kmF&daddr=Via+Francesco+Petrarca,+80,+80123+Napoli+NA,+%D8%A5%D9%8A%D8%B7%D8%A7%D9%84%D9%8A%D8%A7",
   },
   {
     title: "Archive 2025",
     subtitle: "Previous edition of NapulETH",
+    href: "https://www.napuleth.org/archive/2025",
   },
   {
     title: "Archive 2024",
     subtitle: "First edition of NapulETH",
+    href: "https://www.napuleth.org/archive/2024",
   },
 ];
 
@@ -74,6 +80,10 @@ export function AboutMenu(): ReactElement {
               }}
             >
               <Box
+                component="a"
+                href={item.href}
+                target="_blank"
+                rel="noopener noreferrer"
                 sx={{
                   display: "flex",
                   alignItems: "center",

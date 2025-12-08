@@ -37,10 +37,10 @@ type SocialLink = {
 };
 
 const SOCIAL_LINKS: readonly SocialLink[] = [
-  { name: "X", Icon: TwitterIcon, href: "#" },
-  { name: "Instagram", Icon: InstagramIcon, href: "#" },
-  { name: "Linkedin", Icon: LinkedInIcon, href: "#" },
-  { name: "Telegram", Icon: TelegramIcon, href: "#" },
+  { name: "X", Icon: TwitterIcon, href: "https://x.com/napuleth" },
+  { name: "Instagram", Icon: InstagramIcon, href: "https://www.instagram.com/napuleth/#" },
+  { name: "Linkedin", Icon: LinkedInIcon, href: "https://www.linkedin.com/company/napul-eth/?originalSubdomain=it" },
+  { name: "Telegram", Icon: TelegramIcon, href: "https://t.me/napuleth" },
 ] as const;
 
 type SocialName = (typeof SOCIAL_LINKS)[number]["name"];
@@ -225,6 +225,8 @@ function Header({ theme = "dark" }: HeaderProps): ReactElement {
                 key={name}
                 component="a"
                 href={href}
+                target="_blank"
+                rel="noopener noreferrer"
                 aria-label={name}
                 onMouseEnter={() => setHoveredDesktopIcon(name)}
                 onMouseLeave={() => setHoveredDesktopIcon(null)}
@@ -336,15 +338,17 @@ function Header({ theme = "dark" }: HeaderProps): ReactElement {
                 {[
                   { label: "Home", href: "/" },
                   { label: "Speakers", href: "#speakers" },
-                  { label: "Team", href: "#team" },
-                  { label: "Event Location", href: "#location" },
-                  { label: "Archive 2025", href: "#archive-2025" },
-                  { label: "Archive 2024", href: "#archive-2024" },
+                  { label: "Team", href: "/team" },
+                  { label: "Event Location", href: "https://www.google.com/maps?rlz=1C1GCEA_enMA1157MA1157&gs_lcrp=EgZjaHJvbWUqCAgAEEUYJxg7MggIABBFGCcYOzIHCAEQLhiABDIGCAIQRRhAMgYIAxBFGDkyBwgEEAAYgAQyBwgFEAAYgAQyBwgGEAAYgAQyEwgHEC4YrwEYxwEYgAQYmAUYmQXSAQgxNjYzajBqN6gCALACAA&um=1&ie=UTF-8&fb=1&gl=ma&sa=X&geocode=KSVSUD5UCTsTMWR_h4VL9kmF&daddr=Via+Francesco+Petrarca,+80,+80123+Napoli+NA,+%D8%A5%D9%8A%D8%B7%D8%A7%D9%84%D9%8A%D8%A7" },
+                  { label: "Archive 2025", href: "https://www.napuleth.org/archive/2025" },
+                  { label: "Archive 2024", href: "https://www.napuleth.org/archive/2024" },
                 ].map(({ label, href }) => (
                   <MuiLink
                     key={label}
                     component={NextLink}
                     href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     onClick={() => setIsOpen(false)}
                     sx={{
                       fontSize: "1.5rem",
@@ -379,6 +383,8 @@ function Header({ theme = "dark" }: HeaderProps): ReactElement {
                         key={name}
                         component="a"
                         href={href}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         aria-label={name}
                         onMouseEnter={() => setHoveredMobileIcon(name)}
                         onMouseLeave={() => setHoveredMobileIcon(null)}
