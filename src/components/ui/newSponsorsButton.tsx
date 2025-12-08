@@ -26,6 +26,9 @@ const Wrapper = styled("div")(() => ({
   "&:hover .left-icon": {
     color: "#FCD221",
   },
+  "&:hover .label": {
+    color: "#F9FAFB",
+  },
 }));
 
 const Glow = styled("div")(() => ({
@@ -56,8 +59,8 @@ const ButtonRoot = styled("button")(({ theme }) => ({
   backgroundSize: "cover",
   backgroundPosition: "center center",
   backgroundRepeat: "repeat",
-  backgroundImage: "url('data:image/svg+xml;utf8,%3Csvg xmlns=%22http:%2F%2Fwww.w3.org%2F2000%2Fsvg%22 width=%222000%22 height=%221000%22%3E%3Cg filter=%22url(%23a)%22%3E%3Cpath fill=%22%23301010%22 d=%22M-1000-500h4000v2000h-4000z%22%2F%3E%3Cpath d=%22m136-197-437 426 65 700L867 105%22 fill=%22%23B09050%22%2F%3E%3Cpath d=%22m278-71-82 1083 1354 368 17-1255%22 fill=%22%23B09050%22%2F%3E%3Cpath d=%22M1919 304 807 1000l881 357 285-883%22 fill=%22%23503010%22%2F%3E%3Cpath d=%22m7 227-502 869 528 430 754-746%22 fill=%22%23705010%22%2F%3E%3Cpath d=%22m787 822-480 538 1055 741 76-583%22 fill=%22%23503010%22%2F%3E%3Cpath d=%22M1214 806 970 1955l447 305 1050-411%22 fill=%22%23705030%22%2F%3E%3C%2Fg%3E%3Cdefs%3E%3Cfilter id=%22a%22 x=%22-200%22 y=%22-200%22 width=%222400%22 height=%221400%22 filterUnits=%22userSpaceOnUse%22 color-interpolation-filters=%22sRGB%22%3E%3CfeFlood flood-opacity=%220%22 result=%22BackgroundImageFix%22%2F%3E%3CfeBlend in=%22SourceGraphic%22 in2=%22BackgroundImageFix%22 result=%22shape%22%2F%3E%3CfeGaussianBlur stdDeviation=%22200%22 result=%22effect1_foregroundBlur_1_2%22%2F%3E%3C%2Ffilter%3E%3C%2Fdefs%3E%3C%2Fsvg%3E')",
-  color: "#F9FAFB",
+  backgroundImage: "url('data:image/svg+xml;utf8,%3Csvg xmlns=%22http:%2F%2Fwww.w3.org%2F2000%2Fsvg%22 width=%222000%22 height=%221000%22%3E%3Cg filter=%22url(%23a)%22%3E%3Cpath fill=%22%23E59804%22 d=%22M-1000-500h4000v2000h-4000z%22%2F%3E%3Cpath d=%22M299-225-406 780l353 185 851-848%22 fill=%22%23AC6F16%22%2F%3E%3Cpath d=%22M1191-144 126 639l744 429 429-799%22 fill=%22%23E59804%22%2F%3E%3Cpath d=%22m1421 392-629 63 1307 1244 67-957%22 fill=%22%23E59804%22%2F%3E%3Cpath d=%22m-454 144-54 1372 1064 31 480-165%22 fill=%22%23DCB821%22%2F%3E%3Cpath d=%22m1300 941-991 381 1197 928 265-1274%22 fill=%22%23DCB821%22%2F%3E%3Cpath d=%22m1243 695-395 543 1428 961 81-1285%22 fill=%22%23E59804%22%2F%3E%3C%2Fg%3E%3Cdefs%3E%3Cfilter id=%22a%22 x=%22-182%22 y=%22-182%22 width=%222364%22 height=%221364%22 filterUnits=%22userSpaceOnUse%22 color-interpolation-filters=%22sRGB%22%3E%3CfeFlood flood-opacity=%220%22 result=%22BackgroundImageFix%22%2F%3E%3CfeBlend in=%22SourceGraphic%22 in2=%22BackgroundImageFix%22 result=%22shape%22%2F%3E%3CfeGaussianBlur stdDeviation=%22182%22 result=%22effect1_foregroundBlur_1_2%22%2F%3E%3C%2Ffilter%3E%3C%2Fdefs%3E%3C%2Fsvg%3E')",
+  color: "#181818",
   fontSize: "0.875rem",
   fontWeight: 500,
   letterSpacing: "-0.01em",
@@ -117,7 +120,7 @@ const LeftIcon = styled("span")(() => ({
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
-  color: "#FCD221", // golden
+  color: "#5d3c0a", // golden
   transition: "color 0.3s ease",
 }));
 
@@ -127,7 +130,7 @@ const ArrowIcon = styled("span")(() => ({
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
-  color: "rgba(249,250,251,0.6)",
+  color: "rgba(18,18,18,0.9)",
   transition: "transform 0.3s ease, color 0.3s ease",
 }));
 
@@ -160,7 +163,7 @@ function NewSponsorsButton({
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
-            strokeWidth={1.5}
+            strokeWidth={2}
             strokeLinecap="round"
             strokeLinejoin="round"
           >
@@ -171,7 +174,7 @@ function NewSponsorsButton({
           </svg>
         </LeftIcon>
 
-        <Label>{label}</Label>
+        <Label className="label">{label}</Label>
 
         <ArrowIcon className="arrow-icon">
           <svg
