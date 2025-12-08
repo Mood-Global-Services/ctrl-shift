@@ -8,6 +8,7 @@ import { motion, useInView } from "motion/react";
 import NewSponsorsButton from "@/components/ui/newSponsorsButton";
 import NewAgendaButton from "@/components/ui/newAgendaButton";
 import NewSpeakersButton from "@/components/ui/newSpeakersButton";
+import SponsorButton2 from "@/components/ui/sponsorButton2";
 
 import napulethIcon from "@/assets/images/napulethLogo.webp";
 import ctrlShiftIcon from "@/assets/images/rawLogo.webp";
@@ -27,7 +28,7 @@ const STEPS: StepProps[] = [
     title: "Become a sponsor",
     description:
       "We partner selectively — if your brand shapes the future, this is your stage.",
-    buttonComponent: <NewSponsorsButton label="Become a sponsor" />,
+    buttonComponent: <SponsorButton2 label="Become a sponsor" />,
     buttonText: "Become a sponsor",
     link: "https://docsend.com/view/zaw8ij7k9avkcg6z",
   },
