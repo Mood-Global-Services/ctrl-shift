@@ -304,7 +304,7 @@ function Discover(): ReactElement {
             mb: 6,
           }}
         >
-          Discover the event
+          Discover the <span className="animated-gradient-text">Event</span>
         </Typography>
 
         <Grid container spacing={3}>

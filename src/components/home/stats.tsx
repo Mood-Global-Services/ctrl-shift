@@ -157,6 +157,7 @@ function FeatureCard({
                 {/* Number (animated count) */}
                 <Typography
                     component={motion.p}
+                    className="animated-gradient-text"
                     variant="h2"
                     sx={{
                         fontWeight: 500,
@@ -203,7 +204,7 @@ function FeatureCard({
 
 function Stats({ type: _type = "solution" }: StatsProps): ReactElement {
     const cards = [
-        { value: "1,200+", label: "People happy" },
+        { value: "1,200+", label: "People Happy" },
         { value: "80+", label: "Speakers" },
         { value: "35+", label: "Sponsors" },
         { value: "70+", label: "Partners" },
@@ -243,13 +244,7 @@ function Stats({ type: _type = "solution" }: StatsProps): ReactElement {
                     {"Last version : "}
                     <Box
                         component="span"
-                        sx={{
-                            color: "rgba(255,255,255,0.7)",
-                            animation: "text-gradient 6s ease-in-out infinite",
-                            fontFamily: "serif",
-                            fontStyle: "italic",
-                            fontWeight: 500,
-                        }}
+                        className="animated-gradient-text"
                     >
                         NapulETH
                     </Box>{" "}

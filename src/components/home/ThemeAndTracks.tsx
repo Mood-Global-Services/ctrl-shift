@@ -225,7 +225,7 @@ function ThemeAndTracks(): ReactElement {
                         mb: 6,
                     }}
                 >
-                    Themes &amp; Tracks
+                    <span className="animated-gradient-text">Themes</span> 2026
                 </Typography>
 
                 <Grid container spacing={4}>
