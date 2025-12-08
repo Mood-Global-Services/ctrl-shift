@@ -3,11 +3,8 @@
 import type { ReactElement } from "react";
 import { useRef } from "react";
 import Image from "next/image";
-import { Box, Stack, Container, Typography, Button } from "@mui/material";
-import GlowyButton from "@/components/ui/glowyButton";
-import SponsorsButton from "@/components/ui/sponsorsButton";
+import { Box, Stack, Container, Typography, Link } from "@mui/material";
 import NewSponsorsButton from "@/components/ui/newSponsorsButton";
-import TicketsButton from "@/components/ui/ticketsButton";
 import NewTicketsButton from "@/components/ui/newTicketsButton";
 import {
     motion,
@@ -21,7 +18,6 @@ import starImg from "@/assets/images/star.webp";
 import sunImg from "@/assets/images/sun.webp";
 import columnImg from "@/assets/images/column.webp";
 
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import CalendarTodayOutlinedIcon from '@mui/icons-material/CalendarTodayOutlined';
 
 type HeroTheme = "light" | "dark";
@@ -384,9 +380,13 @@ function Hero({ theme = "light" }: HeroProps): ReactElement {
                             }}
                         >
                             {/* Get your tickets */}
-                            <NewTicketsButton label="Get your tickets" />
+                            <Link href="https://luma.com/i03cosbf?locale=en-GB" target="_blank" rel="noopener noreferrer">
+                                <NewTicketsButton label="Get your tickets" />
+                            </Link>
+                            <Link href="https://docsend.com/v/sbjcj/ctrlshift2026" target="_blank" rel="noopener noreferrer">
+                                <NewSponsorsButton label="Become a sponsor" />
+                            </Link>
 
-                            <NewSponsorsButton label="Become a sponsor" />
                         </Box>
                     </Box>
                 </Box>
