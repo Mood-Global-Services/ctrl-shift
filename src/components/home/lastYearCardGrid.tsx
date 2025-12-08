@@ -13,7 +13,7 @@ import aiImg from "@/assets/images/lastVersion/stats/ai.webp";
 import lawImg from "@/assets/images/lastVersion/stats/law.webp";
 import artImg from "@/assets/images/lastVersion/stats/art.webp";
 import foodImg from "@/assets/images/lastVersion/stats/food.webp";
-import institutionsImg from "@/assets/images/lastVersion/stats/institutions.webp";
+import institutionsImg from "@/assets/images/lastVersion/stats/coppo.webp";
 
 const cards = [
   {
@@ -158,13 +158,28 @@ function LastYearCardGrid(): ReactElement {
                       component="span"
                       sx={{
                         display: "inline-block",
-                        backgroundColor: "#942629",
-                        color: "#FFFFFF",
+                        border: "1px solid rgba(255,255,255,0.10)",
+                        backgroundSize: "cover",
+                        backgroundPosition: "center center",
+                        backgroundRepeat: "repeat",
+                        backgroundImage: "url('data:image/svg+xml;utf8,%3Csvg xmlns=%22http:%2F%2Fwww.w3.org%2F2000%2Fsvg%22 width=%222000%22 height=%221000%22%3E%3Cg filter=%22url(%23a)%22%3E%3Cpath fill=%22%23E59804%22 d=%22M-1000-500h4000v2000h-4000z%22%2F%3E%3Cpath d=%22M299-225-406 780l353 185 851-848%22 fill=%22%23AC6F16%22%2F%3E%3Cpath d=%22M1191-144 126 639l744 429 429-799%22 fill=%22%23E59804%22%2F%3E%3Cpath d=%22m1421 392-629 63 1307 1244 67-957%22 fill=%22%23E59804%22%2F%3E%3Cpath d=%22m-454 144-54 1372 1064 31 480-165%22 fill=%22%23DCB821%22%2F%3E%3Cpath d=%22m1300 941-991 381 1197 928 265-1274%22 fill=%22%23DCB821%22%2F%3E%3Cpath d=%22m1243 695-395 543 1428 961 81-1285%22 fill=%22%23E59804%22%2F%3E%3C%2Fg%3E%3Cdefs%3E%3Cfilter id=%22a%22 x=%22-182%22 y=%22-182%22 width=%222364%22 height=%221364%22 filterUnits=%22userSpaceOnUse%22 color-interpolation-filters=%22sRGB%22%3E%3CfeFlood flood-opacity=%220%22 result=%22BackgroundImageFix%22%2F%3E%3CfeBlend in=%22SourceGraphic%22 in2=%22BackgroundImageFix%22 result=%22shape%22%2F%3E%3CfeGaussianBlur stdDeviation=%22182%22 result=%22effect1_foregroundBlur_1_2%22%2F%3E%3C%2Ffilter%3E%3C%2Fdefs%3E%3C%2Fsvg%3E')",
+                        color: "#181818",
                         px: 2,
                         py: 1,
-                        borderRadius: 2,
+                        borderRadius: 999,
                         fontSize: "0.875rem",
                         fontWeight: 500,
+                        boxShadow:
+                          "inset 0 1px 0 0 rgba(255,255,255,0.10), 0 18px 45px rgba(0,0,0,0.55)",
+                        transition:
+                          "background-color 0.25s ease, border-color 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease",
+                        overflow: "hidden",
+                        "&:hover": {
+                          backgroundColor: "#0A0508",
+                          borderColor: "rgba(255,255,255,0.20)",
+                          transform: "scale(1.02)",
+                          color: "#FFFFFF",
+                        },
                       }}
                     >
                       {card.tag}

@@ -14,7 +14,7 @@ import { useRef } from "react";
 
 import conferenceImage from "@/assets/images/lastVersion/1.webp";
 import buildImage from "@/assets/images/lastVersion/2.webp"; // unused but fine if you keep it
-import hackathonImage from "@/assets/images/lastVersion/2.webp";
+import hackathonImage from "@/assets/images/lastVersion/hackathon.webp";
 import visionsImage from "@/assets/images/lastVersion/3.webp";
 import meetupsImage from "@/assets/images/lastVersion/5.webp";
 import sideEventsImage from "@/assets/images/lastVersion/4.webp";
