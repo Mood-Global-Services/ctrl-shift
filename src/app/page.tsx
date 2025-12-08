@@ -8,6 +8,8 @@ import About from "@/components/home/about";
 import Stats from "@/components/home/stats";
 import LastYearCardGrid from "@/components/home/lastYearCardGrid";
 import Discover from "@/components/home/discover";
+import Speakers from "@/components/home/speakers";
+import Newsletter from "@/components/home/newsletter";
 
 import patternImg from "@/assets/images/layer.webp";
 
@@ -87,6 +89,8 @@ export default function Page(): ReactElement {
         <Stats />
         <LastYearCardGrid />
         <Discover />
+        <Speakers />
+        <Newsletter />
       </Box>
     </Box>
   );

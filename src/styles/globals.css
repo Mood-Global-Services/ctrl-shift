@@ -1,3 +1,10 @@
+@font-face {
+  font-family: 'switzer-italic';
+  src: url('../fonts/Switzer-VariableItalic.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
 html,
 body {
   padding: 0;
@@ -13,6 +20,10 @@ a {
   box-sizing: border-box;
 }
 
+.switzer-italic {
+  font-family: 'switzer-italic', sans-serif;
+  font-style: italic;
+}
 
 .hero-btn-wrapper {
   position: relative;
