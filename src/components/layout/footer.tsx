@@ -409,7 +409,7 @@ function Footer(): ReactElement {
           }}
         >
           <Typography sx={{ fontSize: "0.75rem" }}>
-            © 2025 ctrl/shift. All rights reserved.
+            © 2026 ctrl/shift. All rights reserved.
           </Typography>
         </Box>
       </Container>
