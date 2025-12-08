@@ -6,14 +6,14 @@ import {
   Container,
   Grid,
   Typography,
-  Button,
+  Link,
 } from "@mui/material";
 import Image, { type StaticImageData } from "next/image";
 import { motion, useInView } from "motion/react";
 import { useRef } from "react";
+import NewGenericButton from "@/components/ui/newGenericButton";
 
 import conferenceImage from "@/assets/images/lastVersion/1.webp";
-import buildImage from "@/assets/images/lastVersion/2.webp"; // unused but fine if you keep it
 import hackathonImage from "@/assets/images/lastVersion/hackathon.webp";
 import visionsImage from "@/assets/images/lastVersion/3.webp";
 import meetupsImage from "@/assets/images/lastVersion/5.webp";
@@ -31,6 +31,8 @@ type Step = {
   description: string;
   image: StaticImageData;
   cta?: StepCTA;
+  buttonComponent?: ReactElement;
+  link?: string;
 };
 
 const steps: Step[] = [
@@ -47,11 +49,7 @@ const steps: Step[] = [
     description:
       "Prototype bold ideas, solve real challenges, and compete for prizes, grants, and ecosystem opportunities.",
     image: hackathonImage,
-    cta: {
-      type: "button",
-      text: "Apply for hackathon",
-      hoverText: "Coming soon",
-    },
+    buttonComponent: <NewGenericButton label="Apply for hackathon" comingSoon />,
   },
   {
     id: "03",
@@ -59,10 +57,7 @@ const steps: Step[] = [
     description:
       "An exhibition and competition where aesthetic, economic, and symbolic dimensions merge — shaped by artists exploring the future of value, technology, and identity.",
     image: visionsImage,
-    cta: {
-      type: "button",
-      text: "Explore our marketplace",
-    },
+    buttonComponent: <NewGenericButton label="Explore our marketplace" comingSoon />,
   },
   {
     id: "04",
@@ -77,10 +72,8 @@ const steps: Step[] = [
     description:
       "Discover our next meetups — follow us on Luma for all upcoming dates.",
     image: meetupsImage,
-    cta: {
-      type: "button",
-      text: "Follow us on Luma",
-    },
+    buttonComponent: <NewGenericButton label="Follow us on Luma" />,
+    link: "https://luma.com/i03cosbf?locale=en-GB",
   },
 ];
 
@@ -226,7 +219,7 @@ function DiscoverCard({
         </motion.div>
 
         {/* CTA */}
-        {step.cta?.type === "button" && (
+        {step.buttonComponent && (
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={
@@ -239,32 +232,13 @@ function DiscoverCard({
               delay: baseDelay + 0.20,
             }}
           >
-            <Button
-              variant="contained"
-              disableElevation
-              sx={{
-                alignSelf: "flex-start",
-                mt: 0.5,
-                borderRadius: 3,
-                px: 2.75,
-                py: 1,
-                fontSize: "0.95rem",
-                textTransform: "none",
-                fontWeight: 500,
-                backgroundImage:
-                  "linear-gradient(180deg, #942629 0%, #2E0C0D 100%)",
-                backgroundSize: "200% auto",
-                color: "#FFFFFF",
-                boxShadow: "0 10px 25px rgba(0,0,0,0.55)",
-                "&:hover": {
-                  backgroundPosition: "100% 0",
-                  boxShadow: "0 12px 30px rgba(0,0,0,0.7)",
-                  filter: "brightness(0.9)",
-                },
-              }}
-            >
-              {step.cta.text}
-            </Button>
+            {step.link ? (
+              <Link href={step.link} target="_blank" rel="noopener noreferrer">
+                {step.buttonComponent}
+              </Link>
+            ) : (
+              step.buttonComponent
+            )}
           </motion.div>
         )}
       </Box>
