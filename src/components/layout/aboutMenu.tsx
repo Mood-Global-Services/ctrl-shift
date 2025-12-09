@@ -12,12 +12,6 @@ interface AboutMenuItem {
 
 const menuItems: AboutMenuItem[] = [
   {
-    title: "Speakers",
-    subtitle: "Find the speakers of ctrl/shift 2026",
-    badge: "Coming soon",
-    href: "#speakers",
-  },
-  {
     title: "Team",
     subtitle: "Meet the team behind ctrl/shift 2026",
     href: "/team",

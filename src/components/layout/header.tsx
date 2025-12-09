@@ -360,7 +360,6 @@ function Header({ theme = "dark" }: HeaderProps): ReactElement {
               >
                 {[
                   { label: "Home", href: "/" },
-                  { label: "Speakers", href: "#speakers" },
                   { label: "Team", href: "/team" },
                   {
                     label: "Event Location",
