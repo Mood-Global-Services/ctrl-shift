@@ -8,6 +8,7 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
+import NewsLetterButton from "../ui/newsLetterButon";
 
 function Newsletter(): ReactElement {
   return (
@@ -80,11 +81,11 @@ function Newsletter(): ReactElement {
               component="h3"
               sx={{
                 fontWeight: 500,
-                fontSize: "1.125rem",
+                fontSize: "1.5rem",
                 color: "#FFFFFF",
               }}
             >
-              Stay updated with our latest news
+              Stay updated with our latest <span className="animated-gradient-text">news</span>
             </Typography>
             <Typography
               component="p"
@@ -143,37 +144,7 @@ function Newsletter(): ReactElement {
                 },
               }}
             />
-
-            <Button
-              type="submit"
-              sx={{
-                position: "relative",
-                height: 48,
-                width: "100%",
-                borderRadius: "0.5rem",
-                textTransform: "none",
-                fontSize: "1rem",
-                fontWeight: 600,
-                color: "#FAF9F6",
-                backgroundImage:
-                  "linear-gradient(0deg,#000000 0%,#131313 23.08%,#191919 45.67%,#1E1E1E 63.46%,#222222 100%)",
-                boxShadow: "0 18px 40px rgba(0,0,0,0.65)",
-                border: "none",
-                overflow: "hidden",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                "&:hover": {
-                  color: "#FFFFFF",
-                  backgroundImage:
-                    "linear-gradient(0deg,#000000 0%,#151515 23.08%,#1D1D1D 45.67%,#222222 63.46%,#262626 100%)",
-                },
-              }}
-            >
-              <span style={{ position: "relative", zIndex: 1 }}>
-                Subscribe
-              </span>
-            </Button>
+            <NewsLetterButton label="Subscribe Now" />
           </Box>
         </Box>
       </Container>
