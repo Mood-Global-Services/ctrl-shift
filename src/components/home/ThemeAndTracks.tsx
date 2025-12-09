@@ -254,9 +254,8 @@ function ThemeAndTracks(): ReactElement {
                                                 border: isActive
                                                     ? "1px solid rgba(252,210,33,0.9)"
                                                     : "1px solid rgba(255,255,255,0.12)",
-                                                backgroundImage: isActive
-                                                    ? "linear-gradient(180deg,#A42A2E,#1A0707,#000000)"
-                                                    : "linear-gradient(180deg,#A42A2E,#1A0707,#000000)",
+                                                backgroundColor: "rgba(255, 255, 255, 0.1)",
+                                                backdropFilter: "blur(10px)",
                                                 color: "#FFFFFF",
                                                 padding: "18px 18px 20px",
                                                 textAlign: "left",
@@ -314,7 +313,8 @@ function ThemeAndTracks(): ReactElement {
                         <Box
                             sx={{
                                 borderRadius: "1.75rem",
-                                background: "linear-gradient(180deg,#A42A2E,#1A0707,#000000)",
+                                backgroundColor: "rgba(255, 255, 255, 0.1)",
+                                backdropFilter: "blur(10px)",
                                 border: "1px solid rgba(255,255,255,0.12)",
                                 color: "#111827",
                                 p: { xs: 3, md: 4 },
@@ -397,12 +397,12 @@ function ThemeAndTracks(): ReactElement {
                                                 fontWeight: 500,
                                                 letterSpacing: "0.015em",
                                                 background:
-                                                  "linear-gradient(135deg,#FFFDF6,#F6E0B8)", // warm white → soft gold
+                                                    "linear-gradient(135deg,#FFFDF6,#F6E0B8)", // warm white → soft gold
                                                 color: "#111827",
                                                 border: "1px solid rgba(252,210,33,0.7)",
                                                 boxShadow: "0 12px 26px rgba(0,0,0,0.55)",
                                                 whiteSpace: "nowrap",
-                                              }}
+                                            }}
                                         >
                                             {label}
                                         </Box>

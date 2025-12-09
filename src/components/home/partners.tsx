@@ -192,9 +192,10 @@ function PartnerCard({
         height: "100%",
         overflow: "hidden",
         // same gradient as Tracks section
-        background: "linear-gradient(180deg,#A42A2E,#1A0707,#000000)",
+        backgroundColor: "rgba(255, 255, 255, 0.1)",
+                backdropFilter: "blur(10px)",
         border: isPrimary
-          ? "1px solid rgba(252,210,33,0.55)"
+          ? "1px solid rgba(255,255,255,0.22)"
           : "1px solid rgba(255,255,255,0.22)",
         boxShadow: isPrimary
           ? "0 22px 55px rgba(0,0,0,0.7)"

@@ -8,9 +8,6 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import Image from "next/image";
-
-import decorationImg from "@/assets/images/decorationImage.webp";
 
 function Newsletter(): ReactElement {
   return (
@@ -19,7 +16,7 @@ function Newsletter(): ReactElement {
       sx={{
         pt: 0,
         pb: 12,
-        px: { xs: 4, md: 6 },
+        px: { xs: 2, md: 6 },
         backgroundColor: "rgba(6,6,6,0)",
       }}
     >
@@ -64,33 +61,11 @@ function Newsletter(): ReactElement {
             justifyContent: "space-between",
             gap: 2.5,
             // gradient background of the card
-            backgroundImage:
-              "linear-gradient(180deg,#A42A2E,#1A0707,#A42A2E)",
-            backgroundSize: "100% 200%",
-            backgroundPosition: "top",
+            backgroundColor: "rgba(255, 255, 255, 0.1)",
+                backdropFilter: "blur(10px)",
+                border: "1px solid rgba(255,255,255,0.22)"
           }}
         >
-          {/* Decoration image on TOP of gradient, across full card */}
-          <Box
-            sx={{
-              position: "absolute",
-              inset: 0,
-              zIndex: 0,
-              pointerEvents: "none",
-              opacity: 0.5, // tweak as you like
-            }}
-          >
-            <Image
-              src={decorationImg}
-              alt=""
-              fill
-              sizes="(max-width: 900px) 100vw, 68rem"
-              style={{
-                objectFit: "cover",
-              }}
-              priority
-            />
-          </Box>
 
           {/* Text block (above both gradient and decoration) */}
           <Box
