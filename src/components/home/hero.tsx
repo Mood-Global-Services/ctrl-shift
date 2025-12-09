@@ -342,7 +342,8 @@ function Hero({ theme = "light" }: HeroProps): ReactElement {
                 },
                 letterSpacing: "-0.04em",
                 lineHeight: 1.1,
-                mb: 3,
+                pb: 2,
+                mb: 1,
                 maxWidth: "56rem",
               }}
             >
