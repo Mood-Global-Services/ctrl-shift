@@ -139,7 +139,9 @@ const Label = styled("span")(() => ({
   fontSize: "0.95rem",
   fontWeight: 500,
   letterSpacing: "-0.01em",
+  lineHeight: 1.1,           // add this
 }));
+
 
 function NewGenericButton({
   label = "Generate Experience",
@@ -175,6 +177,7 @@ function NewGenericButton({
             alignItems: "center",
             justifyContent: "center",
             overflow: "hidden",
+            padding: "2px 0",
           }}
         >
           {/* Invisible baseline to fix width to the main label */}
