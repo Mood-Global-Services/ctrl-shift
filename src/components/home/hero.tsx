@@ -426,6 +426,10 @@ function Hero({ theme = "light" }: HeroProps): ReactElement {
                 href="https://luma.com/hfs5ijms"
                 target="_blank"
                 rel="noopener noreferrer"
+                sx={{
+                    width: {xs: "70%", md: "auto"},
+                    borderRadius: 999
+                }}
               >
                 <NewTicketsButton label="Get your tickets" />
               </Link>
@@ -433,6 +437,10 @@ function Hero({ theme = "light" }: HeroProps): ReactElement {
                 href="https://docsend.com/v/sbjcj/ctrlshift2026"
                 target="_blank"
                 rel="noopener noreferrer"
+                sx={{
+                    width: {xs: "70%", md: "auto"},
+                    borderRadius: 999
+                }}
               >
                 <NewSponsorsButton label="Become a sponsor" />
               </Link>

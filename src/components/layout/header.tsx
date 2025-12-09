@@ -13,7 +13,7 @@ import {
 } from "@mui/material";
 import type { SvgIconComponent } from "@mui/icons-material";
 
-import TwitterIcon from "@mui/icons-material/Twitter";
+import XIcon from '@mui/icons-material/X';
 import InstagramIcon from "@mui/icons-material/Instagram";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import TelegramIcon from "@mui/icons-material/Telegram";
@@ -37,7 +37,7 @@ type SocialLink = {
 };
 
 const SOCIAL_LINKS: readonly SocialLink[] = [
-  { name: "X", Icon: TwitterIcon, href: "https://x.com/napuleth" },
+  { name: "X", Icon: XIcon, href: "https://x.com/napuleth" },
   { name: "Instagram", Icon: InstagramIcon, href: "https://www.instagram.com/napuleth/#" },
   { name: "Linkedin", Icon: LinkedInIcon, href: "https://www.linkedin.com/company/napul-eth/?originalSubdomain=it" },
   { name: "Telegram", Icon: TelegramIcon, href: "https://t.me/napuleth" },

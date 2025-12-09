@@ -2,7 +2,8 @@
 
 import type { ReactElement } from "react";
 import { Box, Container, Link, Typography } from "@mui/material";
-import { Twitter, Instagram, LinkedIn, Send } from "@mui/icons-material";
+import { Instagram, LinkedIn, Send } from "@mui/icons-material";
+import XIcon from '@mui/icons-material/X';
 
 function Footer(): ReactElement {
   return (
@@ -268,8 +269,8 @@ function Footer(): ReactElement {
                     "&:hover": { color: "#FFFFFF" },
                   }}
                 >
-                  <Twitter sx={{ fontSize: 16, color: "#FFFFFF" }} />
-                  Twitter
+                  <XIcon sx={{ fontSize: 16, color: "#FFFFFF" }} />
+                  X
                 </Link>
               </li>
               <li>
