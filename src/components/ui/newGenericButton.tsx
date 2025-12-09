@@ -34,7 +34,7 @@ const Wrapper = styled("div")(() => ({
   },
 }));
 
-const Glow = styled("div")(() => ({
+const Glow = styled("div")(({ theme }) => ({
   position: "absolute",
   inset: 0,
   borderRadius: 9999,
@@ -42,12 +42,22 @@ const Glow = styled("div")(() => ({
     "linear-gradient(90deg, #E59804, #DCB821, #E59804, #DCB821)",
   filter: "blur(16px)",
   opacity: 0.45,
-  transition: "opacity 0.5s ease, transform 0.5s ease",
   pointerEvents: "none",
   zIndex: 0,
-  transform: "scale(1)",
+  transform: "scale(1) translateZ(0)",      // force GPU layer
   transformOrigin: "center center",
+  willChange: "opacity, transform",
+
+  // Smooth hover animation on desktop
+  transition: "opacity 0.5s ease, transform 0.5s ease",
+
+  // On small screens: no transition on the glow itself
+  // so label animation does not cause the glow to "flash"
+  [theme.breakpoints.down("sm")]: {
+    transition: "none",
+  },
 }));
+
 
 const ButtonRoot = styled("button")(({ theme }) => ({
   position: "relative",
@@ -78,19 +88,14 @@ const ButtonRoot = styled("button")(({ theme }) => ({
     "background-color 0.25s ease, border-color 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease",
   overflow: "hidden",
   "&:hover": {
-    backgroundColor: "#0A0508",
-    borderColor: "rgba(255,255,255,0.20)",
-    transform: "scale(1.02)",
+    backgroundColor: "#CC8704",
+    transform: "scale(1)",
   },
   "&:active": {
-    transform: "scale(0.98)",
-    boxShadow:
-      "inset 0 1px 0 0 rgba(255,255,255,0.10), 0 10px 25px rgba(0,0,0,0.55)",
+    transform: "scale(1)",
   },
   "&:focus-visible": {
     outline: "none",
-    boxShadow:
-      "0 0 0 2px #1A0707, 0 0 0 4px rgba(252,210,33,0.85)",
   },
   [theme.breakpoints.up("sm")]: {
     width: "auto",

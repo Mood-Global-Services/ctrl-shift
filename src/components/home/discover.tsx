@@ -233,11 +233,13 @@ function DiscoverCard({
             }}
           >
             {step.link ? (
-              <Link href={step.link} target="_blank" rel="noopener noreferrer">
+              <Link href={step.link} target="_blank" rel="noopener noreferrer" sx={{ borderRadius: 999 }}>
                 {step.buttonComponent}
               </Link>
             ) : (
-              step.buttonComponent
+              <Box sx={{ borderRadius: 999 }}>
+                {step.buttonComponent}
+              </Box>
             )}
           </motion.div>
         )}
