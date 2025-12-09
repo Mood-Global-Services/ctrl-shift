@@ -10,10 +10,11 @@ import {
   IconButton,
   Link as MuiLink,
   Stack,
+  Divider,
 } from "@mui/material";
 import type { SvgIconComponent } from "@mui/icons-material";
 
-import XIcon from '@mui/icons-material/X';
+import XIcon from "@mui/icons-material/X";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import TelegramIcon from "@mui/icons-material/Telegram";
@@ -38,8 +39,16 @@ type SocialLink = {
 
 const SOCIAL_LINKS: readonly SocialLink[] = [
   { name: "X", Icon: XIcon, href: "https://x.com/napuleth" },
-  { name: "Instagram", Icon: InstagramIcon, href: "https://www.instagram.com/napuleth/#" },
-  { name: "Linkedin", Icon: LinkedInIcon, href: "https://www.linkedin.com/company/napul-eth/?originalSubdomain=it" },
+  {
+    name: "Instagram",
+    Icon: InstagramIcon,
+    href: "https://www.instagram.com/napuleth/#",
+  },
+  {
+    name: "Linkedin",
+    Icon: LinkedInIcon,
+    href: "https://www.linkedin.com/company/napul-eth/?originalSubdomain=it",
+  },
   { name: "Telegram", Icon: TelegramIcon, href: "https://t.me/napuleth" },
 ] as const;
 
@@ -126,7 +135,7 @@ function Header({ theme = "dark" }: HeaderProps): ReactElement {
       <Container
         maxWidth={false}
         sx={{
-          maxWidth: "64rem", // ~ max-w-5xl
+          maxWidth: "64rem",
           mx: "auto",
           display: "flex",
           alignItems: "center",
@@ -285,6 +294,7 @@ function Header({ theme = "dark" }: HeaderProps): ReactElement {
               flexDirection: "column",
             }}
           >
+            {/* Mobile header bar */}
             <Box
               sx={{
                 display: "flex",
@@ -318,6 +328,7 @@ function Header({ theme = "dark" }: HeaderProps): ReactElement {
               </IconButton>
             </Box>
 
+            {/* Mobile nav & socials */}
             <Box
               sx={{
                 flex: 1,
@@ -326,22 +337,43 @@ function Header({ theme = "dark" }: HeaderProps): ReactElement {
                 flexDirection: "column",
               }}
             >
+              {/* Navigation with golden dividers */}
               <Stack
                 component="nav"
-                spacing={3}
+                spacing={0}
+                divider={
+                  <Divider
+                    sx={{
+                      borderBottom: "1px solid rgba(220,184,33,0.55)", // golden line
+                      width: "50%",
+                      mx: "auto",
+                      my: 1.5,
+                    }}
+                  />
+                }
                 sx={{
                   flex: 1,
-                  alignItems: "center",
+                  alignItems: "stretch",
                   justifyContent: "center",
+                  gap: 0,
                 }}
               >
                 {[
                   { label: "Home", href: "/" },
                   { label: "Speakers", href: "#speakers" },
                   { label: "Team", href: "/team" },
-                  { label: "Event Location", href: "https://www.google.com/maps?rlz=1C1GCEA_enMA1157MA1157&gs_lcrp=EgZjaHJvbWUqCAgAEEUYJxg7MggIABBFGCcYOzIHCAEQLhiABDIGCAIQRRhAMgYIAxBFGDkyBwgEEAAYgAQyBwgFEAAYgAQyBwgGEAAYgAQyEwgHEC4YrwEYxwEYgAQYmAUYmQXSAQgxNjYzajBqN6gCALACAA&um=1&ie=UTF-8&fb=1&gl=ma&sa=X&geocode=KSVSUD5UCTsTMWR_h4VL9kmF&daddr=Via+Francesco+Petrarca,+80,+80123+Napoli+NA,+%D8%A5%D9%8A%D8%B7%D8%A7%D9%84%D9%8A%D8%A7" },
-                  { label: "Archive 2025", href: "https://www.napuleth.org/archive/2025" },
-                  { label: "Archive 2024", href: "https://www.napuleth.org/archive/2024" },
+                  {
+                    label: "Event Location",
+                    href: "https://www.google.com/maps?rlz=1C1GCEA_enMA1157MA1157&gs_lcrp=EgZjaHJvbWUqCAgAEEUYJxg7MggIABBFGCcYOzIHCAEQLhiABDIGCAIQRRhAMgYIAxBFGDkyBwgEEAAYgAQyBwgFEAAYgAQyBwgGEAAYgAQyEwgHEC4YrwEYxwEYgAQYmAUYmQXSAQgxNjYzajBqN6gCALACAA&um=1&ie=UTF-8&fb=1&gl=ma&sa=X&geocode=KSVSUD5UCTsTMWR_h4VL9kmF&daddr=Via+Francesco+Petrarca,+80,+80123+Napoli+NA,+%D8%A5%D9%8A%D8%B7%D8%A7%D9%84%D9%8A%D8%A7",
+                  },
+                  {
+                    label: "Archive 2025",
+                    href: "https://www.napuleth.org/archive/2025",
+                  },
+                  {
+                    label: "Archive 2024",
+                    href: "https://www.napuleth.org/archive/2024",
+                  },
                 ].map(({ label, href }) => (
                   <MuiLink
                     key={label}
@@ -351,13 +383,23 @@ function Header({ theme = "dark" }: HeaderProps): ReactElement {
                     rel="noopener noreferrer"
                     onClick={() => setIsOpen(false)}
                     sx={{
-                      fontSize: "1.5rem",
+                      display: "block",
+                      textAlign: "center",
+                      py: 1.6,
+                      fontSize: "1.45rem",
                       fontWeight: 500,
+                      letterSpacing: "0.04em",
+                      textTransform: "uppercase",
                       color: "#FFFFFF",
                       textDecoration: "none",
                       opacity: 1,
-                      transition: "opacity 0.2s ease",
-                      "&:hover": { opacity: 0.7 },
+                      transition:
+                        "opacity 0.2s ease, transform 0.2s ease, color 0.2s ease",
+                      "&:hover": {
+                        opacity: 0.85,
+                        transform: "translateY(-1px)",
+                        color: "#FCD221",
+                      },
                     }}
                   >
                     {label}
@@ -402,7 +444,7 @@ function Header({ theme = "dark" }: HeaderProps): ReactElement {
                           sx={{
                             fontSize: 24,
                             transition: "color 0.2s ease",
-                            color: isHovered ? "#DCB821" : "#DCB821",
+                            color: isHovered ? "#FCD221" : "#DCB821",
                           }}
                         />
                       </Box>
