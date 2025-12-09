@@ -263,7 +263,6 @@ function Discover(): ReactElement {
       sx={{
         py: 12,
         px: { xs: 2, md: 6 },
-        display: { xs: "none", md: "block" },
       }}
     >
       <Container
@@ -316,83 +315,6 @@ function Discover(): ReactElement {
           <Grid size={{ xs: 12, md: 6 }}>
             <DiscoverCard
               step={steps[1]!}
-              minHeight={360}
-              index={3}
-              isActive={isInView}
-            />
-          </Grid>
-
-          {/* Row 3 – full width */}
-          <Grid size={{ xs: 12, md: 12 }}>
-            <DiscoverCard
-              step={steps[4]!}
-              minHeight={360}
-              index={4}
-              isActive={isInView}
-            />
-          </Grid>
-        </Grid>
-      </Container>
-    </Box>
-    <Box
-      component="section"
-      ref={sectionRef}
-      sx={{
-        py: 12,
-        px: { xs: 2, md: 6 },
-        display: { xs: "block", md: "none" },
-      }}
-    >
-      <Container
-        maxWidth={false}
-        sx={{
-          maxWidth: "68rem",
-          mx: "auto",
-        }}
-      >
-        <Typography
-          component="h2"
-          variant="h3"
-          sx={{
-            fontWeight: 500,
-            textAlign: "center",
-            mb: 6,
-          }}
-        >
-          Discover the <span className="animated-gradient-text">Event</span>
-        </Typography>
-
-        <Grid container spacing={3}>
-          {/* Row 1 */}
-          <Grid size={{ xs: 12, md: 5 }}>
-            <DiscoverCard
-              step={steps[0]!}
-              minHeight={320}
-              index={0}
-              isActive={isInView}
-            />
-          </Grid>
-          <Grid size={{ xs: 12, md: 7 }}>
-            <DiscoverCard
-              step={steps[1]!}
-              minHeight={320}
-              index={1}
-              isActive={isInView}
-            />
-          </Grid>
-
-          {/* Row 2 */}
-          <Grid size={{ xs: 12, md: 6 }}>
-            <DiscoverCard
-              step={steps[2]!}
-              minHeight={360}
-              index={2}
-              isActive={isInView}
-            />
-          </Grid>
-          <Grid size={{ xs: 12, md: 6 }}>
-            <DiscoverCard
-              step={steps[3]!}
               minHeight={360}
               index={3}
               isActive={isInView}
