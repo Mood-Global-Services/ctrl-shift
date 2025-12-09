@@ -22,6 +22,8 @@ type PartnerLogo = {
   name: string;
   logo: StaticImageData | string;
   href?: string;
+  mobilePercentage?: string;
+  percentage?: string;
 };
 
 type LogoMarqueeProps = {
@@ -121,7 +123,7 @@ function LogoMarquee({ items, speedSeconds, reverse }: LogoMarqueeProps) {
                   sizes="160px"
                   style={{
                     objectFit: "contain",
-                    filter: "grayscale(100%)",
+                    scale: item.percentage ? parseFloat(item.percentage) / 100 : 1,
                   }}
                 />
               </Box>
@@ -264,18 +266,24 @@ function PartnersSection(): ReactElement {
     name: sponsor.name,
     logo: sponsor.logo,
     href: sponsor.link,
+    mobilePercentage: sponsor.mobilePercentage,
+    percentage: sponsor.percentage,
   }));
 
   const partnerLogos: PartnerLogo[] = PartnersList.map((partner) => ({
     name: partner.name,
     logo: partner.logo,
     href: partner.link,
+    mobilePercentage: partner.mobilePercentage,
+    percentage: partner.percentage,
   }));
 
   const mediaLogos: PartnerLogo[] = MediaPartnersList.map((mediaPartner) => ({
     name: mediaPartner.name,
     logo: mediaPartner.logo,
     href: mediaPartner.link,
+    mobilePercentage: mediaPartner.mobilePercentage,
+    percentage: mediaPartner.percentage,
   }));
 
   // For non-primary we still control rows manually

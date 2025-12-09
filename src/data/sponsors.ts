@@ -61,7 +61,7 @@ export const SponsorsList: Sponsor[] = [
         name: "NeverLocal",
         logo: s13.src,
         link: "https://neverlocal.com/",
-        percentage: '120%',
+        percentage: '200%',
         mobilePercentage: '120%',
         show: true
     },
@@ -69,8 +69,8 @@ export const SponsorsList: Sponsor[] = [
         name: "Binance",
         logo: s35.src,
         link: 'https://www.binance.com/en',
-        percentage: '100%',
-        mobilePercentage: '100%',
+        percentage: '200%',
+        mobilePercentage: '150%',
         show: true
     },
     {
@@ -168,7 +168,7 @@ export const SponsorsList: Sponsor[] = [
         name: "Caffe Barbera",
         logo: s17.src,
         link: "https://www.caffebarbera.com/en",
-        percentage: '65%',
+        percentage: '150%',
         mobilePercentage: '65%',
         show: true,
         invert: false
@@ -242,7 +242,7 @@ export const SponsorsList: Sponsor[] = [
         name: 'Regione Campania',
         logo: s22.src,
         link: 'https://www.regione.campania.it/',
-        percentage: '45%',
+        percentage: '100%',
         mobilePercentage: '45%',
         show: true
     },
@@ -303,7 +303,7 @@ export const SponsorsList: Sponsor[] = [
         name: 'AKKA',
         logo: s38.src,
         link: 'https://italy.akka.app/',
-        percentage: '75%',
+        percentage: '150%',
         mobilePercentage: '75%',
         show: true,
         invert: false
