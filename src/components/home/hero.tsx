@@ -6,7 +6,7 @@ import Image from "next/image";
 import { Box, Stack, Container, Typography, Link } from "@mui/material";
 import NewSponsorsButton from "@/components/ui/newSponsorsButton";
 import NewTicketsButton from "@/components/ui/newTicketsButton";
-import { motion, useScroll, useTransform, useInView } from "motion/react";
+import { motion, useInView } from "motion/react";
 
 import crestImg from "@/assets/images/relic.webp";
 import starImg from "@/assets/images/star.webp";
@@ -22,7 +22,6 @@ export interface HeroProps {
 }
 
 function Hero({ theme = "light" }: HeroProps): ReactElement {
-  const { scrollY } = useScroll();
   const isDark = theme === "dark";
 
   const contentRef = useRef<HTMLDivElement | null>(null);
@@ -30,13 +29,6 @@ function Hero({ theme = "light" }: HeroProps): ReactElement {
     amount: 0.4,
     once: true,
   });
-
-  // Parallax motion values
-  const yLeft = useTransform(scrollY, [0, 500], [0, 100]);
-  const yRight = useTransform(scrollY, [0, 500], [0, -80]);
-  const yStar = useTransform(scrollY, [0, 500], [0, -50]);
-  const ySun = useTransform(scrollY, [0, 500], [0, -60]);
-  const yCrest = useTransform(scrollY, [0, 500], [0, -40]);
 
   return (
     <Box
@@ -46,7 +38,7 @@ function Hero({ theme = "light" }: HeroProps): ReactElement {
         maxWidth: "100vw",
         overflow: "hidden",
         mt: { xs: 4, md: 6 },
-        mb: { xs: 8, md: 12 },
+        mb: { xs: 6, md: 6 },
         px: { xs: 1.5, md: 3 },
         position: "relative",
       }}
@@ -85,36 +77,33 @@ function Hero({ theme = "light" }: HeroProps): ReactElement {
               transform: "translateX(-50%)",
               top: {
                 xs: "2%",
-                md: "1%",  // slightly higher on laptop
-                lg: "2%",  // slightly higher on desktop
+                md: "1%", // slightly higher on laptop
+                lg: "2%", // slightly higher on desktop
                 xl: "8%",
               },
               zIndex: 0,
             }}
           >
-            <motion.div style={{ y: yCrest }}>
-              <motion.div
-                animate={{ y: [-8, 0, -8] }}
-                transition={{
-                  duration: 6.5,
-                  repeat: Infinity,
-                  ease: "easeInOut",
+            <motion.div
+              animate={{ y: [-8, 0, -8] }}
+              transition={{
+                duration: 6.5,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            >
+              <Image
+                src={crestImg}
+                alt="Decorative crest"
+                height={140}
+                style={{
+                  width: "auto",
+                  height: "clamp(90px, 12vh, 170px)",
+                  opacity: 0.9,
+                  objectFit: "contain",
                 }}
-              >
-                <Image
-                  src={crestImg}
-                  alt="Decorative crest"
-                  height={140}
-                  style={{
-                    width: "auto",
-                    // slightly larger overall (helps md / lg)
-                    height: "clamp(90px, 12vh, 170px)",
-                    opacity: 0.9,
-                    objectFit: "contain",
-                  }}
-                  priority
-                />
-              </motion.div>
+                priority
+              />
             </motion.div>
           </Box>
 
@@ -130,36 +119,33 @@ function Hero({ theme = "light" }: HeroProps): ReactElement {
               },
               top: {
                 xs: "6%",
-                md: "1%",  // higher on laptop
-                lg: "3%",  // higher on desktop
+                md: "1%", // higher on laptop
+                lg: "3%", // higher on desktop
                 xl: "12%",
               },
               zIndex: 0,
             }}
           >
-            <motion.div style={{ y: yStar }}>
-              <motion.div
-                animate={{ y: [-10, 20, -10] }}
-                transition={{
-                  duration: 7,
-                  repeat: Infinity,
-                  ease: "easeInOut",
+            <motion.div
+              animate={{ y: [-10, 20, -10] }}
+              transition={{
+                duration: 7,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            >
+              <Image
+                src={starImg}
+                alt="Decorative star"
+                height={150}
+                style={{
+                  width: "auto",
+                  height: "clamp(90px, 13vh, 190px)",
+                  opacity: 0.9,
+                  objectFit: "contain",
                 }}
-              >
-                <Image
-                  src={starImg}
-                  alt="Decorative star"
-                  height={150}
-                  style={{
-                    width: "auto",
-                    // slightly larger overall
-                    height: "clamp(90px, 13vh, 190px)",
-                    opacity: 0.9,
-                    objectFit: "contain",
-                  }}
-                  priority
-                />
-              </motion.div>
+                priority
+              />
             </motion.div>
           </Box>
 
@@ -175,37 +161,34 @@ function Hero({ theme = "light" }: HeroProps): ReactElement {
               },
               top: {
                 xs: "6%",
-                md: "1%",  // higher on laptop
-                lg: "3%",  // higher on desktop
+                md: "1%", // higher on laptop
+                lg: "3%", // higher on desktop
                 xl: "12%",
               },
               zIndex: 0,
             }}
           >
-            <motion.div style={{ y: ySun }}>
-              <motion.div
-                animate={{ y: [10, -15, 10] }}
-                transition={{
-                  duration: 7.5,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                  delay: 0.5,
+            <motion.div
+              animate={{ y: [10, -15, 10] }}
+              transition={{
+                duration: 7.5,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: 0.5,
+              }}
+            >
+              <Image
+                src={sunImg}
+                alt="Decorative sun"
+                height={140}
+                style={{
+                  width: "auto",
+                  height: "clamp(8px, 10vh, 180px)",
+                  opacity: 0.9,
+                  objectFit: "contain",
                 }}
-              >
-                <Image
-                  src={sunImg}
-                  alt="Decorative sun"
-                  height={140}
-                  style={{
-                    width: "auto",
-                    // slightly larger overall
-                    height: "clamp(8px, 10vh, 180px)",
-                    opacity: 0.9,
-                    objectFit: "contain",
-                  }}
-                  priority
-                />
-              </motion.div>
+                priority
+              />
             </motion.div>
           </Box>
 
@@ -214,7 +197,7 @@ function Hero({ theme = "light" }: HeroProps): ReactElement {
             sx={{
               position: "absolute",
               left: {
-                xs: "-8rem",
+                xs: "-9rem",
                 sm: "-4rem",
                 md: "-2rem",
                 lg: "-1rem",
@@ -225,28 +208,26 @@ function Hero({ theme = "light" }: HeroProps): ReactElement {
               zIndex: 0,
             }}
           >
-            <motion.div style={{ y: yLeft }}>
-              <motion.div
-                animate={{ y: [-28, 20, -28] }}
-                transition={{
-                  duration: 8,
-                  repeat: Infinity,
-                  ease: "easeInOut",
+            <motion.div
+              animate={{ y: [-28, 20, -28] }}
+              transition={{
+                duration: 8,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            >
+              <Image
+                src={columnImg}
+                alt="Decorative column"
+                height={420}
+                style={{
+                  width: "auto",
+                  height: "clamp(260px, 45vh, 520px)",
+                  opacity: 0.9,
+                  objectFit: "contain",
                 }}
-              >
-                <Image
-                  src={columnImg}
-                  alt="Decorative column"
-                  height={420}
-                  style={{
-                    width: "auto",
-                    height: "clamp(260px, 45vh, 520px)",
-                    opacity: 0.9,
-                    objectFit: "contain",
-                  }}
-                  priority
-                />
-              </motion.div>
+                priority
+              />
             </motion.div>
           </Box>
 
@@ -255,7 +236,7 @@ function Hero({ theme = "light" }: HeroProps): ReactElement {
             sx={{
               position: "absolute",
               right: {
-                xs: "-8rem",
+                xs: "-9rem",
                 sm: "-4rem",
                 md: "-2rem",
                 lg: "-1rem",
@@ -266,30 +247,28 @@ function Hero({ theme = "light" }: HeroProps): ReactElement {
               zIndex: 0,
             }}
           >
-            <motion.div style={{ y: yRight }}>
-              <motion.div
-                animate={{ y: [20, -20, 20] }}
-                transition={{
-                  duration: 9,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                  delay: 1,
+            <motion.div
+              animate={{ y: [20, -20, 20] }}
+              transition={{
+                duration: 9,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: 1,
+              }}
+            >
+              <Image
+                src={columnImg}
+                alt="Decorative column"
+                height={420}
+                style={{
+                  width: "auto",
+                  height: "clamp(260px, 45vh, 520px)",
+                  opacity: 0.9,
+                  objectFit: "contain",
+                  transform: "scaleX(-1)",
                 }}
-              >
-                <Image
-                  src={columnImg}
-                  alt="Decorative column"
-                  height={420}
-                  style={{
-                    width: "auto",
-                    height: "clamp(260px, 45vh, 520px)",
-                    opacity: 0.9,
-                    objectFit: "contain",
-                    transform: "scaleX(-1)",
-                  }}
-                  priority
-                />
-              </motion.div>
+                priority
+              />
             </motion.div>
           </Box>
 
@@ -427,8 +406,8 @@ function Hero({ theme = "light" }: HeroProps): ReactElement {
                 target="_blank"
                 rel="noopener noreferrer"
                 sx={{
-                    width: {xs: "70%", md: "auto"},
-                    borderRadius: 999
+                  width: { xs: "70%", md: "auto" },
+                  borderRadius: 999,
                 }}
               >
                 <NewTicketsButton label="Get your tickets" />
@@ -438,8 +417,8 @@ function Hero({ theme = "light" }: HeroProps): ReactElement {
                 target="_blank"
                 rel="noopener noreferrer"
                 sx={{
-                    width: {xs: "70%", md: "auto"},
-                    borderRadius: 999
+                  width: { xs: "70%", md: "auto" },
+                  borderRadius: 999,
                 }}
               >
                 <NewSponsorsButton label="Become a sponsor" />
