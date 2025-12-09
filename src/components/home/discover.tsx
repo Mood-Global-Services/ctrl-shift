@@ -256,7 +256,6 @@ function Discover(): ReactElement {
   });
 
   return (
-    <>
     <Box
       component="section"
       ref={sectionRef}
@@ -285,8 +284,11 @@ function Discover(): ReactElement {
         </Typography>
 
         <Grid container spacing={3}>
-          {/* Row 1 */}
-          <Grid size={{ xs: 12, md: 5 }}>
+          {/* Card 0 – Conference */}
+          <Grid
+            size={{ xs: 12, md: 5 }}
+            sx={{ order: { xs: 0, md: 0 } }}
+          >
             <DiscoverCard
               step={steps[0]!}
               minHeight={320}
@@ -294,17 +296,25 @@ function Discover(): ReactElement {
               isActive={isInView}
             />
           </Grid>
-          <Grid size={{ xs: 12, md: 7 }}>
+
+          {/* Card 1 – Hackathon */}
+          <Grid
+            size={{ xs: 12, md: 6 }}
+            sx={{ order: { xs: 1, md: 3 } }}
+          >
             <DiscoverCard
-              step={steps[3]!}
-              minHeight={320}
+              step={steps[1]!}
+              minHeight={360}
               index={1}
               isActive={isInView}
             />
           </Grid>
 
-          {/* Row 2 */}
-          <Grid size={{ xs: 12, md: 6 }}>
+          {/* Card 2 – Visions */}
+          <Grid
+            size={{ xs: 12, md: 6 }}
+            sx={{ order: { xs: 2, md: 2 } }}
+          >
             <DiscoverCard
               step={steps[2]!}
               minHeight={360}
@@ -312,17 +322,25 @@ function Discover(): ReactElement {
               isActive={isInView}
             />
           </Grid>
-          <Grid size={{ xs: 12, md: 6 }}>
+
+          {/* Card 3 – Side Events */}
+          <Grid
+            size={{ xs: 12, md: 7 }}
+            sx={{ order: { xs: 3, md: 1 } }}
+          >
             <DiscoverCard
-              step={steps[1]!}
-              minHeight={360}
+              step={steps[3]!}
+              minHeight={320}
               index={3}
               isActive={isInView}
             />
           </Grid>
 
-          {/* Row 3 – full width */}
-          <Grid size={{ xs: 12, md: 12 }}>
+          {/* Card 4 – Meetups */}
+          <Grid
+            size={{ xs: 12, md: 12 }}
+            sx={{ order: { xs: 4, md: 4 } }}
+          >
             <DiscoverCard
               step={steps[4]!}
               minHeight={360}
@@ -333,8 +351,8 @@ function Discover(): ReactElement {
         </Grid>
       </Container>
     </Box>
-    </>
   );
 }
+
 
 export default Discover;
