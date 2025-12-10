@@ -87,7 +87,7 @@ function VIPParty(): ReactElement {
                         alignItems="stretch" // make both columns same height
                     >
                         {/* LEFT COLUMN – text + IMAGES + button */}
-                        <Grid size={{ xs: 12, md: 6 }}>
+                        <Grid size={{ xs: 12, md: 6 }} order={{ xs: 2, md: 1 }}>
                             <motion.div
                                 initial={{ opacity: 0, y: 24 }}
                                 animate={
@@ -103,11 +103,11 @@ function VIPParty(): ReactElement {
                                 >
                                     <Stack
                                         direction="row"
-                                        spacing={1.5}
+                                        spacing={{xs:0.5,lg:1.5}}
                                         sx={{
                                             mt: 1,
                                             width: "100%",
-                                            justifyContent: "flex-start",
+                                            justifyContent: {xs:"center",lg:"flex-start"},
                                             flexWrap: "wrap",
                                         }}
                                     >
@@ -116,7 +116,7 @@ function VIPParty(): ReactElement {
                                                 key={index}
                                                 sx={{
                                                     position: "relative",
-                                                    width: "45%",
+                                                    width: { xs: "48%", lg:"45%"},
                                                     borderRadius: 2,
                                                     overflow: "hidden",
                                                     cursor: "pointer",
@@ -179,7 +179,7 @@ function VIPParty(): ReactElement {
                         </Grid>
 
                         {/* RIGHT COLUMN – clickable frame that opens video viewer */}
-                        <Grid size={{ xs: 12, md: 6 }}>
+                        <Grid size={{ xs: 12, md: 6 }} order={{ xs: 1, md: 2 }}>
                             <motion.div
                                 initial={{ opacity: 0, y: 24 }}
                                 animate={
@@ -191,14 +191,17 @@ function VIPParty(): ReactElement {
                                 <Box
                                     onClick={handleOpenVideo}
                                     sx={{
-                                        height: "100%",
+                                        position: "relative",
                                         borderRadius: "1.5rem",
                                         overflow: "hidden",
                                         boxShadow: "0 18px 45px rgba(0,0,0,0.55)",
                                         border: "1px solid rgba(255,255,255,0.14)",
                                         backgroundColor: "#000000",
                                         cursor: "pointer",
-                                        position: "relative",
+
+                                        // key part: give it real height on mobile
+                                        height: { xs: "auto", md: "100%" },
+                                        aspectRatio: { xs: "16 / 9", md: "auto" }, // 16:9 frame on mobile
                                     }}
                                 >
                                     {/* Poster image */}
@@ -267,6 +270,7 @@ function VIPParty(): ReactElement {
                                 </Box>
                             </motion.div>
                         </Grid>
+
                     </Grid>
                 </Container>
             </Box>
@@ -288,79 +292,81 @@ type ImageLightboxProps = {
     open: boolean;
     image: StaticImageData | null;
     onClose: () => void;
-};
-
-function ImageLightbox({
+  };
+  
+  function ImageLightbox({
     open,
     image,
     onClose,
-}: ImageLightboxProps): ReactElement | null {
+  }: ImageLightboxProps): ReactElement | null {
     if (!open || !image) return null;
-
+  
     return (
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        onClick={onClose}
+        style={{
+          position: "fixed",
+          inset: 0,
+          zIndex: 1300,
+          backgroundColor: "rgba(0,0,0,0.85)",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          cursor: "zoom-out",
+        }}
+      >
         <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            onClick={onClose}
-            style={{
-                position: "fixed",
-                inset: 0,
-                zIndex: 1300,
-                backgroundColor: "rgba(0,0,0,0.85)",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                cursor: "zoom-out",
-            }}
+          initial={{ scale: 0.9, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 0.2 }}
+          style={{
+            position: "relative",
+            // Bigger on mobile: almost full width, but capped on desktop
+            width: "min(90vw, 900px)",
+            maxHeight: "80vh",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+          onClick={(e) => e.stopPropagation()}
         >
-            <motion.div
-                initial={{ scale: 0.9, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ duration: 0.2 }}
-                style={{
-                    position: "relative",
-                    maxWidth: "60vw",
-                    maxHeight: "60vh",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                }}
-                onClick={(e) => e.stopPropagation()}
-            >
-                <Image
-                    src={image}
-                    alt="VIP Party"
-                    style={{
-                        width: "100%",
-                        height: "100%",
-                        objectFit: "cover",
-                        borderRadius: 16,
-                    }}
-                />
-                <Button
-                    onClick={onClose}
-                    sx={{
-                        position: "absolute",
-                        top: 6,
-                        right: 3,
-                        minWidth: "auto",
-                        px: 1.5,
-                        py: 0.5,
-                        borderRadius: 999,
-                        bgcolor: "rgba(0,0,0,0.6)",
-                        color: "#FFFFFF",
-                        fontSize: "0.75rem",
-                        "&:hover": {
-                            bgcolor: "rgba(0,0,0,0.8)",
-                        },
-                    }}
-                >
-                    Close
-                </Button>
-            </motion.div>
+          <Image
+            src={image}
+            alt="VIP Party"
+            style={{
+              width: "100%",
+              height: "100%",
+              objectFit: "contain", // keep full image visible
+              borderRadius: 16,
+            }}
+          />
+          <Button
+            onClick={onClose}
+            sx={{
+              position: "absolute",
+              top: 6,
+              right: 6,
+              minWidth: "auto",
+              px: 1.5,
+              py: 0.5,
+              borderRadius: 999,
+              bgcolor: "rgba(0,0,0,0.6)",
+              color: "#FFFFFF",
+              fontSize: "0.75rem",
+              "&:hover": {
+                bgcolor: "rgba(0,0,0,0.8)",
+              },
+            }}
+          >
+            Close
+          </Button>
         </motion.div>
+      </motion.div>
     );
-}
+  }
+  
 
 type VideoLightboxProps = {
     open: boolean;
