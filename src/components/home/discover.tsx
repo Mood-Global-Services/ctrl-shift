@@ -55,7 +55,7 @@ const steps: Step[] = [
     id: "03",
     title: "Visions",
     description:
-      "An exhibition and competition where aesthetic, economic, and symbolic dimensions merge — shaped by artists exploring the future of value, technology, and identity.",
+      "An exhibition where aesthetic, economic, and symbolic dimensions merge as artists explore the future of value, technology, and identity.",
     image: visionsImage,
     buttonComponent: <NewGenericButton label="Explore our marketplace" comingSoon />,
   },
