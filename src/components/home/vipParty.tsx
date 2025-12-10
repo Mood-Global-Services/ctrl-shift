@@ -161,7 +161,7 @@ function VIPParty(): ReactElement {
 
 
                                     {/* Button */}
-                                    <Box sx={{ pt: 1 }}>
+                                    <Box mt={-2}>
                                         <Link
                                             href="https://luma.com/hfs5ijms"
                                             target="_blank"
@@ -263,26 +263,6 @@ function VIPParty(): ReactElement {
                                                 }}
                                             />
                                         </Box>
-                                    </Box>
-
-                                    {/* Small caption */}
-                                    <Box
-                                        sx={{
-                                            position: "absolute",
-                                            bottom: 16,
-                                            left: 20,
-                                            right: 20,
-                                        }}
-                                    >
-                                        <Typography
-                                            sx={{
-                                                fontSize: "0.8rem",
-                                                color: "rgba(249,250,251,0.9)",
-                                                textShadow: "0 2px 6px rgba(0,0,0,0.8)",
-                                            }}
-                                        >
-                                            Watch the VIP aftermovie
-                                        </Typography>
                                     </Box>
                                 </Box>
                             </motion.div>
