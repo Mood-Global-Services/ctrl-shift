@@ -17,7 +17,7 @@ import conferenceImage from "@/assets/images/lastVersion/1.webp";
 import hackathonImage from "@/assets/images/lastVersion/hackathon.webp";
 import visionsImage from "@/assets/images/lastVersion/3.webp";
 import meetupsImage from "@/assets/images/lastVersion/5.webp";
-import sideEventsImage from "@/assets/images/lastVersion/4.webp";
+import sideEventsImage from "@/assets/images/lastVersion/6.webp";
 
 type StepCTA = {
   type: "button";

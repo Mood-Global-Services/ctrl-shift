@@ -11,6 +11,7 @@ import Discover from "@/components/home/discover";
 import Speakers from "@/components/home/speakers";
 import Newsletter from "@/components/home/newsletter";
 import ThemeAndTracks from "@/components/home/ThemeAndTracks";
+import VIPParty from "@/components/home/vipParty";
 import Partners from "@/components/home/partners";
 
 import patternImg from "@/assets/images/layer.webp";
@@ -93,6 +94,7 @@ export default function Page(): ReactElement {
         <Stats />
         <LastYearCardGrid />
         <ThemeAndTracks />
+        <VIPParty />
         <Speakers />
         <Partners />
         <Newsletter />
