@@ -339,8 +339,11 @@ function ImageLightbox({
                 transition={{ duration: 0.2 }}
                 style={{
                     position: "relative",
-                    maxWidth: "90vw",
-                    maxHeight: "90vh",
+                    maxWidth: "60vw",
+                    maxHeight: "60vh",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
                 }}
                 onClick={(e) => e.stopPropagation()}
             >
@@ -358,8 +361,8 @@ function ImageLightbox({
                     onClick={onClose}
                     sx={{
                         position: "absolute",
-                        top: 12,
-                        right: 12,
+                        top: 6,
+                        right: 3,
                         minWidth: "auto",
                         px: 1.5,
                         py: 0.5,
