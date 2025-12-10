@@ -299,7 +299,7 @@ function Discover(): ReactElement {
 
           {/* Card 1 – Hackathon */}
           <Grid
-            size={{ xs: 12, md: 6 }}
+            size={{ xs: 12, md: 5 }}
             sx={{ order: { xs: 1, md: 3 } }}
           >
             <DiscoverCard
@@ -312,7 +312,7 @@ function Discover(): ReactElement {
 
           {/* Card 2 – Visions */}
           <Grid
-            size={{ xs: 12, md: 6 }}
+            size={{ xs: 12, md: 7 }}
             sx={{ order: { xs: 2, md: 2 } }}
           >
             <DiscoverCard
