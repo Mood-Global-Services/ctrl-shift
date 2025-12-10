@@ -352,6 +352,7 @@ function ThemeAndTracks(): ReactElement {
             size={{ xs: 12, md: 7 }}
             sx={{
               display: "flex",
+              mt: { xs: 0, md: 0 }, // small spacing between tracks and topics on mobile
             }}
           >
             <Box
@@ -362,7 +363,8 @@ function ThemeAndTracks(): ReactElement {
                 border: "1px solid rgba(255,255,255,0.12)",
                 color: "#111827",
                 p: { xs: 3, md: 4 },
-                minHeight: 260,
+                // ⬇️ make the card taller on mobile
+                minHeight: { xs: 420, sm: 420, md: 260 },
                 boxShadow: "0 18px 45px rgba(0,0,0,0.45)",
                 display: "flex",
                 flexDirection: "column",
@@ -409,6 +411,8 @@ function ThemeAndTracks(): ReactElement {
                 sx={{
                   position: "relative",
                   flex: 1,
+                  // ⬇️ ensure the physics area itself also has more height on mobile
+                  minHeight: { xs: 260, sm: 300, md: 220 },
                   borderRadius: "1.5rem",
                   overflow: "hidden",
                   background:
@@ -439,8 +443,7 @@ function ThemeAndTracks(): ReactElement {
                         fontSize: "0.82rem",
                         fontWeight: 500,
                         letterSpacing: "0.015em",
-                        background:
-                          "linear-gradient(135deg,#FFFDF6,#F6E0B8)",
+                        background: "linear-gradient(135deg,#FFFDF6,#F6E0B8)",
                         color: "#111827",
                         border: "1px solid rgba(252,210,33,0.7)",
                         boxShadow: "0 12px 26px rgba(0,0,0,0.55)",
@@ -454,6 +457,7 @@ function ThemeAndTracks(): ReactElement {
               </Box>
             </Box>
           </Grid>
+
         </Grid>
       </Container>
     </Box>
