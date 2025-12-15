@@ -161,9 +161,14 @@ function VIPParty(): ReactElement {
 
 
                                     {/* Button */}
-                                    <Box mt={-2}>
+                                    <Stack mt={-2} sx={{
+                                        width: {xs: "100%",lg:"100%"},
+                                        display: "flex",
+                                        flexDirection: "column",
+                                        alignItems: {xs: "center", md: "start"},
+                                    }}>
                                         <NewTicketsButton label="Get your tickets" comingSoon />
-                                    </Box>
+                                    </Stack>
                                 </Stack>
                             </motion.div>
                         </Grid>
