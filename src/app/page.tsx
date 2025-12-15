@@ -21,7 +21,7 @@ export default function Page(): ReactElement {
   return (
     <Box
       sx={{
-        minHeight: "100vh",
+        minHeight: "100dvh",
         maxWidth: "100vw",
         overflowX: "hidden",
         position: "relative",
@@ -34,9 +34,10 @@ export default function Page(): ReactElement {
           position: "fixed",
           inset: 0,
           width: "100vw",
+          height: "100dvh",
           maxWidth: "100vw",
           overflow: "hidden",
-          zIndex: -10,
+          zIndex: -1,
         }}
       >
         {/* Gradient base */}
