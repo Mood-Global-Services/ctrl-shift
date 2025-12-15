@@ -37,7 +37,6 @@ export default function Page(): ReactElement {
           right: 0,
           bottom: 0,
           width: "100vw",
-          height: "100vh",
           maxWidth: "100vw",
           overflow: "hidden",
           zIndex: -1,
