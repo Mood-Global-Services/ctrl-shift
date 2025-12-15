@@ -69,7 +69,7 @@ export const SponsorsList: Sponsor[] = [
         name: "Binance",
         logo: s35.src,
         link: 'https://www.binance.com/en',
-        percentage: '200%',
+        percentage: '250%',
         mobilePercentage: '150%',
         show: true
     },
@@ -85,7 +85,7 @@ export const SponsorsList: Sponsor[] = [
         name: "CMC",
         logo: s8.src,
         link: "https://coinmarketcap.com/",
-        percentage: '100%',
+        percentage: '120%',
         mobilePercentage: '100%',
         show: true
     },
@@ -111,7 +111,7 @@ export const SponsorsList: Sponsor[] = [
         name: "ESP",
         logo: s6.src,
         link: "https://esp.ethereum.foundation/",
-        percentage: '70%',
+        percentage: '100%',
         mobilePercentage: '70%',
         show: true
     },
@@ -127,7 +127,7 @@ export const SponsorsList: Sponsor[] = [
         name: "Avalanche",
         logo: s39.src,
         link: "https://www.avax.network/",
-        percentage: '70%',
+        percentage: '150%',
         mobilePercentage: '65%',
         show: true
     },
@@ -135,7 +135,7 @@ export const SponsorsList: Sponsor[] = [
         name: "Bridgy",
         logo: s40.src,
         link: "https://www.bridgy.com/",
-        percentage: '75%',
+        percentage: '100%',
         mobilePercentage: '65%',
         show: true
     },
@@ -143,7 +143,7 @@ export const SponsorsList: Sponsor[] = [
         name: "Grow3.ai",
         logo: s41.src,
         link: "https://grow3.ai/",
-        percentage: '75%',
+        percentage: '130%',
         mobilePercentage: '65%',
         show: true
     },
@@ -159,7 +159,7 @@ export const SponsorsList: Sponsor[] = [
         name: "Nova",
         logo: s9.src,
         link: "https://www.novaprotocol.io/",
-        percentage: '55%',
+        percentage: '100%',
         mobilePercentage: '55%',
         show: true,
         invert: true
@@ -168,7 +168,7 @@ export const SponsorsList: Sponsor[] = [
         name: "Caffe Barbera",
         logo: s17.src,
         link: "https://www.caffebarbera.com/en",
-        percentage: '150%',
+        percentage: '180%',
         mobilePercentage: '65%',
         show: true,
         invert: false
@@ -177,7 +177,7 @@ export const SponsorsList: Sponsor[] = [
         name: "Bybit",
         logo: s3.src,
         link: "https://www.bybit.com/",
-        percentage: '65%',
+        percentage: '90%',
         mobilePercentage: '65%',
         show: true,
         invert: false
@@ -186,7 +186,7 @@ export const SponsorsList: Sponsor[] = [
         name: 'VasuvIA',
         logo: s18.src,
         link: 'http://www.vesuv-ia.it/',
-        percentage: '75%',
+        percentage: '100%',
         mobilePercentage: '75%',
         show: true
     },
@@ -202,7 +202,7 @@ export const SponsorsList: Sponsor[] = [
         name: 'Taomark',
         logo: s42.src,
         link: 'https://taomark.com/',
-        percentage: '50%',
+        percentage: '150%',
         mobilePercentage: '50%',
         show: true
     },
@@ -218,7 +218,7 @@ export const SponsorsList: Sponsor[] = [
         name: 'Acqua Minerale Frasassi',
         logo: s20.src,
         link: 'https://acquafrasassi.it/en/',
-        percentage: '70%',
+        percentage: '100%',
         mobilePercentage: '65%',
         show: true
     },
@@ -226,7 +226,7 @@ export const SponsorsList: Sponsor[] = [
         name: 'Sorbillo',
         logo: s21.src,
         link: 'https://www.sorbillo.it/',
-        percentage: '70%',
+        percentage: '100%',
         mobilePercentage: '65%',
         show: true
     },
@@ -267,7 +267,7 @@ export const SponsorsList: Sponsor[] = [
         name: 'Wirex',
         logo: s25.src,
         link: 'https://wirexapp.com/',
-        percentage: '95%',
+        percentage: '100%',
         mobilePercentage: '95%',
         show: true,
         invert: false
@@ -276,7 +276,7 @@ export const SponsorsList: Sponsor[] = [
         name: 'Spyral',
         logo: s26.src,
         link: 'https://spyral.studio/',
-        percentage: '95%',
+        percentage: '110%',
         mobilePercentage: '95%',
         show: true,
         invert: false
@@ -303,7 +303,7 @@ export const SponsorsList: Sponsor[] = [
         name: 'AKKA',
         logo: s38.src,
         link: 'https://italy.akka.app/',
-        percentage: '150%',
+        percentage: '200%',
         mobilePercentage: '75%',
         show: true,
         invert: false
@@ -321,7 +321,7 @@ export const SponsorsList: Sponsor[] = [
         name: 'Parthenope',
         logo: s28.src,
         link: 'https://parthenope.it/',
-        percentage: '50%',
+        percentage: '100%',
         mobilePercentage: '50%',
         show: true,
         invert: false
@@ -374,7 +374,7 @@ export const SponsorsList: Sponsor[] = [
         name: 'Tina Maccheroni',
         logo: s37.src,
         link: 'https://shop.tinamaccheroni.com/',
-        percentage: '55%',
+        percentage: '100%',
         mobilePercentage: '55%',
         show: true,
         invert: false

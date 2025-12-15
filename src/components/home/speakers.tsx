@@ -106,7 +106,7 @@ function Speakers(): ReactElement {
               maxWidth: "32rem",
             }}
           >
-            Faces, stories, and ideas that make our event unforgettable
+            Faces, stories, and ideas that make our event unforgettable ddd
           </Typography>
         </Box>
 
@@ -122,7 +122,7 @@ function Speakers(): ReactElement {
                   aspectRatio: "3 / 4",
                   cursor: "pointer",
                   "&:hover .team-image": {
-                    transform: "scale(1.05)",
+                    transform: {xs: "scale(1)", md: "scale(1.05)"},
                   },
                 }}
               >

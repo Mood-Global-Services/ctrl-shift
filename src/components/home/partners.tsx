@@ -107,6 +107,7 @@ function LogoMarquee({ items, speedSeconds, reverse }: LogoMarqueeProps) {
                 maxWidth: 180,
                 mr: 2.25,
                 boxShadow: "0 8px 18px rgba(15,23,42,0.18)",
+                overflow: "hidden",
               }}
             >
               <Box
@@ -190,7 +191,7 @@ function PartnerCard({
       sx={{
         position: "relative",
         borderRadius: "1.75rem",
-        p: { xs: 3, md: 4 },
+        p: { xs: 0, md: 4 },
         height: "100%",
         overflow: "hidden",
         // same gradient as Tracks section
@@ -216,6 +217,8 @@ function PartnerCard({
             textTransform: "uppercase",
             color: "rgba(252,210,33,0.96)",
             mb: 0.5,
+            px: { xs: 3, md: 0 },
+            pt: { xs: 3, md: 0 },
           }}
         >
           {title}
@@ -226,6 +229,8 @@ function PartnerCard({
             fontWeight: 500,
             color: "#F9FAFB",
             mb: 1,
+            px: { xs: 3, md: 0 },
+            pt: { xs: 3, md: 0 },
           }}
         >
           {isPrimary ? "Main ecosystem supporters" : description}
@@ -244,6 +249,7 @@ function PartnerCard({
           flexDirection: "column",
           gap: 0.75,
           overflow: "hidden",
+          width: "100%",
         }}
       >
         {rowData.map((row, index) => (
