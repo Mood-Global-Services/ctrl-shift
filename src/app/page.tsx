@@ -32,9 +32,12 @@ export default function Page(): ReactElement {
       <Box
         sx={{
           position: "fixed",
-          inset: 0,
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
           width: "100vw",
-          height: "100dvh",
+          height: "100vh",
           maxWidth: "100vw",
           overflow: "hidden",
           zIndex: -1,
@@ -46,7 +49,7 @@ export default function Page(): ReactElement {
             position: "absolute",
             inset: 0,
             maxWidth: "100vw",
-            height: { xs: "100dvh", md: "100vh" },
+            height: { xs: "100%", md: "100vh" },
             overflowX: "hidden",
             background:
               "linear-gradient(to bottom, #170300 0%, #841403 100%)",
