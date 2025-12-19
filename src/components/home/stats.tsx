@@ -242,7 +242,7 @@ function Stats({ type: _type = "solution" }: StatsProps): ReactElement {
                         mb: 1.5,
                     }}
                 >
-                    {"Last version : "}
+                    {"Last edition : "}
                     <Box
                         component="span"
                         className="animated-gradient-text"
