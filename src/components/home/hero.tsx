@@ -314,7 +314,7 @@ function Hero({ theme = "light" }: HeroProps): ReactElement {
                 sx={{ fontSize: 16, color: "#FFFFFF" }}
               />
               <Typography variant="body1">
-                8–14 June 2026 · Naples, Italy
+                13 – 14 - 15 June 2026 · Naples, Italy
               </Typography>
             </Stack>
 

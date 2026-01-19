@@ -365,7 +365,7 @@ function Footer(): ReactElement {
                     pt: {xs: 1, md: 0},
                   }}
                 >
-                  8 - 14 June 2026
+                  13 - 14 -15 June 2026
                 </Typography>
               </Box>
 
