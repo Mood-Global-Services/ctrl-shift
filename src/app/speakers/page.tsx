@@ -7,13 +7,190 @@ import {
   Typography,
   Divider,
   Box,
-  Chip,
   Skeleton,
+  ClickAwayListener,
 } from "@mui/material";
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import patternImg from "@/assets/images/layer.webp";
 import type { Speaker } from "@/lib/speakers";
+import XIcon from "@mui/icons-material/X";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import TelegramIcon from "@mui/icons-material/Telegram";
+import GitHubIcon from "@mui/icons-material/GitHub";
+import LanguageIcon from "@mui/icons-material/Language";
+import LinkIcon from "@mui/icons-material/Link";
+import type { SvgIconComponent } from "@mui/icons-material";
+
+function getLinkIcon(url: string): { Icon: SvgIconComponent; label: string } {
+  try {
+    const hostname = new URL(url).hostname.toLowerCase();
+    if (hostname.includes("x.com") || hostname.includes("twitter.com"))
+      return { Icon: XIcon, label: "X / Twitter" };
+    if (hostname.includes("linkedin.com"))
+      return { Icon: LinkedInIcon, label: "LinkedIn" };
+    if (hostname.includes("t.me") || hostname.includes("telegram"))
+      return { Icon: TelegramIcon, label: "Telegram" };
+    if (hostname.includes("github.com"))
+      return { Icon: GitHubIcon, label: "GitHub" };
+  } catch {
+    // invalid URL
+  }
+  return { Icon: LanguageIcon, label: "Website" };
+}
+
+function parseLinks(personalWebsite: string): string[] {
+  return personalWebsite
+    .split(",")
+    .map((url) => url.trim())
+    .filter(Boolean);
+}
+
+const LinksDropdown = ({ personalWebsite }: { personalWebsite: string }) => {
+  const [open, setOpen] = useState(false);
+  const links = parseLinks(personalWebsite);
+
+  if (links.length === 0) return null;
+
+  // If there's only one link, show its platform icon directly
+  const firstLink = links[0]!;
+  const { Icon: TriggerIcon } = getLinkIcon(firstLink);
+
+  return (
+    <ClickAwayListener onClickAway={() => setOpen(false)}>
+      <Box sx={{ position: "relative", flexShrink: 0 }}>
+        {/* Trigger button */}
+        <Box
+          onClick={() => {
+            if (links.length === 1) {
+              window.open(firstLink, "_blank", "noopener,noreferrer");
+            } else {
+              setOpen((prev) => !prev);
+            }
+          }}
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            width: 30,
+            height: 30,
+            borderRadius: 1,
+            cursor: "pointer",
+            backgroundColor: open
+              ? "rgba(220,184,33,0.15)"
+              : "rgba(255,255,255,0.06)",
+            border: open
+              ? "1px solid rgba(220,184,33,0.4)"
+              : "1px solid rgba(255,255,255,0.08)",
+            transition: "all 0.2s ease",
+            "&:hover": {
+              backgroundColor: "rgba(220,184,33,0.15)",
+              borderColor: "rgba(220,184,33,0.4)",
+              "& .trigger-icon": { color: "#DCB821" },
+            },
+          }}
+        >
+          {links.length === 1 ? (
+            <TriggerIcon
+              className="trigger-icon"
+              sx={{
+                fontSize: 14,
+                color: open ? "#DCB821" : "rgba(255,255,255,0.5)",
+                transition: "color 0.2s ease",
+              }}
+            />
+          ) : (
+            <LinkIcon
+              className="trigger-icon"
+              sx={{
+                fontSize: 14,
+                color: open ? "#DCB821" : "rgba(255,255,255,0.5)",
+                transition: "color 0.2s ease",
+              }}
+            />
+          )}
+        </Box>
+
+        {/* Dropdown */}
+        <AnimatePresence>
+          {open && links.length > 1 && (
+            <Box
+              component={motion.div}
+              initial={{ opacity: 0, y: -4, scale: 0.95 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -4, scale: 0.95 }}
+              transition={{ duration: 0.15, ease: "easeOut" }}
+              sx={{
+                position: "absolute",
+                right: 0,
+                top: "calc(100% + 6px)",
+                zIndex: 50,
+                minWidth: 160,
+                borderRadius: 1.5,
+                overflow: "hidden",
+                backgroundColor: "rgba(20,3,0,0.92)",
+                backdropFilter: "blur(16px)",
+                border: "1px solid rgba(220,184,33,0.2)",
+                boxShadow: "0 12px 32px rgba(0,0,0,0.5)",
+                py: 0.5,
+              }}
+            >
+              {links.map((url) => {
+                const { Icon, label } = getLinkIcon(url);
+                return (
+                  <Box
+                    key={url}
+                    component="a"
+                    href={url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => setOpen(false)}
+                    sx={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: 1.5,
+                      px: 1.5,
+                      py: 1,
+                      textDecoration: "none",
+                      transition: "background-color 0.15s ease",
+                      "&:hover": {
+                        backgroundColor: "rgba(220,184,33,0.1)",
+                        "& .dropdown-icon": { color: "#DCB821" },
+                        "& .dropdown-label": {
+                          color: "rgba(255,255,255,0.9)",
+                        },
+                      },
+                    }}
+                  >
+                    <Icon
+                      className="dropdown-icon"
+                      sx={{
+                        fontSize: 16,
+                        color: "rgba(255,255,255,0.45)",
+                        transition: "color 0.15s ease",
+                      }}
+                    />
+                    <Typography
+                      className="dropdown-label"
+                      sx={{
+                        fontSize: "0.8rem",
+                        color: "rgba(255,255,255,0.6)",
+                        transition: "color 0.15s ease",
+                        whiteSpace: "nowrap",
+                      }}
+                    >
+                      {label}
+                    </Typography>
+                  </Box>
+                );
+              })}
+            </Box>
+          )}
+        </AnimatePresence>
+      </Box>
+    </ClickAwayListener>
+  );
+};
 
 const SpeakerCard = ({
   speaker,
@@ -39,71 +216,62 @@ const SpeakerCard = ({
           ease: [0.43, 0.13, 0.23, 0.96],
         }}
       >
-        <Stack gap={2}>
+        <Stack gap={1.5}>
           <Divider
-            sx={{
-              borderBottom: "1px solid rgba(220,184,33,0.55)",
-            }}
+            sx={{ borderBottom: "1px solid rgba(220,184,33,0.55)" }}
           />
 
-          {/* Name & Affiliation */}
+          {/* Name (left) & Company (right) */}
           <Stack
             direction="row"
-            gap={0.5}
-            alignItems="center"
-            sx={{ flexWrap: "wrap" }}
+            justifyContent="space-between"
+            alignItems="baseline"
           >
-            <Typography variant="subtitle1" fontWeight={500}>
+            <Typography
+              variant="subtitle1"
+              fontWeight={500}
+              sx={{
+                fontSize: { xs: "0.85rem", md: "1rem" },
+                lineHeight: 1.3,
+              }}
+            >
               {speaker.name}
             </Typography>
             {mainAffiliation && (
-              <>
-                <Typography
-                  variant="caption"
-                  fontWeight={500}
-                  sx={{ display: { xs: "none", md: "block" } }}
-                >
-                  &nbsp;&#9679;&nbsp;
-                </Typography>
-                <Typography
-                  variant="subtitle1"
-                  fontWeight={300}
-                  className="animated-gradient-text"
-                  component={
-                    mainAffiliation.company_website ? "a" : "span"
-                  }
-                  {...(mainAffiliation.company_website && {
-                    href: mainAffiliation.company_website,
-                    target: "_blank",
-                    rel: "noopener noreferrer",
-                  })}
-                  sx={{
-                    textDecoration: "none",
-                    "&:hover": { textDecoration: "underline" },
-                  }}
-                >
-                  {mainAffiliation.company_name}
-                </Typography>
-              </>
+              <Typography
+                variant="subtitle1"
+                fontWeight={300}
+                className="animated-gradient-text"
+                component={
+                  mainAffiliation.company_website ? "a" : "span"
+                }
+                {...(mainAffiliation.company_website && {
+                  href: mainAffiliation.company_website,
+                  target: "_blank",
+                  rel: "noopener noreferrer",
+                })}
+                sx={{
+                  textDecoration: "none",
+                  fontSize: { xs: "0.85rem", md: "1rem" },
+                  textAlign: "right",
+                  flexShrink: 0,
+                  ml: 1,
+                  "&:hover": { textDecoration: "underline" },
+                }}
+              >
+                {mainAffiliation.company_name}
+              </Typography>
             )}
           </Stack>
 
           {/* Profile Picture */}
           <Box
-            component={speaker.personalWebsite ? "a" : "div"}
-            {...(speaker.personalWebsite && {
-              href: speaker.personalWebsite,
-              target: "_blank",
-              rel: "noopener noreferrer",
-            })}
             sx={{
-              display: "block",
               width: "100%",
               position: "relative",
               aspectRatio: "3/4",
               overflow: "hidden",
               borderRadius: 2,
-              cursor: speaker.personalWebsite ? "pointer" : "default",
               "&:hover .speaker-image": {
                 transform: { xs: "scale(1)", md: "scale(1.05)" },
               },
@@ -154,53 +322,28 @@ const SpeakerCard = ({
             )}
           </Box>
 
-          {/* Bio */}
-          {speaker.bio && (
+          {/* Bio (left) & Links dropdown (right) */}
+          <Stack direction="row" gap={1} alignItems="flex-start">
             <Typography
               variant="body2"
               sx={{
+                flex: 1,
                 color: "rgba(255,255,255,0.6)",
-                fontSize: "0.85rem",
+                fontSize: { xs: "0.75rem", md: "0.85rem" },
                 lineHeight: 1.5,
                 display: "-webkit-box",
                 WebkitLineClamp: 3,
                 WebkitBoxOrient: "vertical",
                 overflow: "hidden",
+                minHeight: speaker.bio ? undefined : 0,
               }}
             >
-              {speaker.bio}
+              {speaker.bio || ""}
             </Typography>
-          )}
-
-          {/* Additional Affiliations */}
-          {speaker.affiliations.length > 1 && (
-            <Stack direction="row" gap={0.5} flexWrap="wrap">
-              {speaker.affiliations.slice(1).map((aff) => (
-                <Chip
-                  key={aff.company_name}
-                  label={aff.company_name}
-                  size="small"
-                  component={aff.company_website ? "a" : "span"}
-                  {...(aff.company_website && {
-                    href: aff.company_website,
-                    target: "_blank",
-                    rel: "noopener noreferrer",
-                  })}
-                  clickable={!!aff.company_website}
-                  sx={{
-                    backgroundColor: "rgba(220,184,33,0.15)",
-                    color: "#DCB821",
-                    border: "1px solid rgba(220,184,33,0.3)",
-                    fontSize: "0.75rem",
-                    height: 24,
-                    "&:hover": {
-                      backgroundColor: "rgba(220,184,33,0.25)",
-                    },
-                  }}
-                />
-              ))}
-            </Stack>
-          )}
+            {speaker.personalWebsite && (
+              <LinksDropdown personalWebsite={speaker.personalWebsite} />
+            )}
+          </Stack>
         </Stack>
       </motion.div>
     </Grid>
