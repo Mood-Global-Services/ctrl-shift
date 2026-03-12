@@ -28,6 +28,29 @@ export async function initSpeakersTable() {
   `);
 }
 
+export async function addSpeaker(speaker: Omit<Speaker, "id">): Promise<Speaker> {
+  await initSpeakersTable();
+
+  const id = crypto.randomUUID();
+  await turso.execute({
+    sql: `INSERT INTO speakers (id, name, bio, profilePicUrl, personalWebsite, affiliations) VALUES (?, ?, ?, ?, ?, ?)`,
+    args: [
+      id,
+      speaker.name,
+      speaker.bio,
+      speaker.profilePicUrl,
+      speaker.personalWebsite,
+      JSON.stringify(speaker.affiliations),
+    ],
+  });
+
+  return { id, ...speaker };
+}
+
+export async function deleteSpeaker(id: string): Promise<void> {
+  await turso.execute({ sql: "DELETE FROM speakers WHERE id = ?", args: [id] });
+}
+
 export async function getSpeakers(): Promise<Speaker[]> {
   await initSpeakersTable();
 
