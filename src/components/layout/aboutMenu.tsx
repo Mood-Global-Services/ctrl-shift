@@ -81,8 +81,7 @@ export function AboutMenu(): ReactElement {
               <Box
                 component="a"
                 href={item.href}
-                target="_blank"
-                rel="noopener noreferrer"
+                {...(item.href?.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                 sx={{
                   display: "flex",
                   alignItems: "center",
