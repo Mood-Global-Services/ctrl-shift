@@ -16,6 +16,7 @@ import p28 from "@/assets/images/partners/dbw.webp"
 import p29 from "@/assets/images/partners/wehub.webp"
 import p31 from "@/assets/images/partners/gdgnapoli.webp"
 import p32 from "@/assets/images/partners/multilumix.webp"
+import p33 from "@/assets/images/partners/cryptonomist1.webp"
 
 export interface Partner {
     name: string;
@@ -170,6 +171,14 @@ export const PartnersList: Partner[] = [
         logo: p21.src,
         link: 'https://www.byzantine.fi/',
         percentage: '250%',
+        mobilePercentage: '100%',
+        color: '',
+    },
+    {
+        name: 'Cryptonomist',
+        logo: p33.src,
+        link: 'https://en.cryptonomist.ch/',
+        percentage: '180%',
         mobilePercentage: '100%',
         color: '',
     },

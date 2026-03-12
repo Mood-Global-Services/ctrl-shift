@@ -17,6 +17,11 @@ const menuItems: AboutMenuItem[] = [
     href: "/team",
   },
   {
+    title: "Speakers",
+    subtitle: "Discover our lineup of speakers",
+    href: "/speakers",
+  },
+  {
     title: "Event Location",
     subtitle: "Find the location of our event",
     href: "https://www.google.com/maps/place/Villa+Doria+d'Angri/data=!4m2!3m1!1s0x0:0x8549f64b85877f64?sa=X&ved=1t:2428&ictx=111&language=it&hl=it",
