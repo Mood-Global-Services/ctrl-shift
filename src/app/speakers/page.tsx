@@ -226,6 +226,7 @@ const SpeakerCard = ({
             direction="row"
             justifyContent="space-between"
             alignItems="baseline"
+            sx={{ minHeight: { xs: 36, md: 40 } }}
           >
             <Typography
               variant="subtitle1"
@@ -272,6 +273,7 @@ const SpeakerCard = ({
               aspectRatio: "3/4",
               overflow: "hidden",
               borderRadius: 2,
+              backgroundColor: "#ffffff",
               "&:hover .speaker-image": {
                 transform: { xs: "scale(1)", md: "scale(1.05)" },
               },
@@ -543,6 +545,7 @@ export default function SpeakersPage() {
       <Grid
         container
         spacing={{ xs: 3, md: 3 }}
+        alignItems="flex-start"
         sx={{
           width: "100%",
           mx: "auto",
