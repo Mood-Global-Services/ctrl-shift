@@ -61,7 +61,7 @@ const steps: Step[] = [
   },
   {
     id: "04",
-    title: "Side Events",
+    title: "Naples Fintech Week",
     description:
       "From boat parties to late-night drinks to delightfully nerdy experiences — discover a playful side of this community.",
     image: sideEventsImage,
