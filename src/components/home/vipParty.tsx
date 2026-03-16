@@ -82,7 +82,7 @@ function VIPParty(): ReactElement {
                             transition={{ duration: 0.5, ease: "easeOut" }}
                             sx={{
                                 fontWeight: 500,
-                                fontSize: { xs: "1.9rem", md: "2.25rem" },
+                                fontSize: { xs: "1.5rem", sm: "1.9rem", md: "2.25rem" },
                                 letterSpacing: "-0.03em",
                                 lineHeight: 1.15,
                                 color: "#FFFFFF",
@@ -110,7 +110,7 @@ function VIPParty(): ReactElement {
                             position: "relative",
                             borderRadius: "1.75rem",
                             overflow: "hidden",
-                            minHeight: { xs: 580, md: 500 },
+                            minHeight: { xs: 420, sm: 480, md: 500 },
                             boxShadow:
                                 "0 24px 60px rgba(0,0,0,0.6), 0 0 120px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.06)",
                             border: "1px solid rgba(255,255,255,0.10)",
@@ -233,11 +233,11 @@ function VIPParty(): ReactElement {
                                 position: "relative",
                                 zIndex: 4,
                                 height: "100%",
-                                minHeight: { xs: 580, md: 500 },
+                                minHeight: { xs: 420, sm: 480, md: 500 },
                                 display: "flex",
                                 flexDirection: "column",
                                 justifyContent: "flex-end",
-                                p: { xs: 3, md: 5 },
+                                p: { xs: 2.5, sm: 3, md: 5 },
                                 maxWidth: { xs: "100%", md: "50%" },
                             }}
                         >
@@ -249,7 +249,7 @@ function VIPParty(): ReactElement {
                                 transition={{ duration: 0.4, delay: 0.25 }}
                                 sx={{
                                     display: "block",
-                                    fontSize: "0.75rem",
+                                    fontSize: { xs: "0.68rem", sm: "0.75rem" },
                                     fontWeight: 600,
                                     letterSpacing: "0.18em",
                                     textTransform: "uppercase",
@@ -268,10 +268,10 @@ function VIPParty(): ReactElement {
                                 transition={{ duration: 0.45, delay: 0.35 }}
                                 sx={{
                                     color: "rgba(249,250,251,0.88)",
-                                    fontSize: { xs: "0.95rem", md: "1.05rem" },
-                                    lineHeight: 1.75,
+                                    fontSize: { xs: "0.85rem", sm: "0.95rem", md: "1.05rem" },
+                                    lineHeight: { xs: 1.6, md: 1.75 },
                                     maxWidth: "28rem",
-                                    mb: 3,
+                                    mb: { xs: 2, md: 3 },
                                 }}
                             >
                                 An intimate evening for builders, partners, and friends of
@@ -296,7 +296,7 @@ function VIPParty(): ReactElement {
                                     display: "flex",
                                     flexWrap: "wrap",
                                     gap: 1,
-                                    mb: 3.5,
+                                    mb: { xs: 2.5, md: 3.5 },
                                 }}
                             >
                                 {HIGHLIGHTS.map((label, i) => (
@@ -311,10 +311,10 @@ function VIPParty(): ReactElement {
                                         }
                                         transition={{ duration: 0.3, delay: 0.5 + i * 0.08 }}
                                         sx={{
-                                            px: 2,
-                                            py: 0.6,
+                                            px: { xs: 1.5, sm: 2 },
+                                            py: { xs: 0.5, sm: 0.6 },
                                             borderRadius: 9999,
-                                            fontSize: "0.78rem",
+                                            fontSize: { xs: "0.7rem", sm: "0.78rem" },
                                             fontWeight: 500,
                                             letterSpacing: "0.02em",
                                             backgroundColor: "rgba(255,255,255,0.08)",
@@ -357,7 +357,7 @@ function VIPParty(): ReactElement {
                                 zIndex: 5,
                                 cursor: "pointer",
                                 right: { xs: "50%", md: "25%" },
-                                top: { xs: "25%", md: "40%" },
+                                top: { xs: "18%", sm: "22%", md: "40%" },
                                 transform: {
                                     xs: "translate(50%, -50%)",
                                     md: "translate(50%, -50%)",
@@ -366,8 +366,8 @@ function VIPParty(): ReactElement {
                         >
                             <Box
                                 sx={{
-                                    width: { xs: 64, md: 80 },
-                                    height: { xs: 64, md: 80 },
+                                    width: { xs: 56, sm: 64, md: 80 },
+                                    height: { xs: 56, sm: 64, md: 80 },
                                     borderRadius: "999px",
                                     background:
                                         "radial-gradient(circle at 30% 30%, #FCD221, #B07510)",
@@ -456,8 +456,8 @@ function VIPParty(): ReactElement {
                                     sx={{
                                         position: "relative",
                                         flex: "0 0 auto",
-                                        width: { xs: 200, md: 260 },
-                                        height: { xs: 130, md: 160 },
+                                        width: { xs: 160, sm: 200, md: 260 },
+                                        height: { xs: 100, sm: 130, md: 160 },
                                         borderRadius: "1rem",
                                         overflow: "hidden",
                                         cursor: "pointer",
