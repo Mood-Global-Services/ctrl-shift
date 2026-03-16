@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import {
   Box,
   Container,
+  Divider,
   Grid,
   Skeleton,
   Stack,
@@ -147,54 +148,41 @@ function Speakers(): ReactElement {
                       }}
                     >
                       <Stack gap={1.5}>
-                        {/* Name & Company */}
-                        <Stack
-                          direction={{ xs: "column", sm: "row" }}
-                          justifyContent="space-between"
-                          alignItems={{ xs: "flex-start", sm: "baseline" }}
-                          gap={{ xs: 0.25, sm: 0 }}
-                          sx={{ minHeight: { xs: "auto", sm: 36, md: 40 } }}
-                        >
-                          <Typography
-                            variant="subtitle1"
-                            fontWeight={500}
-                            sx={{
-                              fontSize: {
-                                xs: "0.8rem",
-                                sm: "0.85rem",
-                                md: "1rem",
-                              },
-                              lineHeight: 1.3,
-                              color: "#FFFFFF",
-                              wordBreak: "break-word",
-                            }}
-                          >
-                            {speaker.name}
-                          </Typography>
-                          {mainAffiliation && (
+                        {/* Mobile: divider + name/company ABOVE image */}
+                        <Box sx={{ display: { xs: "block", md: "none" } }}>
+                          <Divider
+                            sx={{ borderBottom: "1px solid rgba(220,184,33,0.55)", mb: 1.5 }}
+                          />
+                          <Stack direction="column" sx={{ minHeight: 40 }}>
+                            <Typography
+                              variant="subtitle1"
+                              fontWeight={500}
+                              sx={{
+                                fontSize: { xs: "0.8rem", sm: "0.85rem" },
+                                lineHeight: 1.3,
+                                color: "#FFFFFF",
+                                wordBreak: "break-word",
+                              }}
+                            >
+                              {speaker.name}
+                            </Typography>
                             <Typography
                               variant="subtitle1"
                               fontWeight={300}
-                              className="animated-gradient-text"
+                              className={mainAffiliation ? "animated-gradient-text" : undefined}
                               sx={{
-                                fontSize: {
-                                  xs: "0.72rem",
-                                  sm: "0.85rem",
-                                  md: "1rem",
-                                },
-                                textAlign: { xs: "left", sm: "right" },
-                                flexShrink: { xs: 1, sm: 0 },
-                                ml: { xs: 0, sm: 1 },
+                                fontSize: { xs: "0.72rem", sm: "0.78rem" },
+                                lineHeight: 1.4,
                                 overflow: "hidden",
                                 textOverflow: "ellipsis",
                                 whiteSpace: "nowrap",
-                                maxWidth: { xs: "100%", sm: "50%" },
+                                visibility: mainAffiliation ? "visible" : "hidden",
                               }}
                             >
-                              {mainAffiliation.company_name}
+                              {mainAffiliation?.company_name || "\u00A0"}
                             </Typography>
-                          )}
-                        </Stack>
+                          </Stack>
+                        </Box>
 
                         {/* Profile Picture */}
                         <Box
@@ -253,6 +241,42 @@ function Speakers(): ReactElement {
                               </Typography>
                             </Box>
                           )}
+                        </Box>
+
+                        {/* Desktop: name/company BELOW image */}
+                        <Box
+                          sx={{
+                            display: { xs: "none", md: "block" },
+                            minHeight: 44,
+                          }}
+                        >
+                          <Typography
+                            variant="subtitle1"
+                            fontWeight={500}
+                            sx={{
+                              fontSize: "1rem",
+                              lineHeight: 1.3,
+                              color: "#FFFFFF",
+                              wordBreak: "break-word",
+                            }}
+                          >
+                            {speaker.name}
+                          </Typography>
+                          <Typography
+                            variant="subtitle1"
+                            fontWeight={300}
+                            className={mainAffiliation ? "animated-gradient-text" : undefined}
+                            sx={{
+                              fontSize: "0.88rem",
+                              lineHeight: 1.4,
+                              overflow: "hidden",
+                              textOverflow: "ellipsis",
+                              whiteSpace: "nowrap",
+                              visibility: mainAffiliation ? "visible" : "hidden",
+                            }}
+                          >
+                            {mainAffiliation?.company_name || "\u00A0"}
+                          </Typography>
                         </Box>
                       </Stack>
                     </Box>

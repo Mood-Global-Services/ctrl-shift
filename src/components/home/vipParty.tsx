@@ -110,7 +110,7 @@ function VIPParty(): ReactElement {
                             position: "relative",
                             borderRadius: "1.75rem",
                             overflow: "hidden",
-                            minHeight: { xs: 420, sm: 480, md: 500 },
+                            minHeight: { xs: "auto", sm: "auto", md: 500 },
                             boxShadow:
                                 "0 24px 60px rgba(0,0,0,0.6), 0 0 120px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.06)",
                             border: "1px solid rgba(255,255,255,0.10)",
@@ -227,20 +227,79 @@ function VIPParty(): ReactElement {
                             }}
                         />
 
-                        {/* Content overlay – left side */}
+                        {/* Content overlay */}
                         <Box
                             sx={{
                                 position: "relative",
                                 zIndex: 4,
                                 height: "100%",
-                                minHeight: { xs: 420, sm: 480, md: 500 },
+                                minHeight: { xs: "auto", md: 500 },
                                 display: "flex",
                                 flexDirection: "column",
-                                justifyContent: "flex-end",
+                                justifyContent: { xs: "flex-start", md: "flex-end" },
                                 p: { xs: 2.5, sm: 3, md: 5 },
                                 maxWidth: { xs: "100%", md: "50%" },
                             }}
                         >
+                            {/* Mobile play button – in flow, centered */}
+                            <Box
+                                component={motion.div}
+                                initial={{ opacity: 0, scale: 0.8 }}
+                                animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
+                                transition={{ duration: 0.5, delay: 0.3, type: "spring", stiffness: 200 }}
+                                onClick={handleOpenVideo}
+                                sx={{
+                                    display: { xs: "flex", md: "none" },
+                                    flexDirection: "column",
+                                    alignItems: "center",
+                                    justifyContent: "center",
+                                    cursor: "pointer",
+                                    flex: 1,
+                                    minHeight: 140,
+                                }}
+                            >
+                                <Box
+                                    sx={{
+                                        width: 60,
+                                        height: 60,
+                                        borderRadius: "999px",
+                                        background:
+                                            "radial-gradient(circle at 30% 30%, #FCD221, #B07510)",
+                                        boxShadow:
+                                            "0 14px 40px rgba(0,0,0,0.6), 0 0 60px rgba(252,210,33,0.15)",
+                                        display: "flex",
+                                        alignItems: "center",
+                                        justifyContent: "center",
+                                    }}
+                                >
+                                    <Box
+                                        component="span"
+                                        sx={{
+                                            display: "inline-block",
+                                            marginLeft: "4px",
+                                            width: 0,
+                                            height: 0,
+                                            borderTop: "10px solid transparent",
+                                            borderBottom: "10px solid transparent",
+                                            borderLeft: "16px solid #1F0900",
+                                        }}
+                                    />
+                                </Box>
+                                <Typography
+                                    sx={{
+                                        mt: 1,
+                                        fontSize: "0.68rem",
+                                        fontWeight: 600,
+                                        letterSpacing: "0.15em",
+                                        textTransform: "uppercase",
+                                        color: "rgba(255,255,255,0.7)",
+                                        textShadow: "0 2px 8px rgba(0,0,0,0.6)",
+                                    }}
+                                >
+                                    Watch
+                                </Typography>
+                            </Box>
+
                             {/* Eyebrow */}
                             <Typography
                                 component={motion.span}
@@ -255,6 +314,7 @@ function VIPParty(): ReactElement {
                                     textTransform: "uppercase",
                                     color: "rgba(252,210,33,0.95)",
                                     mb: 1.5,
+                                    textAlign: { xs: "center", md: "left" },
                                 }}
                             >
                                 Exclusive Side Event
@@ -270,8 +330,9 @@ function VIPParty(): ReactElement {
                                     color: "rgba(249,250,251,0.88)",
                                     fontSize: { xs: "0.85rem", sm: "0.95rem", md: "1.05rem" },
                                     lineHeight: { xs: 1.6, md: 1.75 },
-                                    maxWidth: "28rem",
+                                    maxWidth: { xs: "100%", md: "28rem" },
                                     mb: { xs: 2, md: 3 },
+                                    textAlign: { xs: "center", md: "left" },
                                 }}
                             >
                                 An intimate evening for builders, partners, and friends of
@@ -297,6 +358,7 @@ function VIPParty(): ReactElement {
                                     flexWrap: "wrap",
                                     gap: 1,
                                     mb: { xs: 2.5, md: 3.5 },
+                                    justifyContent: { xs: "center", md: "flex-start" },
                                 }}
                             >
                                 {HIGHLIGHTS.map((label, i) => (
@@ -338,6 +400,7 @@ function VIPParty(): ReactElement {
                                 sx={{
                                     display: "flex",
                                     alignItems: "center",
+                                    justifyContent: { xs: "center", md: "flex-start" },
                                     gap: 2,
                                 }}
                             >
@@ -345,7 +408,7 @@ function VIPParty(): ReactElement {
                             </Box>
                         </Box>
 
-                        {/* Play button */}
+                        {/* Desktop play button – absolute positioned in right half */}
                         <Box
                             component={motion.div}
                             initial={{ opacity: 0, scale: 0.8 }}
@@ -353,21 +416,19 @@ function VIPParty(): ReactElement {
                             transition={{ duration: 0.5, delay: 0.4, type: "spring", stiffness: 200 }}
                             onClick={handleOpenVideo}
                             sx={{
+                                display: { xs: "none", md: "block" },
                                 position: "absolute",
                                 zIndex: 5,
                                 cursor: "pointer",
-                                right: { xs: "50%", md: "25%" },
-                                top: { xs: "18%", sm: "22%", md: "40%" },
-                                transform: {
-                                    xs: "translate(50%, -50%)",
-                                    md: "translate(50%, -50%)",
-                                },
+                                right: "25%",
+                                top: "40%",
+                                transform: "translate(50%, -50%)",
                             }}
                         >
                             <Box
                                 sx={{
-                                    width: { xs: 56, sm: 64, md: 80 },
-                                    height: { xs: 56, sm: 64, md: 80 },
+                                    width: 80,
+                                    height: 80,
                                     borderRadius: "999px",
                                     background:
                                         "radial-gradient(circle at 30% 30%, #FCD221, #B07510)",

@@ -224,11 +224,11 @@ const SpeakerCard = ({
 
           {/* Name & Company */}
           <Stack
-            direction={{ xs: "column", sm: "row" }}
+            direction={{ xs: "column", md: "row" }}
             justifyContent="space-between"
-            alignItems={{ xs: "flex-start", sm: "baseline" }}
-            sx={{ minHeight: { xs: "auto", sm: 36, md: 40 } }}
-            gap={{ xs: 0.25, sm: 0 }}
+            alignItems={{ xs: "flex-start", md: "baseline" }}
+            sx={{ minHeight: { xs: 40, md: 40 } }}
+            gap={{ xs: 0.25, md: 0 }}
           >
             <Typography
               variant="subtitle1"
@@ -241,35 +241,37 @@ const SpeakerCard = ({
             >
               {speaker.name}
             </Typography>
-            {mainAffiliation && (
-              <Typography
-                variant="subtitle1"
-                fontWeight={300}
-                className="animated-gradient-text"
-                component={
-                  mainAffiliation.company_website ? "a" : "span"
-                }
-                {...(mainAffiliation.company_website && {
-                  href: mainAffiliation.company_website,
-                  target: "_blank",
-                  rel: "noopener noreferrer",
-                })}
-                sx={{
-                  textDecoration: "none",
-                  fontSize: { xs: "0.72rem", sm: "0.85rem", md: "1rem" },
-                  textAlign: { xs: "left", sm: "right" },
-                  flexShrink: { xs: 1, sm: 0 },
-                  ml: { xs: 0, sm: 1 },
-                  overflow: "hidden",
-                  textOverflow: "ellipsis",
-                  whiteSpace: "nowrap",
-                  maxWidth: { xs: "100%", sm: "50%" },
-                  "&:hover": { textDecoration: "underline" },
-                }}
-              >
-                {mainAffiliation.company_name}
-              </Typography>
-            )}
+            <Typography
+              variant="subtitle1"
+              fontWeight={300}
+              className={mainAffiliation ? "animated-gradient-text" : undefined}
+              component={
+                mainAffiliation?.company_website ? "a" : "span"
+              }
+              {...(mainAffiliation?.company_website && {
+                href: mainAffiliation.company_website,
+                target: "_blank",
+                rel: "noopener noreferrer",
+              })}
+              sx={{
+                textDecoration: "none",
+                fontSize: { xs: "0.72rem", sm: "0.78rem", md: "1rem" },
+                lineHeight: 1.4,
+                textAlign: { xs: "left", md: "right" },
+                flexShrink: { xs: 1, md: 0 },
+                ml: { xs: 0, md: 1 },
+                overflow: "hidden",
+                textOverflow: "ellipsis",
+                whiteSpace: "nowrap",
+                maxWidth: { xs: "100%", md: "50%" },
+                visibility: mainAffiliation ? "visible" : "hidden",
+                "&:hover": mainAffiliation?.company_website
+                  ? { textDecoration: "underline" }
+                  : {},
+              }}
+            >
+              {mainAffiliation?.company_name || "\u00A0"}
+            </Typography>
           </Stack>
 
           {/* Profile Picture */}
