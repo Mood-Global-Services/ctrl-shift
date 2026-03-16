@@ -270,7 +270,7 @@ const SpeakerCard = ({
                   : {},
               }}
             >
-              {mainAffiliation?.company_name || "\u00A0"}
+              {mainAffiliation?.company_name ?? "\u00A0"}
             </Typography>
           </Stack>
 

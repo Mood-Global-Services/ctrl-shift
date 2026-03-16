@@ -179,7 +179,7 @@ function Speakers(): ReactElement {
                                 visibility: mainAffiliation ? "visible" : "hidden",
                               }}
                             >
-                              {mainAffiliation?.company_name || "\u00A0"}
+                              {mainAffiliation?.company_name ?? "\u00A0"}
                             </Typography>
                           </Stack>
                         </Box>
@@ -275,7 +275,7 @@ function Speakers(): ReactElement {
                               visibility: mainAffiliation ? "visible" : "hidden",
                             }}
                           >
-                            {mainAffiliation?.company_name || "\u00A0"}
+                            {mainAffiliation?.company_name ?? "\u00A0"}
                           </Typography>
                         </Box>
                       </Stack>
