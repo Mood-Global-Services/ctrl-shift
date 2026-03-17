@@ -122,10 +122,11 @@ const LinksDropdown = ({ personalWebsite }: { personalWebsite: string }) => {
               transition={{ duration: 0.15, ease: "easeOut" }}
               sx={{
                 position: "absolute",
-                right: 0,
+                right: { xs: "auto", sm: 0 },
+                left: { xs: 0, sm: "auto" },
                 top: "calc(100% + 6px)",
                 zIndex: 50,
-                minWidth: 160,
+                minWidth: { xs: 140, sm: 160 },
                 borderRadius: 1.5,
                 overflow: "hidden",
                 backgroundColor: "rgba(20,3,0,0.92)",
@@ -221,48 +222,56 @@ const SpeakerCard = ({
             sx={{ borderBottom: "1px solid rgba(220,184,33,0.55)" }}
           />
 
-          {/* Name (left) & Company (right) */}
+          {/* Name & Company */}
           <Stack
-            direction="row"
+            direction={{ xs: "column", md: "row" }}
             justifyContent="space-between"
-            alignItems="baseline"
-            sx={{ minHeight: { xs: 36, md: 40 } }}
+            alignItems={{ xs: "flex-start", md: "baseline" }}
+            sx={{ minHeight: { xs: 40, md: 40 } }}
+            gap={{ xs: 0.25, md: 0 }}
           >
             <Typography
               variant="subtitle1"
               fontWeight={500}
               sx={{
-                fontSize: { xs: "0.85rem", md: "1rem" },
+                fontSize: { xs: "0.8rem", sm: "0.85rem", md: "1rem" },
                 lineHeight: 1.3,
+                wordBreak: "break-word",
               }}
             >
               {speaker.name}
             </Typography>
-            {mainAffiliation && (
-              <Typography
-                variant="subtitle1"
-                fontWeight={300}
-                className="animated-gradient-text"
-                component={
-                  mainAffiliation.company_website ? "a" : "span"
-                }
-                {...(mainAffiliation.company_website && {
-                  href: mainAffiliation.company_website,
-                  target: "_blank",
-                  rel: "noopener noreferrer",
-                })}
-                sx={{
-                  textDecoration: "none",
-                  fontSize: { xs: "0.85rem", md: "1rem" },
-                  textAlign: "right",
-                  flexShrink: 0,
-                  ml: 1,
-                  "&:hover": { textDecoration: "underline" },
-                }}
-              >
-                {mainAffiliation.company_name}
-              </Typography>
-            )}
+            <Typography
+              variant="subtitle1"
+              fontWeight={300}
+              className={mainAffiliation ? "animated-gradient-text" : undefined}
+              component={
+                mainAffiliation?.company_website ? "a" : "span"
+              }
+              {...(mainAffiliation?.company_website && {
+                href: mainAffiliation.company_website,
+                target: "_blank",
+                rel: "noopener noreferrer",
+              })}
+              sx={{
+                textDecoration: "none",
+                fontSize: { xs: "0.72rem", sm: "0.78rem", md: "1rem" },
+                lineHeight: 1.4,
+                textAlign: { xs: "left", md: "right" },
+                flexShrink: { xs: 1, md: 0 },
+                ml: { xs: 0, md: 1 },
+                overflow: "hidden",
+                textOverflow: "ellipsis",
+                whiteSpace: "nowrap",
+                maxWidth: { xs: "100%", md: "50%" },
+                visibility: mainAffiliation ? "visible" : "hidden",
+                "&:hover": mainAffiliation?.company_website
+                  ? { textDecoration: "underline" }
+                  : {},
+              }}
+            >
+              {mainAffiliation?.company_name ?? "\u00A0"}
+            </Typography>
           </Stack>
 
           {/* Profile Picture */}
@@ -331,7 +340,7 @@ const SpeakerCard = ({
               sx={{
                 flex: 1,
                 color: "rgba(255,255,255,0.6)",
-                fontSize: { xs: "0.75rem", md: "0.85rem" },
+                fontSize: { xs: "0.7rem", sm: "0.75rem", md: "0.85rem" },
                 lineHeight: 1.5,
                 display: "-webkit-box",
                 WebkitLineClamp: 3,
@@ -464,8 +473,8 @@ export default function SpeakersPage() {
         width="100%"
         direction={{ xs: "column", md: "row" }}
         gap={{ xs: 2, md: 4 }}
-        px={{ xs: 2, sm: 4, md: 8, lg: 16 }}
-        pt={{ xs: 6, sm: 6, md: 18 }}
+        px={{ xs: 1.5, sm: 4, md: 8, lg: 16 }}
+        pt={{ xs: 12, sm: 14, md: 18 }}
         pb={{ xs: 4, md: 6 }}
         justifyContent="space-between"
         alignItems={{ xs: "flex-start", md: "start" }}
@@ -544,12 +553,12 @@ export default function SpeakersPage() {
       {/* Grid of speakers */}
       <Grid
         container
-        spacing={{ xs: 3, md: 3 }}
+        spacing={{ xs: 2, sm: 3, md: 3 }}
         alignItems="flex-start"
         sx={{
           width: "100%",
           mx: "auto",
-          px: { xs: 2, sm: 4, md: 8, lg: 16 },
+          px: { xs: 1.5, sm: 4, md: 8, lg: 16 },
           pt: { xs: 4, md: 8 },
           pb: { xs: 10, md: 12 },
         }}

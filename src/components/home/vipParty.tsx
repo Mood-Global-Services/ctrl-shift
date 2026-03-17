@@ -6,20 +6,29 @@ import {
     Box,
     Button,
     Container,
-    Grid,
-    Stack,
     Typography,
-    Link,
 } from "@mui/material";
 import Image, { type StaticImageData } from "next/image";
 import { motion, useInView } from "motion/react";
 import NewTicketsButton from "@/components/ui/newTicketsButton";
 
-// Use your real images here
 import vipImg1 from "@/assets/images/vipParty/1.webp";
 import vipImg2 from "@/assets/images/vipParty/2.webp";
 
 const VIP_IMAGES: StaticImageData[] = [vipImg1, vipImg2];
+
+// Build a long strip by repeating images many times for seamless looping
+const SLIDER_IMAGES: StaticImageData[] = [
+    ...VIP_IMAGES, ...VIP_IMAGES, ...VIP_IMAGES, ...VIP_IMAGES,
+    ...VIP_IMAGES, ...VIP_IMAGES, ...VIP_IMAGES, ...VIP_IMAGES,
+];
+
+const HIGHLIGHTS = [
+    "Live Music",
+    "Curated Guest List",
+    "Limited Capacity",
+    "Naples Coastline",
+];
 
 function VIPParty(): ReactElement {
     const sectionRef = useRef<HTMLDivElement | null>(null);
@@ -27,7 +36,6 @@ function VIPParty(): ReactElement {
 
     const [lightboxOpen, setLightboxOpen] = useState(false);
     const [activeImage, setActiveImage] = useState<StaticImageData | null>(null);
-
     const [videoOpen, setVideoOpen] = useState(false);
 
     const handleOpenLightbox = (img: StaticImageData) => {
@@ -65,208 +73,493 @@ function VIPParty(): ReactElement {
                         mx: "auto",
                     }}
                 >
-                    {/* SECTION TITLE – centered above everything */}
+                    {/* SECTION TITLE */}
                     <Box sx={{ mb: 6, textAlign: "center" }}>
                         <Typography
-                            component="h2"
+                            component={motion.h2}
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                            transition={{ duration: 0.5, ease: "easeOut" }}
                             sx={{
                                 fontWeight: 500,
-                                fontSize: { xs: "1.9rem", md: "2.25rem" },
+                                fontSize: { xs: "1.5rem", sm: "1.9rem", md: "2.25rem" },
                                 letterSpacing: "-0.03em",
                                 lineHeight: 1.15,
                                 color: "#FFFFFF",
                             }}
                         >
-                            <span className="animated-gradient-text">VIP Party</span>
+                            The{" "}
+                            <span className="animated-gradient-text">VIP Boat Party</span>
                         </Typography>
                     </Box>
 
-                    <Grid
-                        container
-                        spacing={{ xs: 4, md: 6 }}
-                        alignItems="stretch" // make both columns same height
+                    {/* MAIN CINEMATIC CARD */}
+                    <Box
+                        component={motion.div}
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+                        transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
+                        onMouseMove={(event: React.MouseEvent<HTMLDivElement>) => {
+                            const rect = event.currentTarget.getBoundingClientRect();
+                            const x = event.clientX - rect.left;
+                            const y = event.clientY - rect.top;
+                            event.currentTarget.style.setProperty("--mouse-x", `${x}px`);
+                            event.currentTarget.style.setProperty("--mouse-y", `${y}px`);
+                        }}
+                        sx={{
+                            position: "relative",
+                            borderRadius: "1.75rem",
+                            overflow: "hidden",
+                            minHeight: { xs: "auto", sm: "auto", md: 500 },
+                            boxShadow:
+                                "0 24px 60px rgba(0,0,0,0.6), 0 0 120px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.06)",
+                            border: "1px solid rgba(255,255,255,0.10)",
+                            "--mouse-x": "50%",
+                            "--mouse-y": "50%",
+                            "&::before": {
+                                content: '""',
+                                position: "absolute",
+                                inset: 0,
+                                background:
+                                    "radial-gradient(600px circle at var(--mouse-x) var(--mouse-y), rgba(252,210,33,0.1), transparent 55%)",
+                                opacity: 0,
+                                transition: "opacity 0.5s ease",
+                                pointerEvents: "none",
+                                zIndex: 6,
+                            },
+                            "&:hover::before": {
+                                opacity: 1,
+                            },
+                        }}
                     >
-                        {/* LEFT COLUMN – text + IMAGES + button */}
-                        <Grid size={{ xs: 12, md: 6 }} order={{ xs: 2, md: 1 }}>
-                            <motion.div
-                                initial={{ opacity: 0, y: 24 }}
-                                animate={
-                                    isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }
-                                }
-                                transition={{ duration: 0.6, ease: "easeOut" }}
-                                style={{ height: "100%" }}
-                            >
-                                <Stack
-                                    spacing={3}
-                                    alignItems="flex-start"
-                                    sx={{ height: "100%" }}
-                                >
-                                    <Stack
-                                        direction="row"
-                                        spacing={{ xs: 0.5, lg: 1.5 }}
-                                        sx={{
-                                            mt: 1,
-                                            width: "100%",
-                                            justifyContent: { xs: "center", lg: "flex-start" },
-                                            flexWrap: "wrap",
-                                        }}
-                                    >
-                                        {VIP_IMAGES.map((img, index) => (
-                                            <Box
-                                                key={index}
-                                                sx={{
-                                                    position: "relative",
-                                                    width: { xs: "48%", lg: "45%" },
-                                                    borderRadius: 2,
-                                                    overflow: "hidden",
-                                                    cursor: "pointer",
-                                                    aspectRatio: "4/3",
-                                                    boxShadow: "0 14px 34px rgba(0,0,0,0.55)",
-                                                    "&:hover img": {
-                                                        transform: "scale(1.05)",
-                                                    },
-                                                }}
-                                                onClick={() => handleOpenLightbox(img)}
-                                            >
-                                                <Image
-                                                    src={img}
-                                                    alt={`VIP Party ${index + 1}`}
-                                                    fill
-                                                    sizes="(max-width: 900px) 33vw, 200px"
-                                                    style={{
-                                                        objectFit: "cover",
-                                                        transition: "transform 0.5s ease",
-                                                    }}
-                                                />
-                                            </Box>
-                                        ))}
-                                    </Stack>
-                                    {/* Paragraph */}
-                                    <Typography
-                                        variant="body1"
-                                        sx={{
-                                            color: "rgba(249,250,251,0.9)",
-                                            fontSize: "0.98rem",
-                                            maxWidth: "32rem",
-                                            textAlign: "left",
-                                        }}
-                                    >
-                                        An intimate evening for builders, partners, and friends of
-                                        ctrl/shift. Expect a mix of deep conversations, live music,
-                                        and unexpected moments – all with Naples as the backdrop.
-                                        Limited capacity, curated guest list.
-                                    </Typography>
+                        {/* Background image */}
+                        <Box
+                            sx={{
+                                position: "absolute",
+                                inset: 0,
+                                transition: "transform 1s cubic-bezier(0.25, 0.46, 0.45, 0.94)",
+                                ".MuiBox-root:hover > &": {
+                                    transform: "scale(1.04)",
+                                },
+                            }}
+                        >
+                            <Image
+                                src={vipImg1}
+                                alt="VIP Boat Party"
+                                fill
+                                sizes="(max-width: 900px) 100vw, 68rem"
+                                style={{ objectFit: "cover" }}
+                                priority
+                            />
+                        </Box>
 
-                                    {/* IMAGE STRIP – this is the part you weren’t seeing */}
+                        {/* LAYER 1 – Primary directional gradient */}
+                        <Box
+                            sx={{
+                                position: "absolute",
+                                inset: 0,
+                                background: {
+                                    xs: "linear-gradient(to top, rgba(0,0,0,0.95) 30%, rgba(0,0,0,0.7) 50%, rgba(0,0,0,0.25) 70%, rgba(0,0,0,0.05) 100%)",
+                                    md: "linear-gradient(115deg, rgba(0,0,0,0.92) 25%, rgba(0,0,0,0.65) 45%, rgba(0,0,0,0.2) 65%, rgba(0,0,0,0.05) 100%)",
+                                },
+                                zIndex: 1,
+                            }}
+                        />
 
+                        {/* LAYER 2 – Bottom edge darkening */}
+                        <Box
+                            sx={{
+                                position: "absolute",
+                                inset: 0,
+                                background:
+                                    "linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 35%)",
+                                zIndex: 1,
+                            }}
+                        />
 
-                                    {/* Button */}
-                                    <Stack mt={-2} sx={{
-                                        width: {xs: "100%",lg:"100%"},
-                                        display: "flex",
-                                        flexDirection: "column",
-                                        alignItems: {xs: "center", md: "start"},
-                                    }}>
-                                        <NewTicketsButton label="Get your tickets" comingSoon />
-                                    </Stack>
-                                </Stack>
-                            </motion.div>
-                        </Grid>
+                        {/* LAYER 3 – Vignette */}
+                        <Box
+                            sx={{
+                                position: "absolute",
+                                inset: 0,
+                                background:
+                                    "radial-gradient(ellipse at center, transparent 50%, rgba(0,0,0,0.45) 100%)",
+                                zIndex: 1,
+                            }}
+                        />
 
-                        {/* RIGHT COLUMN – clickable frame that opens video viewer */}
-                        <Grid size={{ xs: 12, md: 6 }} order={{ xs: 1, md: 2 }}>
-                            <motion.div
-                                initial={{ opacity: 0, y: 24 }}
-                                animate={
-                                    isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }
-                                }
-                                transition={{ duration: 0.6, ease: "easeOut", delay: 0.12 }}
-                                style={{ height: "100%" }}
+                        {/* LAYER 4 – Warm gold glow bottom-left */}
+                        <Box
+                            sx={{
+                                position: "absolute",
+                                inset: 0,
+                                background:
+                                    "radial-gradient(ellipse at 15% 85%, rgba(252,184,33,0.14), transparent 45%)",
+                                zIndex: 2,
+                                pointerEvents: "none",
+                            }}
+                        />
+
+                        {/* LAYER 5 – Secondary gold accent top-right */}
+                        <Box
+                            sx={{
+                                position: "absolute",
+                                inset: 0,
+                                background:
+                                    "radial-gradient(circle at 85% 15%, rgba(252,210,33,0.06), transparent 40%)",
+                                zIndex: 2,
+                                pointerEvents: "none",
+                            }}
+                        />
+
+                        {/* LAYER 6 – Top edge light */}
+                        <Box
+                            sx={{
+                                position: "absolute",
+                                top: 0,
+                                left: 0,
+                                right: 0,
+                                height: "1px",
+                                background:
+                                    "linear-gradient(90deg, transparent 10%, rgba(252,210,33,0.15) 50%, transparent 90%)",
+                                zIndex: 3,
+                                pointerEvents: "none",
+                            }}
+                        />
+
+                        {/* Content overlay */}
+                        <Box
+                            sx={{
+                                position: "relative",
+                                zIndex: 4,
+                                height: "100%",
+                                minHeight: { xs: "auto", md: 500 },
+                                display: "flex",
+                                flexDirection: "column",
+                                justifyContent: { xs: "flex-start", md: "flex-end" },
+                                p: { xs: 2.5, sm: 3, md: 5 },
+                                maxWidth: { xs: "100%", md: "50%" },
+                            }}
+                        >
+                            {/* Mobile play button – in flow, centered */}
+                            <Box
+                                component={motion.div}
+                                initial={{ opacity: 0, scale: 0.8 }}
+                                animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
+                                transition={{ duration: 0.5, delay: 0.3, type: "spring", stiffness: 200 }}
+                                onClick={handleOpenVideo}
+                                sx={{
+                                    display: { xs: "flex", md: "none" },
+                                    flexDirection: "column",
+                                    alignItems: "center",
+                                    justifyContent: "center",
+                                    cursor: "pointer",
+                                    flex: 1,
+                                    minHeight: 140,
+                                }}
                             >
                                 <Box
-                                    onClick={handleOpenVideo}
                                     sx={{
-                                        position: "relative",
-                                        borderRadius: "1.5rem",
-                                        overflow: "hidden",
-                                        boxShadow: "0 18px 45px rgba(0,0,0,0.55)",
-                                        border: "1px solid rgba(255,255,255,0.14)",
-                                        backgroundColor: "#000000",
-                                        cursor: "pointer",
-
-                                        // key part: give it real height on mobile
-                                        height: { xs: "auto", md: "100%" },
-                                        aspectRatio: { xs: "16 / 9", md: "auto" }, // 16:9 frame on mobile
+                                        width: 60,
+                                        height: 60,
+                                        borderRadius: "999px",
+                                        background:
+                                            "radial-gradient(circle at 30% 30%, #FCD221, #B07510)",
+                                        boxShadow:
+                                            "0 14px 40px rgba(0,0,0,0.6), 0 0 60px rgba(252,210,33,0.15)",
+                                        display: "flex",
+                                        alignItems: "center",
+                                        justifyContent: "center",
                                     }}
                                 >
-                                    {/* Poster image */}
                                     <Box
+                                        component="span"
                                         sx={{
-                                            position: "absolute",
-                                            inset: 0,
+                                            display: "inline-block",
+                                            marginLeft: "4px",
+                                            width: 0,
+                                            height: 0,
+                                            borderTop: "10px solid transparent",
+                                            borderBottom: "10px solid transparent",
+                                            borderLeft: "16px solid #1F0900",
+                                        }}
+                                    />
+                                </Box>
+                                <Typography
+                                    sx={{
+                                        mt: 1,
+                                        fontSize: "0.68rem",
+                                        fontWeight: 600,
+                                        letterSpacing: "0.15em",
+                                        textTransform: "uppercase",
+                                        color: "rgba(255,255,255,0.7)",
+                                        textShadow: "0 2px 8px rgba(0,0,0,0.6)",
+                                    }}
+                                >
+                                    Watch
+                                </Typography>
+                            </Box>
+
+                            {/* Eyebrow */}
+                            <Typography
+                                component={motion.span}
+                                initial={{ opacity: 0, y: 14 }}
+                                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 14 }}
+                                transition={{ duration: 0.4, delay: 0.25 }}
+                                sx={{
+                                    display: "block",
+                                    fontSize: { xs: "0.68rem", sm: "0.75rem" },
+                                    fontWeight: 600,
+                                    letterSpacing: "0.18em",
+                                    textTransform: "uppercase",
+                                    color: "rgba(252,210,33,0.95)",
+                                    mb: 1.5,
+                                    textAlign: { xs: "center", md: "left" },
+                                }}
+                            >
+                                Exclusive Side Event
+                            </Typography>
+
+                            {/* Description */}
+                            <Typography
+                                component={motion.p}
+                                initial={{ opacity: 0, y: 14 }}
+                                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 14 }}
+                                transition={{ duration: 0.45, delay: 0.35 }}
+                                sx={{
+                                    color: "rgba(249,250,251,0.88)",
+                                    fontSize: { xs: "0.85rem", sm: "0.95rem", md: "1.05rem" },
+                                    lineHeight: { xs: 1.6, md: 1.75 },
+                                    maxWidth: { xs: "100%", md: "28rem" },
+                                    mb: { xs: 2, md: 3 },
+                                    textAlign: { xs: "center", md: "left" },
+                                }}
+                            >
+                                An intimate evening for builders, partners, and friends of
+                                ctrl/shift. Expect deep conversations, live music,
+                                and unexpected moments — all with{" "}
+                                <Box
+                                    component="span"
+                                    sx={{ color: "rgba(252,210,33,0.95)", fontWeight: 500 }}
+                                >
+                                    Naples
+                                </Box>{" "}
+                                as the backdrop.
+                            </Typography>
+
+                            {/* Highlight pills */}
+                            <Box
+                                component={motion.div}
+                                initial={{ opacity: 0, y: 12 }}
+                                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 12 }}
+                                transition={{ duration: 0.4, delay: 0.45 }}
+                                sx={{
+                                    display: "flex",
+                                    flexWrap: "wrap",
+                                    gap: 1,
+                                    mb: { xs: 2.5, md: 3.5 },
+                                    justifyContent: { xs: "center", md: "flex-start" },
+                                }}
+                            >
+                                {HIGHLIGHTS.map((label, i) => (
+                                    <Box
+                                        key={label}
+                                        component={motion.span}
+                                        initial={{ opacity: 0, scale: 0.9 }}
+                                        animate={
+                                            isInView
+                                                ? { opacity: 1, scale: 1 }
+                                                : { opacity: 0, scale: 0.9 }
+                                        }
+                                        transition={{ duration: 0.3, delay: 0.5 + i * 0.08 }}
+                                        sx={{
+                                            px: { xs: 1.5, sm: 2 },
+                                            py: { xs: 0.5, sm: 0.6 },
+                                            borderRadius: 9999,
+                                            fontSize: { xs: "0.7rem", sm: "0.78rem" },
+                                            fontWeight: 500,
+                                            letterSpacing: "0.02em",
+                                            backgroundColor: "rgba(255,255,255,0.08)",
+                                            backdropFilter: "blur(8px)",
+                                            border: "1px solid rgba(252,210,33,0.25)",
+                                            color: "rgba(255,255,255,0.9)",
+                                            whiteSpace: "nowrap",
                                         }}
                                     >
-                                        <Image
-                                            src={vipImg1}
-                                            alt="VIP Aftermovie"
-                                            fill
-                                            sizes="(max-width: 900px) 100vw, 50vw"
-                                            style={{ objectFit: "cover" }}
-                                        />
+                                        {label}
                                     </Box>
+                                ))}
+                            </Box>
 
-                                    {/* Dark overlay */}
+                            {/* CTA row */}
+                            <Box
+                                component={motion.div}
+                                initial={{ opacity: 0, y: 12 }}
+                                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 12 }}
+                                transition={{ duration: 0.4, delay: 0.55 }}
+                                sx={{
+                                    display: "flex",
+                                    alignItems: "center",
+                                    justifyContent: { xs: "center", md: "flex-start" },
+                                    gap: 2,
+                                }}
+                            >
+                                <NewTicketsButton label="Get your tickets" comingSoon />
+                            </Box>
+                        </Box>
+
+                        {/* Desktop play button – absolute positioned in right half */}
+                        <Box
+                            component={motion.div}
+                            initial={{ opacity: 0, scale: 0.8 }}
+                            animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
+                            transition={{ duration: 0.5, delay: 0.4, type: "spring", stiffness: 200 }}
+                            onClick={handleOpenVideo}
+                            sx={{
+                                display: { xs: "none", md: "block" },
+                                position: "absolute",
+                                zIndex: 5,
+                                cursor: "pointer",
+                                right: "25%",
+                                top: "40%",
+                                transform: "translate(50%, -50%)",
+                            }}
+                        >
+                            <Box
+                                sx={{
+                                    width: 80,
+                                    height: 80,
+                                    borderRadius: "999px",
+                                    background:
+                                        "radial-gradient(circle at 30% 30%, #FCD221, #B07510)",
+                                    boxShadow:
+                                        "0 14px 40px rgba(0,0,0,0.6), 0 0 60px rgba(252,210,33,0.15)",
+                                    display: "flex",
+                                    alignItems: "center",
+                                    justifyContent: "center",
+                                    transition: "transform 0.3s ease, box-shadow 0.3s ease",
+                                    "&:hover": {
+                                        transform: "scale(1.12)",
+                                        boxShadow:
+                                            "0 18px 50px rgba(0,0,0,0.7), 0 0 80px rgba(252,210,33,0.3)",
+                                    },
+                                }}
+                            >
+                                <Box
+                                    component="span"
+                                    sx={{
+                                        display: "inline-block",
+                                        marginLeft: "5px",
+                                        width: 0,
+                                        height: 0,
+                                        borderTop: "12px solid transparent",
+                                        borderBottom: "12px solid transparent",
+                                        borderLeft: "18px solid #1F0900",
+                                    }}
+                                />
+                            </Box>
+                            <Typography
+                                sx={{
+                                    textAlign: "center",
+                                    mt: 1,
+                                    fontSize: "0.7rem",
+                                    fontWeight: 600,
+                                    letterSpacing: "0.15em",
+                                    textTransform: "uppercase",
+                                    color: "rgba(255,255,255,0.7)",
+                                    textShadow: "0 2px 8px rgba(0,0,0,0.6)",
+                                }}
+                            >
+                                Watch
+                            </Typography>
+                        </Box>
+                    </Box>
+
+                    {/* INFINITE IMAGE SLIDER – below the card */}
+                    <Box
+                        component={motion.div}
+                        initial={{ opacity: 0 }}
+                        animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+                        transition={{ duration: 0.6, delay: 0.5 }}
+                        sx={{
+                            mt: 3,
+                            position: "relative",
+                            overflow: "hidden",
+                            borderRadius: "1.25rem",
+                            // Fade-out masks on both edges
+                            maskImage:
+                                "linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)",
+                            WebkitMaskImage:
+                                "linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)",
+                            // Define the keyframes via a global style injection
+                            "@keyframes vip-slider-scroll": {
+                                "0%": { transform: "translateX(0)" },
+                                "100%": { transform: "translateX(-50%)" },
+                            },
+                        }}
+                    >
+                        {/* The sliding track – two identical sets side by side */}
+                        <Box
+                            sx={{
+                                display: "flex",
+                                gap: 1.5,
+                                width: "max-content",
+                                animation: "vip-slider-scroll 50s linear infinite",
+                                "&:hover": {
+                                    animationPlayState: "paused",
+                                },
+                            }}
+                        >
+                            {SLIDER_IMAGES.map((img, index) => (
+                                <Box
+                                    key={index}
+                                    onClick={() => handleOpenLightbox(img)}
+                                    sx={{
+                                        position: "relative",
+                                        flex: "0 0 auto",
+                                        width: { xs: 160, sm: 200, md: 260 },
+                                        height: { xs: 100, sm: 130, md: 160 },
+                                        borderRadius: "1rem",
+                                        overflow: "hidden",
+                                        cursor: "pointer",
+                                        border: "1px solid rgba(255,255,255,0.08)",
+                                        boxShadow: "0 8px 24px rgba(0,0,0,0.5)",
+                                        transition: "border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease",
+                                        "&:hover": {
+                                            borderColor: "rgba(252,210,33,0.4)",
+                                            boxShadow:
+                                                "0 12px 32px rgba(0,0,0,0.7), 0 0 20px rgba(252,210,33,0.08)",
+                                            transform: "translateY(-4px)",
+                                        },
+                                        "&:hover img": {
+                                            transform: "scale(1.08)",
+                                        },
+                                    }}
+                                >
+                                    <Image
+                                        src={img}
+                                        alt={`VIP Boat Party moment`}
+                                        fill
+                                        sizes="(max-width: 900px) 200px, 260px"
+                                        style={{
+                                            objectFit: "cover",
+                                            transition: "transform 0.5s ease",
+                                        }}
+                                    />
+                                    {/* Subtle bottom gradient on each thumbnail */}
                                     <Box
                                         sx={{
                                             position: "absolute",
                                             inset: 0,
                                             background:
-                                                "radial-gradient(circle at center, rgba(0,0,0,0.1), rgba(0,0,0,0.65))",
+                                                "linear-gradient(to top, rgba(0,0,0,0.25) 0%, transparent 40%)",
+                                            pointerEvents: "none",
                                         }}
                                     />
-
-                                    {/* Play button overlay */}
-                                    <Box
-                                        sx={{
-                                            position: "absolute",
-                                            inset: 0,
-                                            display: "flex",
-                                            alignItems: "center",
-                                            justifyContent: "center",
-                                        }}
-                                    >
-                                        <Box
-                                            sx={{
-                                                width: 72,
-                                                height: 72,
-                                                borderRadius: "999px",
-                                                background:
-                                                    "radial-gradient(circle at 30% 30%, #FCD221, #B07510)",
-                                                boxShadow: "0 14px 30px rgba(0,0,0,0.7)",
-                                                display: "flex",
-                                                alignItems: "center",
-                                                justifyContent: "center",
-                                            }}
-                                        >
-                                            <Box
-                                                component="span"
-                                                sx={{
-                                                    display: "inline-block",
-                                                    marginLeft: "4px",
-                                                    width: 0,
-                                                    height: 0,
-                                                    borderTop: "10px solid transparent",
-                                                    borderBottom: "10px solid transparent",
-                                                    borderLeft: "16px solid #1F0900",
-                                                }}
-                                            />
-                                        </Box>
-                                    </Box>
                                 </Box>
-                            </motion.div>
-                        </Grid>
-
-                    </Grid>
+                            ))}
+                        </Box>
+                    </Box>
                 </Container>
             </Box>
 
@@ -318,7 +611,6 @@ function ImageLightbox({
                 transition={{ duration: 0.2 }}
                 style={{
                     position: "relative",
-                    // Bigger on mobile: almost full width, but capped on desktop
                     width: "min(90vw, 900px)",
                     maxHeight: "80vh",
                     display: "flex",
@@ -329,11 +621,11 @@ function ImageLightbox({
             >
                 <Image
                     src={image}
-                    alt="VIP Party"
+                    alt="VIP Boat Party"
                     style={{
                         width: "100%",
                         height: "100%",
-                        objectFit: "contain", // keep full image visible
+                        objectFit: "contain",
                         borderRadius: 16,
                     }}
                 />
@@ -414,7 +706,6 @@ function VideoLightbox({
                         backgroundColor: "#000",
                     }}
                 >
-                    {/* Replace with your real file in /public */}
                     <source src="/aftermovie.mp4" type="video/mp4" />
                     Your browser does not support the video tag.
                 </video>

@@ -22,6 +22,7 @@ const tracks: Track[] = [
   },
   { id: "03", title: "Blockchain & Decentralized Tech" },
   { id: "04", title: "Culture, Creativity & Narrative" },
+  { id: "05", title: <><span className="animated-gradient-text">BTC</span> X <span className="animated-gradient-text">The Crypto Gateway</span></> },
 ];
 
 const topicsMap: Record<number, string[]> = {
@@ -108,6 +109,27 @@ const topicsMap: Record<number, string[]> = {
     "Media, Memes & Virality",
     "Design for Civic Imagination",
     "Cross-Cultural Narratives",
+  ],
+  4: [
+    "Bitcoin",
+    "Bitcoin Layer 2",
+    "Lightning Network",
+    "Bitcoin Mining",
+    "Bitcoin Ordinals & Inscriptions",
+    "BTC DeFi",
+    "Bitcoin Security",
+    "Bitcoin Governance",
+    "Bitcoin Scaling",
+    "Crypto Adoption",
+    "Crypto Education",
+    "Crypto Regulation",
+    "Crypto Trading & Markets",
+    "Stablecoins & Payments",
+    "Self-Custody & Wallets",
+    "Tokenomics",
+    "Crypto Media & Content",
+    "Bitcoin Culture & Community",
+    "Crypto Gateway Onboarding",
   ],
 };
 
@@ -281,8 +303,9 @@ function ThemeAndTracks(): ReactElement {
             >
               {tracks.map((track, index) => {
                 const isActive = index === activeTrack;
+                const isLastTrack = index === tracks.length - 1 && tracks.length % 2 === 1;
                 return (
-                  <Grid key={track.id} size={{ xs: 6, md: 6 }}>
+                  <Grid key={track.id} size={{ xs: isLastTrack ? 12 : 6, md: isLastTrack ? 12 : 6 }}>
                     <Box
                       component={motion.button}
                       type="button"
@@ -307,7 +330,7 @@ function ThemeAndTracks(): ReactElement {
                         display: "flex",
                         flexDirection: "column",
                         justifyContent: "space-between",
-                        minHeight: 150,
+                        minHeight: isLastTrack ? 100 : 150,
                         boxShadow: isActive
                           ? "0 18px 40px rgba(0,0,0,0.65)"
                           : "0 10px 24px rgba(0,0,0,0.45)",

@@ -359,27 +359,30 @@ function Header({ theme = "dark" }: HeaderProps): ReactElement {
                 }}
               >
                 {[
-                  { label: "Home", href: "/" },
-                  { label: "Team", href: "/team" },
+                  { label: "Home", href: "/", external: false },
+                  { label: "Speakers", href: "/speakers", external: false },
+                  { label: "Team", href: "/team", external: false },
                   {
                     label: "Event Location",
                     href: "https://www.google.com/maps/place/Villa+Doria+d'Angri/data=!4m2!3m1!1s0x0:0x8549f64b85877f64?sa=X&ved=1t:2428&ictx=111&language=it&hl=it",
+                    external: true,
                   },
                   {
                     label: "Archive 2025",
                     href: "https://www.napuleth.org/archive/2025",
+                    external: true,
                   },
                   {
                     label: "Archive 2024",
                     href: "https://www.napuleth.org/archive/2024",
+                    external: true,
                   },
-                ].map(({ label, href }) => (
+                ].map(({ label, href, external }) => (
                   <MuiLink
                     key={label}
                     component={NextLink}
                     href={href}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    {...(external && { target: "_blank", rel: "noopener noreferrer" })}
                     onClick={() => setIsOpen(false)}
                     sx={{
                       display: "block",
