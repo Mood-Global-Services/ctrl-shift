@@ -12,10 +12,13 @@ import Image, { type StaticImageData } from "next/image";
 import { motion, useInView } from "motion/react";
 import NewTicketsButton from "@/components/ui/newTicketsButton";
 
-import vipImg1 from "@/assets/images/vipParty/1.webp";
-import vipImg2 from "@/assets/images/vipParty/2.webp";
+import vipImg1 from "@/assets/images/boat1.webp";
+import vipImg2 from "@/assets/images/boat2.webp";
+import vipImg3 from "@/assets/images/boat3.webp";
+import vipImg4 from "@/assets/images/boat4.webp";
 
-const VIP_IMAGES: StaticImageData[] = [vipImg1, vipImg2];
+
+const VIP_IMAGES: StaticImageData[] = [vipImg1, vipImg2, vipImg3, vipImg4];
 
 // Build a long strip by repeating images many times for seamless looping
 const SLIDER_IMAGES: StaticImageData[] = [
@@ -404,7 +407,7 @@ function VIPParty(): ReactElement {
                                     gap: 2,
                                 }}
                             >
-                                <NewTicketsButton label="Get your tickets" comingSoon />
+                                <NewTicketsButton label="Get your tickets" onClick={() => window.open("https://luma.com/nakheaab", "_blank", "noopener,noreferrer")} />
                             </Box>
                         </Box>
 
@@ -706,7 +709,7 @@ function VideoLightbox({
                         backgroundColor: "#000",
                     }}
                 >
-                    <source src="/aftermovie.mp4" type="video/mp4" />
+                    <source src="/boat.mp4" type="video/mp4" />
                     Your browser does not support the video tag.
                 </video>
 

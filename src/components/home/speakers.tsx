@@ -2,6 +2,8 @@
 
 import type { ReactElement } from "react";
 import { useEffect, useRef, useState } from "react";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import { useTheme } from "@mui/material/styles";
 import {
   Box,
   Container,
@@ -21,19 +23,23 @@ import NewGenericButton from "@/components/ui/newGenericButton";
 function Speakers(): ReactElement {
   const sectionRef = useRef<HTMLDivElement | null>(null);
   const isInView = useInView(sectionRef, { once: true, amount: 0.2 });
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
-  const [speakers, setSpeakers] = useState<Speaker[]>([]);
+  const [allSpeakers, setAllSpeakers] = useState<Speaker[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetch("/api/speakers")
       .then((res) => res.json())
       .then((data: Speaker[]) => {
-        setSpeakers(data.slice(0, 4));
+        setAllSpeakers(data.slice(0, 12));
         setLoading(false);
       })
       .catch(() => setLoading(false));
   }, []);
+
+  const speakers = isMobile ? allSpeakers.slice(0, 6) : allSpeakers;
 
   return (
     <Box
@@ -109,7 +115,7 @@ function Speakers(): ReactElement {
         {/* Speakers grid */}
         <Grid container spacing={{ xs: 2, md: 3 }}>
           {loading
-            ? Array.from({ length: 4 }).map((_, i) => (
+            ? Array.from({ length: isMobile ? 6 : 12 }).map((_, i) => (
                 <Grid key={i} size={{ xs: 6, md: 3 }}>
                   <Stack gap={1.5}>
                     <Skeleton
