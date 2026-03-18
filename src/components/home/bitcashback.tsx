@@ -378,7 +378,7 @@ function BitCashback(): ReactElement {
 
                             {/* CTA button */}
                             <Link
-                                href="https://luma.com/hfs5ijms?coupon=BITCASHBACK"
+                                href="https://luma.com/hfs5ijms?tk=mQGDry"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 sx={{
