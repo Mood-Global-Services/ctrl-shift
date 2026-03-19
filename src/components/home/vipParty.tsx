@@ -147,7 +147,7 @@ function VIPParty(): ReactElement {
                             }}
                         >
                             <Image
-                                src={vipImg1}
+                                src={vipImg3}
                                 alt="VIP Boat Party"
                                 fill
                                 sizes="(max-width: 900px) 100vw, 68rem"
