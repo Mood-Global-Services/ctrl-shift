@@ -101,9 +101,7 @@ export default function Page(): ReactElement {
         <VIPParty />
         <Speakers />
         <BitCashback />
-        <Partners />
-        <Newsletter />
-        
+        <Partners />s
       </Box>
     </Box>
   );
