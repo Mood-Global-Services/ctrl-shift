@@ -162,16 +162,23 @@ function BitCashback(): ReactElement {
                                     transition={{ duration: 0.45, delay: 0.15 }}
                                     sx={{ display: "flex", alignItems: "center" }}
                                 >
-                                    <Image
-                                        src={bitcashbackLogo}
-                                        alt="BitCashback"
-                                        height={28}
-                                        style={{
-                                            width: "auto",
-                                            height: 28,
-                                            filter: "invert(1)",
-                                        }}
-                                    />
+                                    <Link
+                                        href="https://bitcashback.net/"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        sx={{ display: "flex", alignItems: "center" }}
+                                    >
+                                        <Image
+                                            src={bitcashbackLogo}
+                                            alt="BitCashback"
+                                            height={28}
+                                            style={{
+                                                width: "auto",
+                                                height: 28,
+                                                filter: "invert(1)",
+                                            }}
+                                        />
+                                    </Link>
                                 </Box>
                             </Stack>
 

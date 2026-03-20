@@ -174,7 +174,7 @@ function Speakers(): ReactElement {
                             </Typography>
                             <Typography
                               variant="subtitle1"
-                              fontWeight={300}
+                              fontWeight={700}
                               className={mainAffiliation ? "animated-gradient-text" : undefined}
                               sx={{
                                 fontSize: { xs: "0.72rem", sm: "0.78rem" },
@@ -270,7 +270,7 @@ function Speakers(): ReactElement {
                           </Typography>
                           <Typography
                             variant="subtitle1"
-                            fontWeight={300}
+                            fontWeight={700}
                             className={mainAffiliation ? "animated-gradient-text" : undefined}
                             sx={{
                               fontSize: "0.88rem",

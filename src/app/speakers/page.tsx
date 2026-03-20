@@ -243,7 +243,7 @@ const SpeakerCard = ({
             </Typography>
             <Typography
               variant="subtitle1"
-              fontWeight={300}
+              fontWeight={700}
               className={mainAffiliation ? "animated-gradient-text" : undefined}
               component={
                 mainAffiliation?.company_website ? "a" : "span"
