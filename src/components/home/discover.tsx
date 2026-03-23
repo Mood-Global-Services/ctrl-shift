@@ -49,7 +49,8 @@ const steps: Step[] = [
     description:
       "Prototype bold ideas, solve real challenges, and compete for prizes, grants, and ecosystem opportunities.",
     image: hackathonImage,
-    buttonComponent: <NewGenericButton label="Apply for hackathon" comingSoon />,
+    buttonComponent: <NewGenericButton label="Apply for hackathon" />,
+    link: "https://form.jotform.com/260807077682363",
   },
   {
     id: "03",
