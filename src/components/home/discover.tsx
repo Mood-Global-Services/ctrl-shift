@@ -58,7 +58,8 @@ const steps: Step[] = [
     description:
       "An exhibition where aesthetic, economic, and symbolic dimensions merge as artists explore the future of value, technology, and identity.",
     image: visionsImage,
-    buttonComponent: <NewGenericButton label="Explore our marketplace" comingSoon />,
+    buttonComponent: <NewGenericButton label="Apply for prize"/>,
+    link: "https://prize.ctrlshift.events/?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAdGRleAQvO55leHRuA2FlbQIxMQBzcnRjBmFwcF9pZA8xMjQwMjQ1NzQyODc0MTQAAadevRfsaXHeBG_dzQJVSNYlcl91fLmr8RihWp3GqKXy4dv9dXxEy9AxU5Axsg_aem_WSrcar6Ivm20bqzZNKXVyw",
   },
   {
     id: "04",

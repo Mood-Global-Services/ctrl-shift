@@ -1,4 +1,5 @@
 import s1 from '@/assets/images/sponsors/lilic.webp'
+import s2 from '@/assets/images/sponsors/geode.webp'
 import s3 from '@/assets/images/sponsors/bybit.webp'
 import s4 from '@/assets/images/sponsors/bitget2.webp'
 import s6 from '@/assets/images/sponsors/esp.webp'
@@ -55,6 +56,14 @@ export const SponsorsList: Sponsor[] = [
         link: "https://nexlabs.io/",
         percentage: '80%',
         mobilePercentage: '75%',
+        show: true
+    },
+    {
+        name: "Geode",
+        logo: s13.src,
+        link: "https://geode.build/",
+        percentage: '200%',
+        mobilePercentage: '120%',
         show: true
     },
     {
