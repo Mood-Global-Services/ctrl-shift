@@ -60,9 +60,9 @@ export const SponsorsList: Sponsor[] = [
     },
     {
         name: "Geode",
-        logo: s13.src,
+        logo: s2.src,
         link: "https://geode.build/",
-        percentage: '200%',
+        percentage: '135%',
         mobilePercentage: '120%',
         show: true
     },
