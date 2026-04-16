@@ -17,6 +17,7 @@ import p29 from "@/assets/images/partners/wehub.webp"
 import p31 from "@/assets/images/partners/gdgnapoli.webp"
 import p32 from "@/assets/images/partners/multilumix.webp"
 import p33 from "@/assets/images/partners/cryptonomist1.webp"
+import p34 from "@/assets/images/partners/bitwise.png"
 
 export interface Partner {
     name: string;
@@ -31,10 +32,18 @@ export interface Partner {
 export const PartnersList: Partner[] = [
     {
         name: 'Chainlink',
-        logo: p22.src,
-        link: 'https://www.chainlink.com/',
-        percentage: '100%',
+        logo: p34.src,
+        link: 'https://bitwiseinvestments.com/',
+        percentage: '80%',
         mobilePercentage: '80%',
+        color: '',
+    },
+    {
+        name: 'Bitwise',
+        logo: p23.src,
+        link: 'https://www.cyberscope.io/',
+        percentage: '100%',
+        mobilePercentage: '85%',
         color: '',
     },
     {
